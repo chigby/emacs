@@ -19,3 +19,6 @@
 [submodule "vendor/cperl-mode"]
 	path = vendor/cperl-mode
 	url = https://github.com/jrockway/cperl-mode.git
+[submodule "vendor/js2-mode"]
+	path = vendor/js2-mode
+	url = https://github.com/emacsmirror/js2-mode.git
