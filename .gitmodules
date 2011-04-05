@@ -16,3 +16,6 @@
 [submodule "vendor/apache-mode"]
 	path = vendor/apache-mode
 	url = https://github.com/emacsmirror/apache-mode.git
+[submodule "vendor/cperl-mode"]
+	path = vendor/cperl-mode
+	url = https://github.com/jrockway/cperl-mode.git
