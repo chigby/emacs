@@ -10,3 +10,6 @@
 [submodule "vendor/cc-mode"]
 	path = vendor/cc-mode
 	url = https://github.com/emacsmirror/cc-mode.git
+[submodule "vendor/psvn"]
+	path = vendor/psvn
+	url = https://github.com/emacsmirror/psvn.git
