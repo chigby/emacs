@@ -13,3 +13,6 @@
 [submodule "vendor/psvn"]
 	path = vendor/psvn
 	url = https://github.com/emacsmirror/psvn.git
+[submodule "vendor/apache-mode"]
+	path = vendor/apache-mode
+	url = https://github.com/emacsmirror/apache-mode.git
