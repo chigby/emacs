@@ -7,3 +7,6 @@
 [submodule "vendor/zenburn"]
 	path = vendor/zenburn
 	url = https://github.com/emacsmirror/zenburn.git
+[submodule "vendor/cc-mode"]
+	path = vendor/cc-mode
+	url = https://github.com/emacsmirror/cc-mode.git
