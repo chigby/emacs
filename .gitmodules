@@ -1,3 +1,6 @@
 [submodule "vendor/full-ack"]
 	path = vendor/full-ack
 	url = https://github.com/nschum/full-ack.git
+[submodule "vendor/color-theme"]
+	path = vendor/color-theme
+	url = https://github.com/emacsmirror/color-theme.git
