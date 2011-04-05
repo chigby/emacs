@@ -1,0 +1,3 @@
+[submodule "vendor/full-ack"]
+	path = vendor/full-ack
+	url = https://github.com/nschum/full-ack.git
