@@ -4,3 +4,6 @@
 [submodule "vendor/color-theme"]
 	path = vendor/color-theme
 	url = https://github.com/emacsmirror/color-theme.git
+[submodule "vendor/zenburn"]
+	path = vendor/zenburn
+	url = https://github.com/emacsmirror/zenburn.git
