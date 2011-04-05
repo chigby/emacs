@@ -25,3 +25,6 @@
 [submodule "vendor/php-mode"]
 	path = vendor/php-mode
 	url = https://github.com/emacsmirror/php-mode.git
+[submodule "vendor/whitespace"]
+	path = vendor/whitespace
+	url = https://github.com/smtlaissezfaire/whitespace-el.git
