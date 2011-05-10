@@ -110,9 +110,9 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
-;; '(menu-bar-mode t)
  '(paren-match-face (quote paren-face-match-light))
  '(paren-sexp-mode t)
+ '(rst-level-face-base-light 50)
  '(show-paren-mode t)
  '(tab-width 8)
  '(transient-mark-mode t))
