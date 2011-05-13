@@ -69,3 +69,8 @@
         (require library)))
     (when (file-exists-p (concat personal ".el"))
       (load personal))))
+
+;; Macro to apply a fill to a specific line while leaving adjacent
+;; lines untouched.
+(fset 'inline-fill
+   [?\C-a ?\C-e ?\C-o ?\C-a return ?\M-q backspace ?\M-\} ?\C-d])
