@@ -21,6 +21,16 @@
     (progn
       (require 'zenburn) (color-theme-zenburn)))
 
+(setq linum-format
+          (lambda (line)
+            (propertize (format
+                         (let ((w (length (number-to-string
+                                           (count-lines (point-min) (point-max))))))
+                           (concat "%" (number-to-string w) "d "))
+                         line)
+                        'face 'linum)))
+
+
 (add-to-list 'default-frame-alist '(cursor-color . "black"))
 (blink-cursor-mode t)
 
