@@ -3,6 +3,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+(fringe-mode 'none)
+
 (set-default-font "-apple-monaco-medium-r-normal--14-140-72-72-m-140-mac-roman")
 
 ;; The command below fixes problems with problems with whitespace-mode
