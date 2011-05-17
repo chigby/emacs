@@ -49,8 +49,6 @@
 (if (and (eq window-system 'ns) (> (x-display-pixel-height) 1400) )
     (resize-and-reposition-frame))
 
-(if (not (eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
-
  ;;; This is for GNU Emacs 21
     (if (= 21 emacs-major-version)
         (load "term/xterm-256color"))
