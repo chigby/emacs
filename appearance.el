@@ -5,7 +5,7 @@
 
 (fringe-mode 'none)
 
-(set-default-font "-apple-monaco-medium-r-normal--14-140-72-72-m-140-mac-roman")
+(set-face-font 'default "Menlo-14")
 
 ;; The command below fixes problems with problems with whitespace-mode
 ;; in emacs22.
