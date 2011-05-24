@@ -16,10 +16,12 @@
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
 (setq scroll-step 1)
 
-(require 'color-theme)
+;; Needed for ansi-term mode.
+(setq term-default-bg-color "#3f3f3f") ;;or use nil
+(setq term-default-fg-color "#dcdccc")
+
 (if (or (eq window-system 'ns) (string= (getenv "TERM") "xterm-256color"))
-    (progn
-      (require 'zenburn) (color-theme-zenburn)))
+    (color-theme-zenburn))
 
 (setq linum-format
           (lambda (line)
