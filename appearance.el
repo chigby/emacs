@@ -3,7 +3,7 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (not (eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
 
-(fringe-mode 'none)
+(set-fringe-mode 0)
 
 (set-face-font 'default "Menlo-14")
 
