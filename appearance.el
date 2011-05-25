@@ -36,7 +36,3 @@
 (add-to-list 'default-frame-alist '(cursor-color . "black"))
 (blink-cursor-mode t)
 
-;; (custom-set-faces
-;;  '(flymake-errline ((((class color)) (:background "zenburn-bg" :foreground "#ef8500"))))
-;;  '(flymake-warnline ((((class color)) (:background "zenburn-bg" :foreground "#93e0e3"))))
-;; )
