@@ -38,14 +38,6 @@
   (windmove-right)
   (split-window-vertically))
 
-(defun cc-into-to ()
-  (header-goto-cc)
-  (kill-line)
-  (header-goto-to)
-  (move-end-of-line 1)
-  (insert ", ")
-  (yank))
-
 (if (and (eq window-system 'ns) (> (x-display-pixel-height) 1400) )
     (resize-and-reposition-frame))
 
