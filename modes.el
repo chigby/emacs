@@ -1,11 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
 
-(defun end-of-line-indent ()
-  (interactive)
-  (end-of-line)
-  (newline-and-indent))
-
 (add-hook 'python-mode-hook
           (lambda ()
             (local-set-key [f6] 'flymake-mode)

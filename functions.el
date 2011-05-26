@@ -1,5 +1,10 @@
 (defalias 'qrr 'query-replace-regexp)
 
+(defun end-of-line-indent ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
 (defun delete-enclosed-text ()
   "Deletes text between a pair of delimiters"
   (interactive)
