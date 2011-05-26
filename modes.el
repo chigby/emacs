@@ -239,95 +239,36 @@ it)"
 ;; Skeleton mode.  Uses helper functions to enable auto pairing of
 ;; enclosing characters.
 
-;; from: http://www.emacswiki.org/emacs/AutoPairs
- (setq skeleton-pair t)
-    (setq skeleton-pair-alist
-          '((?\( _ ?\))
-            (?[  _ ?])
-            (?{  _ ?})
-            (?\" _ ?\")))
-    (defun autopair-insert (arg)
-      (interactive "P")
-      (let (pair)
-        (cond
-         ((assq last-command-char skeleton-pair-alist)
-          (autopair-open arg))
-         (t
-          (autopair-close arg)))))
-    (defun autopair-open (arg)
-      (interactive "P")
-      (let ((pair (assq last-command-char
-                        skeleton-pair-alist)))
-        (cond
-         ((and (not mark-active)
-               (eq (car pair) (car (last pair)))
-               (eq (car pair) (char-after)))
-          (autopair-close arg))
-         (t
-          (skeleton-pair-insert-maybe arg)))))
-    (defun autopair-close (arg)
-      (interactive "P")
-      (cond
-       (mark-active
-        (let (pair open)
-          (dolist (pair skeleton-pair-alist)
-            (when (eq last-command-char (car (last pair)))
-              (setq open (car pair))))
-          (setq last-command-char open)
-          (skeleton-pair-insert-maybe arg)))
-       ((looking-at
-         (concat "[ \t\n]*"
-                 (regexp-quote (string last-command-char))))
-        (replace-match (string last-command-char))
-        ;(indent-according-to-mode)
-        )
-       (t
-        (self-insert-command (prefix-numeric-value arg))
-        ;(indent-according-to-mode)
-        )))
-    (defadvice delete-backward-char (before autopair activate)
-      (when (and (char-after)
-                 (eq this-command 'delete-backward-char)
-                 (eq (char-after)
-                     (car (last (assq (char-before) skeleton-pair-alist)))))
-        (delete-char 1)))
-    (global-set-key "("  'autopair-insert)
-    (global-set-key ")"  'autopair-insert)
-    (global-set-key "["  'autopair-insert)
-    (global-set-key "]"  'autopair-insert)
-    (global-set-key "{"  'autopair-insert)
-    (global-set-key "}"  'autopair-insert)
-    (global-set-key "\"" 'autopair-insert)
-    ;; ...
+(setq skeleton-pair t)
+(defvar my-skeleton-pair-alist
+  '((?\) . ?\()
+    (?\] . ?\[)
+    (?} . ?{)
+    (?" . ?")
+    (?' . ?')))
 
-;; ;; (setq skeleton-pair t)
-;; ;; (defvar my-skeleton-pair-alist
-;; ;;   '((?\) . ?\()
-;; ;;     (?\] . ?\[)
-;; ;;     (?} . ?{)
-;; ;;     (?" . ?")))
+(defun my-skeleton-pair-end (arg)
+  "Skip the char if it is an ending, otherwise insert it."
+  (interactive "*p")
+  (let ((char last-command-char))
+    (if (and (assq char my-skeleton-pair-alist)
+             (eq char (following-char)))
+        (forward-char)
+      (self-insert-command (prefix-numeric-value arg)))))
 
-;; ;; (defun my-skeleton-pair-end (arg)
-;; ;;   "Skip the char if it is an ending, otherwise insert it."
-;; ;;   (interactive "*p")
-;; ;;   (let ((char last-command-char))
-;; ;;     (if (and (assq char my-skeleton-pair-alist)
-;; ;;              (eq char (following-char)))
-;; ;;         (forward-char)
-;; ;;       (self-insert-command (prefix-numeric-value arg)))))
+(dolist (pair my-skeleton-pair-alist)
+  (global-set-key (char-to-string (first pair))
+                  'my-skeleton-pair-end)
+  ;; If the char for begin and end is the same,
+  ;; use the original skeleton
+  (global-set-key (char-to-string (rest pair))
+                  'skeleton-pair-insert-maybe))
 
-;; ;; (dolist (pair my-skeleton-pair-alist)
-;; ;;   (global-set-key (char-to-string (first pair))
-;; ;;                   'my-skeleton-pair-end)
-;; ;;   ;; If the char for begin and end is the same,
-;; ;;   ;; use the original skeleton
-;; ;;   (global-set-key (char-to-string (rest pair))
-;; ;;                   'skeleton-pair-insert-maybe))
+(defadvice backward-delete-char-untabify
+  (before my-skeleton-backspace activate)
+  "When deleting the beginning of a pair, and the ending is next char, delete it too."
+  (let ((pair (assq (following-char) my-skeleton-pair-alist)))
+    (and pair
+         (eq (preceding-char) (rest pair))
+         (delete-char 1))))
 
-;; ;; (defadvice backward-delete-char-untabify
-;; ;;   (before my-skeleton-backspace activate)
-;; ;;   "When deleting the beginning of a pair, and the ending is next char, delete it too."
-;; ;;   (let ((pair (assq (following-char) my-skeleton-pair-alist)))
-;; ;;     (and pair
-;; ;;          (eq (preceding-char) (rest pair))
-;; ;;          (delete-char 1))))
