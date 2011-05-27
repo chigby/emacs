@@ -195,6 +195,15 @@ it)"
 ;;; Misc.
 
 
+(setq linum-mode-inhibit-modes-list '(term-mode))
+
+(defadvice linum-on (around linum-on-inhibit-for-modes)
+  "Stop the load of linum-mode for some major modes."
+    (unless (member major-mode linum-mode-inhibit-modes-list)
+      ad-do-it))
+
+(ad-activate 'linum-on)
+
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
