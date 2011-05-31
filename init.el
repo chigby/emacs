@@ -60,6 +60,7 @@
 (vendor 'cperl-mode)
 (vendor 'yasnippet)
 (vendor 'pymacs)
+(vendor 'autopair)
 (vendor 'zenburn)
 
 (load-library "modes")
