@@ -203,6 +203,7 @@ it)"
       ad-do-it))
 
 (ad-activate 'linum-on)
+(global-linum-mode)
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
