@@ -244,3 +244,4 @@ it)"
 (autopair-global-mode)
 (setq autopair-blink nil)
 
+(add-hook 'term-mode-hook #'(lambda () (setq autopair-dont-activate t)))
