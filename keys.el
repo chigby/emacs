@@ -16,6 +16,9 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(global-set-key (kbd "\C-c>") 'indent-region)
+(global-set-key (kbd "\C-c<") 'unindent-region)
+
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)  ; was unbound
 (global-set-key (kbd "M-r") 'isearch-backward-regexp) ; was move-to-window-line
 
