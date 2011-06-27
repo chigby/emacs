@@ -26,5 +26,6 @@
 (global-set-key [f7] 'revert-buffer)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-;;quicker window switching: http://www.emacsblog.org/2008/05/01/quick-tip-easier-window-switching-in-emacs/
+;; quicker window switching:
+;; http://www.emacsblog.org/2008/05/01/quick-tip-easier-window-switching-in-emacs/
 (windmove-default-keybindings)
