@@ -181,7 +181,7 @@ it)"
 ;;; Shell Scripts
 
 ;; Turn on shell-script-mode mode for aliases.
-(add-to-list 'auto-mode-alist '(".aliases$" . shell-script-mode))
+(add-to-list 'auto-mode-alist '(".aliases" . shell-script-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
