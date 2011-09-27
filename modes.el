@@ -104,8 +104,9 @@ it)"
 
 (add-hook 'php-mode-hook 'clean-php-mode)
 (add-hook 'php-mode-hook
-          (lambda()
-          (local-set-key (kbd "C-M-j") 'backward-word)))
+	  (lambda()
+	  (local-set-key (kbd "C-M-j") 'backward-word)
+	  (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; C mode
