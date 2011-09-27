@@ -89,6 +89,8 @@
 ; No audible bell.
 (setq ring-bell-function (lambda () (message "*beep*")))
 
+(setenv "PATH" "/Users/cameronh/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/bin")
+
 (setenv "PYTHONPATH" "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/python_daemon-1.4.6-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/lockfile-0.8-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/BeautifulSoup-3.1.0.1-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/httplib2-0.6.0-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/ropemacs-0.6-py2.6.egg:/Users/cameronh/hg/mtg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/src/python-magic:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python26.zip:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-darwin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-mac:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-mac/lib-scriptpackages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-tk:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-old:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-dynload:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg-info")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,4 +115,3 @@
   ;; If there is more than one, they won't work right.
  '(flymake-errline ((((class color)) (:background "zenburn-bg" :foreground "#ef8500"))))
  '(flymake-warnline ((((class color)) (:background "zenburn-bg" :foreground "#93e0e3")))))
-
