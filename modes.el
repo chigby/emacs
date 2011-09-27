@@ -2,15 +2,16 @@
 ;;; Python
 
 (add-hook 'python-mode-hook
-          (lambda ()
-            (local-set-key [f6] 'flymake-mode)
-            (local-unset-key (kbd "C-j"))
-            (local-set-key (kbd "C-j") 'end-of-line-indent)
-            (local-unset-key (kbd "M-m"))
-            (local-unset-key (kbd "C-a"))
-            (local-set-key (kbd "C-a") 'back-to-indentation)
-            (local-set-key (kbd "M-m") 'move-beginning-of-line)
-            (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
+	  (lambda ()
+	    (whitespace-mode)
+	    (local-set-key [f6] 'flymake-mode)
+	    (local-unset-key (kbd "C-j"))
+	    (local-set-key (kbd "C-j") 'end-of-line-indent)
+	    (local-unset-key (kbd "M-m"))
+	    (local-unset-key (kbd "C-a"))
+	    (local-set-key (kbd "C-a") 'back-to-indentation)
+	    (local-set-key (kbd "M-m") 'move-beginning-of-line)
+	    (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
 
 (setq pycodechecker "rpylint")
 (when (load "flymake" t)
