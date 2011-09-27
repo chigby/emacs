@@ -43,7 +43,7 @@
 
  ;;; This is for GNU Emacs 21
     (if (= 21 emacs-major-version)
-        (load "term/xterm-256color"))
+	(load "term/xterm-256color"))
 
 (load-library "functions")
 
