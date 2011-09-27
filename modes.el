@@ -17,13 +17,13 @@
 (when (load "flymake" t)
   (defun flymake-pycodecheck-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
+		       'flymake-create-temp-inplace))
+	   (local-file (file-relative-name
+			temp-file
+			(file-name-directory buffer-file-name))))
       (list pycodechecker (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pycodecheck-init)))
+	       '("\\.py\\'" flymake-pycodecheck-init)))
 
 ;; Additional functionality that makes flymake error messages appear
 ;; in the minibuffer when point is on a line containing a flymake
@@ -38,18 +38,18 @@ message in the minibuffer"
   (let ((line-no (line-number-at-pos)))
     (dolist (elem flymake-err-info)
       (if (eq (car elem) line-no)
-          (let ((err (car (second elem))))
-            (message "%s" (fly-pyflake-determine-message err)))))))
+	  (let ((err (car (second elem))))
+	    (message "%s" (fly-pyflake-determine-message err)))))))
 
 (defun fly-pyflake-determine-message (err)
   "pyflake is flakey if it has compile problems, this adjusts the
 message to display, so there is one ;)"
   (cond ((not (or (eq major-mode 'Python) (eq major-mode 'python-mode) t)))
-        ((null (flymake-ler-file err))
-         ;; normal message do your thing
-         (flymake-ler-text err))
-        (t ;; could not compile err
-         (format "compile error, problem on line %s" (flymake-ler-line err)))))
+	((null (flymake-ler-file err))
+	 ;; normal message do your thing
+	 (flymake-ler-text err))
+	(t ;; could not compile err
+	 (format "compile error, problem on line %s" (flymake-ler-line err)))))
 
 (defadvice flymake-goto-next-error (after display-message activate compile)
   "Display the error in the mini-buffer rather than having to mouse over it"
@@ -78,11 +78,11 @@ it)"
 ;;   (setq cperl-continued-statement-offset 0)
 ;;   (setq cperl-extra-newline-before-brace t)
   (setq cperl-indent-level 4
-        cperl-close-paren-offset -4
-        cperl-continued-statement-offset 4
-        cperl-indent-parens-as-block t
-        cperl-tab-always-indent t
-        cperl-highlight-variables-indiscriminately t)
+	cperl-close-paren-offset -4
+	cperl-continued-statement-offset 4
+	cperl-indent-parens-as-block t
+	cperl-tab-always-indent t
+	cperl-highlight-variables-indiscriminately t)
   (set-face-background 'cperl-array-face zenburn-bg)
   (set-face-background 'cperl-hash-face zenburn-bg)
   (set-face-foreground 'cperl-hash-face zenburn-blue)
@@ -128,26 +128,26 @@ it)"
   '((c-tab-always-indent        . t)
     (c-comment-only-line-offset . 0)
     (c-hanging-braces-alist     . ((substatement-open after)
-                                   (brace-list-open)
-                                   (defun-open after)
-                                   (inline-open after)))
+				   (brace-list-open)
+				   (defun-open after)
+				   (inline-open after)))
     (c-hanging-colons-alist     . ((member-init-intro before)
-                                   (inher-intro)
-                                   (case-label after)
-                                   (label after)
-                                   (access-label after)))
+				   (inher-intro)
+				   (case-label after)
+				   (label after)
+				   (access-label after)))
     (c-cleanup-list             . (scope-operator
-                                   empty-defun-braces
-                                   defun-close-semi))
+				   empty-defun-braces
+				   defun-close-semi))
     (c-offsets-alist            . ((arglist-close . c-lineup-arglist)
-                                   (substatement-open . 0)
-                                   (case-label        . 4)
-                                   (block-open        . 0)
-                                   (inclass           . 4) ;; mine
-                                   (access-label      . /) ;; mine
-                                   (topmost-intro     . 0) ;; mine
+				   (substatement-open . 0)
+				   (case-label        . 4)
+				   (block-open        . 0)
+				   (inclass           . 4) ;; mine
+				   (access-label      . /) ;; mine
+				   (topmost-intro     . 0) ;; mine
 ;;                                 (comment-intro     . 0) ;; mine
-                                   (knr-argdecl-intro . 0))) ;; used to be -
+				   (knr-argdecl-intro . 0))) ;; used to be -
     (c-echo-syntactic-information-p . t))
   "My C Programming Style")
 (c-add-style "PERSONAL" my-c-style)
@@ -158,8 +158,8 @@ it)"
   (c-set-style "PERSONAL")
   ;; other customizations
   (setq tab-width 8
-        ;; this will make sure spaces are used instead of tabs
-        indent-tabs-mode nil)
+	;; this will make sure spaces are used instead of tabs
+	indent-tabs-mode nil)
   ;; we like auto-newline, but not hungry-delete
   (c-toggle-auto-newline 1))
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
@@ -173,10 +173,10 @@ it)"
 ;; Turn on ruby mode for vagrantfiles.
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-a") 'back-to-indentation)
-            (local-set-key (kbd "M-m") 'move-beginning-of-line)
-            (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
+	  (lambda ()
+	    (local-set-key (kbd "C-a") 'back-to-indentation)
+	    (local-set-key (kbd "M-m") 'move-beginning-of-line)
+	    (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
