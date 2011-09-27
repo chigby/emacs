@@ -12,7 +12,6 @@
     (let (p1 p2)
       (skip-chars-backward "^(<['\"") (setq p1 (point)) (backward-char 1)
       (forward-sexp 1) (backward-char 1) (setq p2 (point))
-;;      (skip-chars-forward "^)>]'") (setq p2 (point))
       (delete-region p1 p2))))
 
 (defun goto-match-paren (arg)
