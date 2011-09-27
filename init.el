@@ -77,7 +77,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Trailing whitespace is unnecessary.
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+(add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
 
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
