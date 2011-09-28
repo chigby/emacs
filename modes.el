@@ -205,7 +205,7 @@ it)"
       ad-do-it))
 
 (ad-activate 'linum-on)
-(global-linum-mode)
+(if (not (eq global-linum-mode t)) (global-linum-mode))
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
