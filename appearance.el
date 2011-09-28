@@ -2,9 +2,7 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (not (eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
-;(if ((eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
 (if (eq window-system 'ns) (set-fringe-mode 0))
-
 
 (set-face-font 'default "Menlo-14")
 
@@ -33,7 +31,5 @@
                          line)
                         'face 'linum)))
 
-
 (add-to-list 'default-frame-alist '(cursor-color . "black"))
 (blink-cursor-mode t)
-
