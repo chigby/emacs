@@ -168,9 +168,6 @@ it)"
   (c-toggle-auto-newline 1))
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
-;; (load "nxhtml/autostart.el")
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Ruby
 
