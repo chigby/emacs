@@ -275,3 +275,4 @@ it)"
 ;;   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(define-key markdown-mode-map (kbd "<tab>") nil)
