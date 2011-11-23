@@ -269,3 +269,8 @@ it)"
 (setq autopair-blink nil)
 
 (add-hook 'term-mode-hook #'(lambda () (setq autopair-dont-activate t)))
+
+;; (autoload 'markdown-mode "markdown-mode"
+;;   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.markdown" . markdown-mode) auto-mode-alist))

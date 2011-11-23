@@ -62,6 +62,7 @@
 (vendor 'pymacs)
 (vendor 'autopair)
 (vendor 'zenburn)
+(vendor 'markdown-mode)
 
 (load-library "modes")
 (load-library "keys")
