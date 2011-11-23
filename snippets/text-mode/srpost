@@ -1,0 +1,16 @@
+#name : srpost
+#contributor: Cameron Higby-Naquin
+#comment: maybe make mp3 filename convert from title
+# --
+---
+layout: post
+title: ${1:Title}
+author: ${2:Author}
+mp3_url: https://s3.amazonaws.com/spokenrune/${3:MP3 Filename}.mp3
+image_url: ${4:Image URL}
+---
+
+_$1_.  $2.  ${5:Year}.
+
+Photo by [${6:Photographer}](${7:Photo URL}).
+
