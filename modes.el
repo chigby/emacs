@@ -11,7 +11,6 @@
             (local-unset-key (kbd "C-a"))
             (local-set-key (kbd "C-a") 'back-to-indentation)
             (local-set-key (kbd "M-m") 'move-beginning-of-line)
-            (local-set-key (kbd "M-c") 'comment-or-uncomment-region)
             (local-set-key (kbd "\C-c>") 'indent-region)
             (local-set-key (kbd "\C-c<") 'unindent-region)
             ))
@@ -109,8 +108,7 @@ it)"
 (add-hook 'php-mode-hook
           (lambda()
           (local-set-key (kbd "C-M-j") 'backward-word)
-          (local-set-key (kbd "M-j") 'backward-char)
-          (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
+          (local-set-key (kbd "M-j") 'backward-char)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; C mode
@@ -176,8 +174,7 @@ it)"
 (add-hook 'ruby-mode-hook
           (lambda ()
             (local-set-key (kbd "C-a") 'back-to-indentation)
-            (local-set-key (kbd "M-m") 'move-beginning-of-line)
-            (local-set-key (kbd "M-c") 'comment-or-uncomment-region)))
+            (local-set-key (kbd "M-m") 'move-beginning-of-line)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -197,6 +194,10 @@ it)"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Misc.
 
+
+(add-hook 'text-mod-hook
+          (lambda ()
+            (local-set-key (kbd "M-c") 'capitalize-word)))
 
 (setq linum-mode-inhibit-modes-list '(term-mode))
 
