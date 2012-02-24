@@ -16,6 +16,9 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(global-set-key (kbd "C-o") 'other-window) ;; was open-line
+(global-set-key (kbd "M-o") 'prev-window)  ;; not sure what this was, something about fonts.
+
 (global-set-key (kbd "\C-c>") 'indent-region)
 (global-set-key (kbd "\C-c<") 'unindent-region)
 
@@ -27,7 +30,3 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "M-c") 'comment-or-uncomment-region) ; was capitalize-word
-
-;; quicker window switching:
-;; http://www.emacsblog.org/2008/05/01/quick-tip-easier-window-switching-in-emacs/
-(windmove-default-keybindings)
