@@ -29,8 +29,8 @@
 
 (defun resize-and-reposition-frame-large ()
   (interactive)
-  (set-frame-height (selected-frame) 85)
-  (set-frame-width (selected-frame) 180)
+  (set-frame-height (selected-frame) 95)
+  (set-frame-width (selected-frame) 174)
   (set-frame-position (selected-frame) 0 0)
   (delete-other-windows)
   (split-window-horizontally)
