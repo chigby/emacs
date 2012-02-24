@@ -35,7 +35,7 @@
   (delete-other-windows)
   (split-window-horizontally)
   (split-window-vertically)
-  (windmove-right)
+  (other-window 2)
   (split-window-vertically))
 
 (if (and (eq window-system 'ns) (> (x-display-pixel-height) 1400) )
