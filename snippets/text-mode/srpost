@@ -1,6 +1,7 @@
-#name : srpost
-#contributor: Cameron Higby-Naquin
-#comment: maybe make mp3 filename convert from title
+# name: (spoken rune post)
+# key: srpost
+# contributor: Cameron Higby-Naquin
+# comment: maybe make mp3 filename convert from title
 # --
 ---
 layout: post
