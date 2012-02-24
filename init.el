@@ -63,6 +63,8 @@
 (vendor 'autopair)
 (vendor 'zenburn)
 (vendor 'markdown-mode)
+(vendor 'rspec-mode)
+(vendor 'rvm)
 
 (load-library "modes")
 (load-library "keys")

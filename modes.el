@@ -176,6 +176,12 @@ it)"
             (local-set-key (kbd "C-a") 'back-to-indentation)
             (local-set-key (kbd "M-m") 'move-beginning-of-line)))
 
+(rvm-use-default)
+(setq rspec-use-rvm t)
+(setq rspec-use-rake-flag nil)
+(setq rspec-spec-command "rspec")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SQL
 
