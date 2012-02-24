@@ -3,10 +3,10 @@
 	url = https://github.com/nschum/full-ack.git
 [submodule "vendor/color-theme"]
 	path = vendor/color-theme
-	url = https://github.com/emacsmirror/color-theme.git
+	url = https://github.com/emacsattic/color-theme.git
 [submodule "vendor/zenburn"]
 	path = vendor/zenburn
-	url = https://github.com/emacsmirror/zenburn.git
+       	url = https://github.com/bbatsov/zenburn-emacs.git
 [submodule "vendor/cc-mode"]
 	path = vendor/cc-mode
 	url = https://github.com/emacsmirror/cc-mode.git
@@ -21,7 +21,7 @@
 	url = https://github.com/jrockway/cperl-mode.git
 [submodule "vendor/js2-mode"]
 	path = vendor/js2-mode
-	url = https://github.com/emacsmirror/js2-mode.git
+	url = https://github.com/mooz/js2-mode.git
 [submodule "vendor/php-mode"]
 	path = vendor/php-mode
 	url = https://github.com/emacsmirror/php-mode.git
@@ -37,3 +37,9 @@
 [submodule "vendor/yasnippet"]
 	path = vendor/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "vendor/rspec-mode"]
+	path = vendor/rspec-mode
+	url = https://github.com/pezra/rspec-mode.git
+[submodule "vendor/rvm"]
+	path = vendor/rvm
+	url = https://github.com/senny/rvm.el.git
