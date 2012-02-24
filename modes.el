@@ -176,6 +176,11 @@ it)"
             (local-set-key (kbd "C-a") 'back-to-indentation)
             (local-set-key (kbd "M-m") 'move-beginning-of-line)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; SQL
+
+(add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Shell Scripts

@@ -1,5 +1,9 @@
 (defalias 'qrr 'query-replace-regexp)
 
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+
 (defun end-of-line-indent ()
   (interactive)
   (end-of-line)
