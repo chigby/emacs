@@ -43,3 +43,6 @@
 [submodule "vendor/rvm"]
 	path = vendor/rvm
 	url = https://github.com/senny/rvm.el.git
+[submodule "vendor/flymake-python"]
+	path = vendor/flymake-python
+	url = git@github.com:chigby/flymake-python.git
