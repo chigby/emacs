@@ -19,14 +19,16 @@
 (setq term-default-bg-color "#3f3f3f") ;;or use nil
 (setq term-default-fg-color "#dcdccc")
 
+(require 'ansi-color)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 (if (or (eq window-system 'ns) (string= (getenv "TERM") "xterm-256color"))
-    (color-theme-zenburn))
-
-;; Use zenburn colors when ANSI is called for.
-(setq ansi-color-names-vector (vector zenburn-bg zenburn-red zenburn-green zenburn-yellow
-                                      zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg))
-(setq ansi-color-map (ansi-color-make-color-map))
-
+    (progn
+      (color-theme-zenburn)
+      ;; Use zenburn colors when ANSI is called for.
+      (setq ansi-color-names-vector (vector zenburn-bg zenburn-red zenburn-green zenburn-yellow
+                                            zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg))
+      (setq ansi-color-map (ansi-color-make-color-map))))
 
 (setq linum-format
           (lambda (line)
