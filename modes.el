@@ -15,17 +15,17 @@
             (local-set-key (kbd "\C-c<") 'unindent-region)
             ))
 
-(setq pycodechecker "rpylint")
 (when (load "flymake" t)
-  (defun flymake-pycodecheck-init ()
+  (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list pycodechecker (list local-file))))
+      (list "~/.emacs.d/vendor/flymake-python/pyflymake.py" (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pycodecheck-init)))
+               '("\\.py\\'" flymake-pylint-init)))
+
 
 ;; Additional functionality that makes flymake error messages appear
 ;; in the minibuffer when point is on a line containing a flymake

@@ -56,7 +56,6 @@
 (vendor 'php-mode)
 (vendor 'color-theme)
 (vendor 'cc-mode)
-(vendor 'flymake)
 (vendor 'cperl-mode)
 (vendor 'yasnippet)
 (vendor 'pymacs)
