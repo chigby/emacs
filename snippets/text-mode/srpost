@@ -7,7 +7,7 @@
 layout: post
 title: ${1:Title}
 author: ${2:Author}
-mp3_url: https://s3.amazonaws.com/spokenrune/${3:MP3 Filename}.mp3
+filename: ${3:Filename}
 image_url: ${4:Image URL}
 ---
 
