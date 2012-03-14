@@ -65,6 +65,8 @@
 (vendor 'rspec-mode)
 (vendor 'rvm)
 
+(eshell)
+
 (load-library "modes")
 (load-library "keys")
 (load-library "appearance")
