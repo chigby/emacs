@@ -11,7 +11,7 @@
 
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
 
-(global-set-key (kbd "C-z") 'visit-ansi-term)
+(global-set-key (kbd "C-z") 'eshell)
 (global-set-key (kbd "M-g") 'goto-line)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
