@@ -183,6 +183,19 @@ it)"
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Eshell
+
+;; scroll to the bottom
+(setq eshell-scroll-to-bottom-on-output t)
+(setq eshell-scroll-show-maximum-output t)
+(add-to-list 'eshell-output-filter-functions 'eshell-postoutput-scroll-to-bottom)
+
+(defadvice eshell-handle-ansi-color (around test activate)
+   (ansi-color-apply-on-region (1- eshell-last-output-start)
+                               (1- eshell-last-output-end)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SQL
 
 (add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
