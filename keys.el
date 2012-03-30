@@ -16,8 +16,8 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "M-[") 'other-window) ;; was open-line
-(global-set-key (kbd "M-]") 'prev-window)  ;; not sure what this was, something about fonts.
+(global-set-key (kbd "M-]") 'other-window)
+(global-set-key (kbd "M-[") 'prev-window)
 
 (global-set-key (kbd "\C-c>") 'indent-region)
 (global-set-key (kbd "\C-c<") 'unindent-region)
