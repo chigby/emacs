@@ -46,3 +46,6 @@
 [submodule "vendor/flymake-python"]
 	path = vendor/flymake-python
 	url = git@github.com:chigby/flymake-python.git
+[submodule "vendor/color-theme-solarized"]
+	path = vendor/color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
