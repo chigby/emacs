@@ -223,7 +223,7 @@ it)"
           (lambda ()
             (local-set-key (kbd "M-c") 'capitalize-word)))
 
-(setq linum-mode-inhibit-modes-list '(term-mode))
+(setq linum-mode-inhibit-modes-list '(term-mode eshell-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
