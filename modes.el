@@ -199,7 +199,7 @@ it)"
 ;;; SQL
 
 (add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
-
+(setq sql-postgres-options (list "-p 6000"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Shell Scripts
