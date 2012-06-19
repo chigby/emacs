@@ -291,10 +291,7 @@ it)"
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-(autopair-global-mode)
-(setq autopair-blink nil)
 
-(add-hook 'term-mode-hook #'(lambda () (setq autopair-dont-activate t)))
 
 ;; (autoload 'markdown-mode "markdown-mode"
 ;;   "Major mode for editing Markdown files" t)

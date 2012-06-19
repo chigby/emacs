@@ -58,7 +58,6 @@
 (vendor 'cperl-mode)
 (vendor 'yasnippet)
 (vendor 'pymacs)
-(vendor 'autopair)
 (vendor 'zenburn)
 (vendor 'markdown-mode)
 (vendor 'rspec-mode)
