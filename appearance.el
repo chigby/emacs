@@ -39,5 +39,4 @@
                          line)
                         'face 'linum)))
 
-(add-to-list 'default-frame-alist '(cursor-color . "black"))
 (blink-cursor-mode t)
