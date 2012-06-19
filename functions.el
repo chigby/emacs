@@ -137,3 +137,22 @@
                  (t
                   (message
                    "The region has %d words." count))))))
+
+(defun changelog-entry ()
+  (interactive)
+  (goto-char (point-min))
+  (search-forward ">")
+  (kill-ring-save (point-min) (point))
+  (goto-char (point-min))
+  (open-line 1)
+  (goto-char (point-min))
+  (yank)
+  (insert " ")
+  (shell-command "gdate -R" 1)
+  (goto-char (point-min))
+  (search-forward ")")
+  (backward-char 1)
+  (increment-number-at-point)
+  (search-forward "*")
+  (kill-line)
+)
