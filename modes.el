@@ -252,8 +252,6 @@ it)"
 
 (autoload 'awk-mode "cc-mode" nil t)
 
-(require 'psvn)
-
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching
 

@@ -51,7 +51,7 @@
 (vendor 'puppet-mode)
 (vendor 'apache-mode)
 (vendor 'js2)
-(vendor 'psvn)
+(vendor 'dsvn)
 (vendor 'whitespace)
 (vendor 'php-mode)
 (vendor 'cc-mode)
