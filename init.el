@@ -47,6 +47,11 @@
 
 (load-library "functions")
 
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 (vendor 'full-ack 'ack 'ack-same 'ack-find-same-file 'ack-find-file 'ack-interactive)
 (vendor 'puppet-mode)
 (vendor 'apache-mode)
