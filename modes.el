@@ -260,23 +260,6 @@ it)"
 ;; trailing whitespaces
 (setq whitespace-line-column 79
       whitespace-style '(tabs tab-mark indentation::space trailing lines-tail))
-;; face for "empty" (trailing lines at end of buffer)
-(set-face-attribute 'whitespace-empty nil
-                    :background zenburn-bg+1
-                    :foreground zenburn-bg+1
-                    :weight 'bold)
-
-;; face for Tabs
-(set-face-attribute 'whitespace-tab nil
-                    :background "red1"
-                    :foreground "yellow"
-                    :weight 'bold)
-;; face for trailing spaces
-(set-face-attribute 'whitespace-trailing nil
-                    :background zenburn-bg+1
-                    :foreground zenburn-bg+1
-                    :weight 'bold)
-
 
 (require 'yasnippet)
 (yas/initialize)
