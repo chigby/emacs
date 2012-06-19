@@ -278,4 +278,9 @@ it)"
 ;;   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (define-key markdown-mode-map (kbd "<tab>") nil)
+(setq markdown-command
+      (concat "python -c \"import sys, markdown2 as m;"
+              "print m.markdown(sys.stdin.read()).strip()\""))
