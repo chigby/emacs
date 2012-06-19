@@ -75,7 +75,6 @@
 (load-library "appearance")
 ;;(load-library "tabs")
 
-
 (setq-default indent-tabs-mode nil)
 
 (setq column-number-mode t)
