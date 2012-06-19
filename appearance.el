@@ -22,13 +22,8 @@
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(if (or (eq window-system 'ns) (string= (getenv "TERM") "xterm-256color"))
-    (progn
-      (color-theme-zenburn)
-      ;; Use zenburn colors when ANSI is called for.
-      (setq ansi-color-names-vector (vector zenburn-bg zenburn-red zenburn-green zenburn-yellow
-                                            zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg))
-      (setq ansi-color-map (ansi-color-make-color-map))))
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/color-theme-solarized")
+(load-theme 'solarized-light t)
 
 (setq linum-format
           (lambda (line)

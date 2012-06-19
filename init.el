@@ -54,7 +54,6 @@
 (vendor 'psvn)
 (vendor 'whitespace)
 (vendor 'php-mode)
-(vendor 'color-theme)
 (vendor 'cc-mode)
 (vendor 'cperl-mode)
 (vendor 'yasnippet)
