@@ -113,3 +113,5 @@
   ;; If there is more than one, they won't work right.
  '(flymake-errline ((((class color)) (:background "zenburn-bg" :foreground "#ef8500"))))
  '(flymake-warnline ((((class color)) (:background "zenburn-bg" :foreground "#93e0e3")))))
+
+(eshell)
