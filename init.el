@@ -79,7 +79,6 @@
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
   (flet ((process-list ())) ad-do-it))
 
-
 (setq confirm-kill-emacs #'yes-or-no-p)
 
 ; No audible bell.
