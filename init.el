@@ -49,7 +49,7 @@
 
 (require 'package)
 
-(setq package-list '(ack-and-a-half puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python-mode js2-mode yasnippet))
+(setq package-list '(ack-and-a-half puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python-mode js2-mode yasnippet color-theme-solarized))
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
