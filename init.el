@@ -48,27 +48,17 @@
 (load-library "functions")
 
 (require 'package)
+
+(setq package-list '(ack-and-a-half puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python-mode js2-mode yasnippet))
+
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(vendor 'full-ack 'ack 'ack-same 'ack-find-same-file 'ack-find-file 'ack-interactive)
-(vendor 'puppet-mode)
-(vendor 'apache-mode)
-(vendor 'js2)
-(vendor 'dsvn)
-(vendor 'whitespace)
-(vendor 'php-mode)
-(vendor 'cc-mode)
-(vendor 'cperl-mode)
-(vendor 'yasnippet)
-(vendor 'pymacs)
-(vendor 'zenburn)
-(vendor 'markdown-mode)
-(vendor 'rspec-mode)
-(vendor 'rvm)
-
-(eshell)
+;; install missing packages from package-list
+(dolist (package package-list)
+  (when (not (package-installed-p package))
+    (package-install package)))
 
 (load-library "modes")
 (load-library "keys")

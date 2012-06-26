@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
 
+(require 'python-mode)
 (add-hook 'python-mode-hook
           (lambda ()
             (whitespace-mode)
@@ -176,16 +177,17 @@ it)"
             (local-set-key (kbd "C-a") 'back-to-indentation)
             (local-set-key (kbd "M-m") 'move-beginning-of-line)))
 
-(rvm-use-default)
-(setq rspec-use-rvm t)
-(setq rspec-use-rake-flag nil)
-(setq rspec-spec-command "rspec")
+;(rvm-use-default)
+;(setq rspec-use-rvm t)
+;(setq rspec-use-rake-flag nil)
+;(setq rspec-spec-command "rspec")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Eshell
 
 ;; scroll to the bottom
+(require 'eshell)
 (setq eshell-scroll-to-bottom-on-output t)
 (setq eshell-scroll-show-maximum-output t)
 (add-to-list 'eshell-output-filter-functions 'eshell-postoutput-scroll-to-bottom)
@@ -233,19 +235,6 @@ it)"
 (ad-activate 'linum-on)
 (if (eq global-linum-mode nil) (global-linum-mode))
 
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-
-(setq ropemacs-enable-shortcuts nil)
-(setq ropemacs-local-prefix "C-c C-p")
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
-;;(eval-after-load "pymacs"
-;;  '(add-to-list 'pymacs-load-path YOUR-PYMACS-DIRECTORY"))
-
 (autoload 'longlines-mode
   "longlines.el"
   "Minor mode for automatically wrapping long lines." t)
@@ -280,6 +269,8 @@ it)"
       (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+(require 'markdown-mode)
 (define-key markdown-mode-map (kbd "<tab>") nil)
 (setq markdown-command
       (concat "python -c \"import sys, markdown2 as m;"
