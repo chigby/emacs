@@ -2,3 +2,5 @@
 autosave/*
 auto-save-list/*
 backup/*
+elpa/*
+tramp
