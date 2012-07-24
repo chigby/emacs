@@ -156,3 +156,12 @@
   (search-forward "*")
   (kill-line)
 )
+
+;; helpful: http://emacswiki.org/emacs/DynamicBindingVsLexicalBinding
+(defun keybind-shell-command (command)
+  (interactive "sCommand: ")
+  (lexical-let ((cmd command))
+  (define-key global-map (kbd "C-c C-z")
+        (lambda ()
+           (interactive)
+           (shell-command cmd)))))
