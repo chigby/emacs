@@ -49,7 +49,7 @@
 
 (require 'package)
 
-(setq package-list '(ack-and-a-half puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python-mode js2-mode yasnippet color-theme-solarized))
+(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python-mode js2-mode yasnippet color-theme-solarized))
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -86,7 +86,7 @@
 
 (server-start)
 
-(setenv "PATH" "/Users/cameronh/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/bin")
+(setenv "PATH" "/Users/cameronh/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/bin:/usr/texbin")
 
 (setenv "PYTHONPATH" "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/python_daemon-1.4.6-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/lockfile-0.8-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/BeautifulSoup-3.1.0.1-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/httplib2-0.6.0-py2.6.egg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/ropemacs-0.6-py2.6.egg:/Users/cameronh/hg/mtg:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/src/python-magic:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python26.zip:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-darwin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-mac:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/plat-mac/lib-scriptpackages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-tk:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-old:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-dynload:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg-info")
 
