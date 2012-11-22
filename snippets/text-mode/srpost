@@ -9,9 +9,9 @@ title: ${1:Title}
 author: ${2:Author}
 filename: ${3:Filename}
 image_url: ${4:Image URL}
+duration: "${5:Duration}"
 ---
 
-_$1_.  $2.  ${5:Year}.
+_$1_.  $2.  ${6:Year}.
 
-Photo by [${6:Photographer}](${7:Photo URL}).
-
+Photo by [${7:Photographer}](${8:Photo URL}).
