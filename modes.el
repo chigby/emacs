@@ -271,7 +271,7 @@ it)"
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-
+(setq-default ispell-program-name "aspell")
 
 ;; (autoload 'markdown-mode "markdown-mode"
 ;;   "Major mode for editing Markdown files" t)
