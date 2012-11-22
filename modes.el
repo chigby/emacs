@@ -219,6 +219,18 @@ it)"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Misc.
+;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
+  (add-to-list 'auto-mode-alist '("/mutt-\\|itsalltext.*mail\\.google" . mail-mode))
+  (add-hook 'mail-mode-hook 'turn-on-auto-fill)
+  (add-hook
+   'mail-mode-hook
+   (lambda ()
+     (define-key mail-mode-map [(control c) (control c)]
+       (lambda ()
+         (interactive)
+         (save-buffer)
+         (server-edit)))))
+
 (add-hook 'text-mode-hook
           (lambda ()
             (local-set-key (kbd "M-c") 'capitalize-word)))
