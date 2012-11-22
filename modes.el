@@ -219,9 +219,7 @@ it)"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Misc.
-
-
-(add-hook 'text-mod-hook
+(add-hook 'text-mode-hook
           (lambda ()
             (local-set-key (kbd "M-c") 'capitalize-word)))
 

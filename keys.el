@@ -30,3 +30,5 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "M-c") 'comment-or-uncomment-region) ; was capitalize-word
+
+(global-set-key (kbd "M-=") 'count-words) ; was count-words-region
