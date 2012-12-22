@@ -285,3 +285,8 @@ it)"
 (setq markdown-command
       (concat "python -c \"import sys, markdown2 as m;"
               "print m.markdown(sys.stdin.read()).strip()\""))
+
+(require 'git-commit)
+(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+(add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
+(add-hook 'git-commit-mode-hook 'turn-on-auto-fill)
