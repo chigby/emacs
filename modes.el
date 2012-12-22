@@ -262,8 +262,8 @@ it)"
       whitespace-style '(tabs tab-mark indentation::space trailing lines-tail))
 
 (require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/snippets")
+(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/elpa/yasnippet-0.8.0/snippets"))
+(yas-global-mode 1)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
