@@ -1,5 +1,9 @@
 (defalias 'qrr 'query-replace-regexp)
 
+(defun note()
+  (interactive)
+  (dired "~/Dropbox/notesy"))
+
 (defun prev-window ()
   (interactive)
   (other-window -1))
