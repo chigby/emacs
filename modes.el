@@ -10,6 +10,7 @@
             (local-set-key (kbd "C-j") 'end-of-line-indent)
             (local-unset-key (kbd "M-m"))
             (local-unset-key (kbd "C-a"))
+            (local-unset-key (kbd "C-c C-z")) ;; was python-shell-switch-to-shell
             (local-set-key (kbd "C-a") 'back-to-indentation)
             (local-set-key (kbd "M-m") 'move-beginning-of-line)
             (local-set-key (kbd "\C-c>") 'indent-region)
