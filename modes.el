@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
 
-(require 'python-mode)
 (add-hook 'python-mode-hook
           (lambda ()
             (whitespace-mode)
