@@ -6,3 +6,4 @@ elpa/*
 tramp
 url/*
 eshell/*
+abbrev_defs
