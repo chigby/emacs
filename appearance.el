@@ -4,7 +4,8 @@
 (if (not (eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
 (if (eq window-system 'ns) (set-fringe-mode 0))
 
-(set-fontset-font "fontset-default" 'symbol "Menlo")
+(if (eq window-system 'ns)
+    (set-fontset-font "fontset-default" 'symbol "Menlo"))
 (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
 
 ;; The command below fixes problems with problems with whitespace-mode
