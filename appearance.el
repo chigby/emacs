@@ -24,8 +24,8 @@
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/color-theme-solarized")
-(load-theme 'solarized-light t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+(if (eq window-system 'ns)(load-theme 'solarized-light t))
 
 (setq linum-format
           (lambda (line)
