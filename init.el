@@ -84,7 +84,10 @@
 ; No audible bell.
 (setq ring-bell-function (lambda () (message "*beep*")))
 
-(server-start)
+; Only start one server.
+(require 'server)
+(or (server-running-p)
+    (server-start))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Custom stuff
