@@ -32,3 +32,5 @@
 (global-set-key (kbd "M-c") 'comment-or-uncomment-region) ; was capitalize-word
 
 (global-set-key (kbd "M-=") 'count-words) ; was count-words-region
+
+(program-shortcut "mutt"  (kbd "C-c m") t)  ; mail client
