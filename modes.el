@@ -198,6 +198,31 @@ it)"
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Ansi-term
+
+;; let the shell know we want utf-8 everywhere
+(defadvice ansi-term (after advise-ansi-term-coding-system)
+    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(ad-activate 'ansi-term)
+
+(setenv "LC_CTYPE" "en_US.UTF-8")
+
+;; kill ended process buffers
+(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+  (if (memq (process-status proc) '(signal exit))
+      (let ((buffer (process-buffer proc)))
+        ad-do-it
+        (kill-buffer buffer))
+    ad-do-it))
+(ad-activate 'term-sentinel)
+
+;; Make urls clickable in the terminal.
+(defun my-term-hook ()
+  (goto-address-mode))
+
+(add-hook 'term-mode-hook 'my-term-hook)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; SQL
 
 (add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
