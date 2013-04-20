@@ -1,7 +1,8 @@
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'exec-path "~/bin")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'exec-path (expand-file-name "~/bin"))
 (add-to-list 'exec-path "/opt/local/bin")
 (add-to-list 'exec-path "/usr/local/bin")
+(setenv "PATH" (concat (expand-file-name "~/bin") ":" (getenv "PATH")))
 
 ;; Autosave and Backup
 (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
