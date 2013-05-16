@@ -2,7 +2,12 @@
 (add-to-list 'exec-path (expand-file-name "~/bin"))
 (add-to-list 'exec-path "/opt/local/bin")
 (add-to-list 'exec-path "/usr/local/bin")
-(setenv "PATH" (concat (expand-file-name "~/bin") ":" (getenv "PATH")))
+(add-to-list 'exec-path "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin")
+(setenv "PATH"
+        (concat
+         "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin" ":"
+         (expand-file-name "~/bin") ":"
+         (getenv "PATH")))
 
 ;; Autosave and Backup
 (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
