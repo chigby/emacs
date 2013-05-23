@@ -229,13 +229,6 @@ it)"
 (setq sql-postgres-options (list "-p 6000"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Shell Scripts
-
-;; Turn on shell-script-mode mode for aliases.
-(add-to-list 'auto-mode-alist '(".aliases" . shell-script-mode))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Puppet
 
 ;; (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
