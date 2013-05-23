@@ -73,26 +73,6 @@ it)"
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . html-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Perl
-
-(add-hook 'cperl-mode-hook 'n-cperl-mode-hook t)
-(defun n-cperl-mode-hook ()
-;;   (setq cperl-indent-level 4)
-;;   (setq cperl-continued-statement-offset 0)
-;;   (setq cperl-extra-newline-before-brace t)
-  (setq cperl-indent-level 4
-        cperl-close-paren-offset -4
-        cperl-continued-statement-offset 4
-        cperl-indent-parens-as-block t
-        cperl-tab-always-indent t
-        cperl-highlight-variables-indiscriminately t)
-  (set-face-background 'cperl-array-face zenburn-bg)
-  (set-face-background 'cperl-hash-face zenburn-bg)
-  (set-face-foreground 'cperl-hash-face zenburn-blue)
-  (set-face-foreground 'cperl-array-face zenburn-green+4)
-  )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; PHP
 
 (require 'php-mode)
