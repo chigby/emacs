@@ -160,7 +160,7 @@ it)"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Misc.
 ;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
-  (add-to-list 'auto-mode-alist '("/mutt-\\|itsalltext.*mail\\.google" . mail-mode))
+  (add-to-list 'auto-mode-alist '("/mutt\\|itsalltext.*mail\\.google" . mail-mode))
   (add-hook 'mail-mode-hook 'turn-on-auto-fill)
   (add-hook
    'mail-mode-hook
