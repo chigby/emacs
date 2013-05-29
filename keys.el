@@ -10,6 +10,7 @@
 (global-set-key (kbd "C-M-l") 'forward-word)  ; was reposition-window
 
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
+(global-set-key (kbd "M-8") 'goto-match-paren)
 
 (global-set-key (kbd "C-z") 'eshell)
 (global-set-key (kbd "M-g") 'goto-line)

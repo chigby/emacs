@@ -41,7 +41,6 @@
                             (backward-char 1)))
                      ))))))
 
-(global-set-key (kbd "M-8") 'goto-match-paren)
 
 (defun increment-number-at-point (&optional arg)
   "Increment the number forward from point by 'arg'."
