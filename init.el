@@ -13,7 +13,9 @@
 (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
 (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
 (if (file-directory-p backup-dir)
-    (setq backup-directory-alist (list (cons ".*" backup-dir)))
+    (progn
+      (setq backup-directory-alist (list (cons ".*" backup-dir)))
+      (setq tramp-backup-directory-alist backup-directory-alist))
   (message (concat "Directory does not exist: " backup-dir)))
 (if (not (file-directory-p autosave-dir))
     (make-directory autosave-dir t))
