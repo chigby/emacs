@@ -22,37 +22,6 @@
 (setq auto-save-list-file-prefix autosave-dir)
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
-(defun resize-and-reposition-frame ()
-  "Change the size of the Emacs frame and reposition it to the default location."
-  (interactive)
-  (set-frame-height (selected-frame) 85)
-  (set-frame-width (selected-frame) 90)
-  (set-frame-position (selected-frame) 0 0))
-
-(defun resize-and-reposition-frame-small ()
-  (interactive)
-  (set-frame-height (selected-frame) 49)
-  (set-frame-width (selected-frame) 80)
-  (set-frame-position (selected-frame) 0 0 ))
-
-(defun resize-and-reposition-frame-large ()
-  (interactive)
-  (set-frame-height (selected-frame) 95)
-  (set-frame-width (selected-frame) 174)
-  (set-frame-position (selected-frame) 0 0)
-  (delete-other-windows)
-  (split-window-horizontally)
-  (split-window-vertically)
-  (other-window 2)
-  (split-window-vertically))
-
-(if (and (eq window-system 'ns) (> (x-display-pixel-height) 1400) )
-    (resize-and-reposition-frame))
-
- ;;; This is for GNU Emacs 21
-    (if (= 21 emacs-major-version)
-	(load "term/xterm-256color"))
-
 (load-library "functions")
 
 (require 'package)
