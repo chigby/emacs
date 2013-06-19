@@ -163,3 +163,8 @@
      '(lambda()
         (interactive)
         (term-start-or-switch ,name ,use-existing))))
+
+(defun insert-date ()
+  "Insert the current date."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%T%z")))

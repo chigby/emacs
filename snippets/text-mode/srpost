@@ -5,6 +5,7 @@
 # --
 ---
 layout: post
+created_at: `(insert-date)`
 title: ${1:Title}
 author: ${2:Author}
 filename: ${3:Filename}
