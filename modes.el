@@ -169,7 +169,12 @@ it)"
        (lambda ()
          (interactive)
          (save-buffer)
-         (server-edit)))))
+         (server-edit)))
+     (define-key mail-mode-map (kbd "C-c C-d") 'kill-old-message)))
+
+(add-hook 'mail-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-d") 'kill-old-message)))
 
 (add-hook 'text-mode-hook
           (lambda ()
