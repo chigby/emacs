@@ -38,12 +38,12 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (setq linum-format
-          (lambda (line)
-            (propertize (format
-                         (let ((w (length (number-to-string
-                                           (count-lines (point-min) (point-max))))))
-                           (concat "%" (number-to-string w) "d "))
-                         line)
-                        'face 'linum)))
+      (lambda (line)
+        (propertize (format
+                     (let ((w (length (number-to-string
+                                       (count-lines (point-min) (point-max))))))
+                       (concat "%" (number-to-string w) "d "))
+                     line)
+                    'face 'linum)))
 
 (blink-cursor-mode t)
