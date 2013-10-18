@@ -1,12 +1,25 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (setq inhibit-splash-screen t)
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (not (eq window-system 'ns)) (menu-bar-mode -1) (menu-bar-mode t))
-(if (eq window-system 'ns) (set-fringe-mode 0))
 
-(if (eq window-system 'ns)
-    (set-fontset-font "fontset-default" 'symbol "Menlo"))
-(set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
+(defun ns-font-setup ()
+  (set-fontset-font "fontset-default" 'symbol "Menlo")
+  (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140))
+
+(defun x-font-setup ()
+  (set-fontset-font "fontset-default" 'symbol "Liberation Mono-9")
+  (set-face-attribute 'default nil :font "Liberation Mono-9")
+  (setq default-frame-alist '(
+                              (font . "Liberation Mono-9")
+                              ))
+
+  (setq initial-frame-alist '(
+                              (font . "Liberation Mono-9")
+                              )))
+
+(cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0) (load-theme 'solarized-light t))
+      ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1)))
 
 ;; The command below fixes problems with problems with whitespace-mode
 ;; in emacs22.
@@ -23,9 +36,6 @@
 
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-(if (eq window-system 'ns)(load-theme 'solarized-light t))
 
 (setq linum-format
           (lambda (line)
