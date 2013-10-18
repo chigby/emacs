@@ -1,6 +1,7 @@
 (defalias 'qrr 'query-replace-regexp)
 
 (defun note()
+  "Jump to the Notesy folder inside Dropbox."
   (interactive)
   (dired "~/Dropbox/notesy"))
 
