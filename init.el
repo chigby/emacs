@@ -48,7 +48,7 @@
 (load-library "modes")
 (load-library "keys")
 (load-library "appearance")
-;;(load-library "tabs")
+(load-library "tabs")
 
 (setq-default indent-tabs-mode nil)
 

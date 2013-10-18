@@ -34,4 +34,6 @@
 
 (global-set-key (kbd "M-=") 'count-words) ; was count-words-region
 
+(global-set-key (kbd "C-x C-j") 'dired-jump) ; was count-words-region
+
 (program-shortcut "mutt"  (kbd "C-c m") t)  ; mail client
