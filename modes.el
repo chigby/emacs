@@ -253,3 +253,8 @@ it)"
 (add-hook 'git-commit-mode-hook 'turn-on-auto-fill)
 (add-hook 'git-commit-commit-hook
           (lambda () (server-edit)))
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(require 'w3m-load)

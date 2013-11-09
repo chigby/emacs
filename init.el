@@ -34,7 +34,7 @@
 
 (require 'package)
 
-(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python js2-mode yasnippet git-commit))
+(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn whitespace php-mode markdown-mode python js2-mode yasnippet git-commit yaml-mode))
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
