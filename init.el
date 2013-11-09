@@ -1,11 +1,11 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-list 'exec-path (expand-file-name "~/bin"))
-(add-to-list 'exec-path "/usr/local/bin")
-
-(defvar macports-python-bin "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin")
-(defvar macports-bin "/opt/local/bin")
-(if (file-directory-p macports-bin) (add-to-list 'exec-path macports-bin))
-(if (file-directory-p macports-python-bin) (add-to-list 'exec-path macports-python-bin))
+(dolist (dir '(
+               "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin"
+               "/opt/local/bin"
+               "/opt/local/share/emacs/site-lisp"
+               "/usr/local/bin"
+               "~/bin"))
+  (if (file-directory-p dir) (add-to-list 'exec-path (expand-file-name dir))))
 
 (setenv "PATH"
         (concat
