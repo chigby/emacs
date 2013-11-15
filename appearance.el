@@ -19,7 +19,8 @@
                               )))
 
 (cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0) (load-theme 'solarized-light t))
-      ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1)))
+      ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1))
+      ((eq window-system nil) (menu-bar-mode -1)))
 
 ;; The command below fixes problems with problems with whitespace-mode
 ;; in emacs22.
