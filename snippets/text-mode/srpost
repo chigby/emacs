@@ -11,9 +11,11 @@ author: ${2:Author}
 filename: ${3:Filename}
 duration: "${4:Duration}"
 tags: [${5:tags}]
-image_url: ${6:Image URL}
+image_url: ${7:Image URL}
+first_lines: |
+  ${10:First Lines}
 ---
 
-_$1_.  $2.  ${7:Year}.
+_$1_.  $2.  ${6:Year}.
 
 Photo by [${8:Photographer}](${9:Photo URL}).
