@@ -1,6 +1,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (dolist (dir '(
-               "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin"
+               "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin"
                "/opt/local/bin"
                "/opt/local/share/emacs/site-lisp"
                "/usr/local/bin"
@@ -9,7 +9,7 @@
 
 (setenv "PATH"
         (concat
-         "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin" ":"
+         "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin" ":"
          (expand-file-name "~/bin") ":"
          (getenv "PATH")))
 
