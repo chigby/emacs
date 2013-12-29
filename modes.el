@@ -206,10 +206,6 @@ it)"
 (ad-activate 'linum-on)
 (if (eq global-linum-mode nil) (global-linum-mode))
 
-(autoload 'longlines-mode
-  "longlines.el"
-  "Minor mode for automatically wrapping long lines." t)
-
 (autoload 'awk-mode "cc-mode" nil t)
 
 (ido-mode t)
