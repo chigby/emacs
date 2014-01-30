@@ -210,7 +210,7 @@ it)"
 
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching
-(setq ido-use-virtual-buffers t)  ;; Refer to past buffers as well as existing ones.
+(setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
 
 (require 'whitespace)  ;; display whitespace as characters
 ;; display only tails of lines longer than 80 columns, tabs and
