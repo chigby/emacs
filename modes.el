@@ -192,6 +192,7 @@ it)"
           (lambda ()
             (local-set-key (kbd "C-c C-d") 'kill-old-message)))
 
+(add-hook 'text-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook
           (lambda ()
             (local-set-key (kbd "M-c") 'capitalize-word)))
