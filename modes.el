@@ -4,6 +4,7 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (whitespace-mode)
+            (smart-tab-mode 1)
             (local-set-key [f6] 'flymake-mode)
             (local-unset-key (kbd "C-j"))
             (local-set-key (kbd "C-j") 'end-of-line-indent)

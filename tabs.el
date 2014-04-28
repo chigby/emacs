@@ -12,5 +12,3 @@
 (setq css-indent-offset 2)
 (setq sh-basic-offset 2)
 (set-default 'javascript-indent-level 2)
-
-(global-smart-tab-mode 1)
