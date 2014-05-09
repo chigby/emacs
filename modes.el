@@ -144,7 +144,8 @@
           (lambda ()
             (local-set-key (kbd "M-c") 'capitalize-word)))
 
-(setq linum-mode-inhibit-modes-list '(term-mode eshell-mode))
+(setq linum-mode-inhibit-modes-list
+      '(term-mode eshell-mode comint-mode w3m-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
@@ -202,3 +203,5 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 (require 'w3m-load)
+(add-hook 'w3m-mode-hook (lambda()
+        (yas-minor-mode -1)))
