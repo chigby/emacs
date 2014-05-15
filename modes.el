@@ -145,7 +145,7 @@
             (local-set-key (kbd "M-c") 'capitalize-word)))
 
 (setq linum-mode-inhibit-modes-list
-      '(term-mode eshell-mode comint-mode w3m-mode))
+      '(term-mode eshell-mode comint-mode w3m-mode shell-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
