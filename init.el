@@ -54,7 +54,6 @@
 
 (setq column-number-mode t)
 (setq ns-use-system-highlight-color nil)
-(show-paren-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Trailing whitespace is unnecessary.
