@@ -205,3 +205,5 @@
 (require 'w3m-load)
 (add-hook 'w3m-mode-hook (lambda()
         (yas-minor-mode -1)))
+
+(setq scss-compile-at-save nil)
