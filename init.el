@@ -10,8 +10,13 @@
 (setenv "PATH"
         (concat
          "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin" ":"
+         "/opt/local/bin" ":"
          (expand-file-name "~/bin") ":"
+         "/usr/local/bin" ":"
+         "/usr/local/texlive/2013/bin/x86_64-darwin/" ":"
          (getenv "PATH")))
+
+(setenv "MANPATH" (shell-command-to-string "manpath"))
 
 ;; Autosave and Backup
 (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
