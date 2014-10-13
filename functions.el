@@ -169,3 +169,25 @@
   (interactive)
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
+
+;; Prevent Emacs from auto-changing the working directory
+;; see http://briancarper.net/blog/393/emacs-annoyance-448546
+(defun find-file-save-default-directory ()
+  (interactive)
+  (setq saved-default-directory default-directory)
+  (ido-find-file)
+  (setq default-directory saved-default-directory))
+
+(defun set-test-file (filename)
+  "Save the name of a ruby test/spec file for later."
+  (setq chn-test-file filename))
+
+(defun run-test-file ()
+  "If we are visiting a test file, run that. Otherwise, run the last one."
+  (interactive)
+  (let ((file-name (buffer-file-name (current-buffer))))
+    (if (string-match "_test.rb$" file-name)
+        (set-test-file file-name))
+    (if (boundp 'chn-test-file)
+        (shell-command (format "ruby -Itest %s" chn-test-file))
+      (message "No test file defined. Try running one."))))

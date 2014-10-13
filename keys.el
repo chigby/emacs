@@ -12,6 +12,7 @@
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
 (global-set-key (kbd "M-8") 'goto-match-paren)
 
+(global-set-key (kbd "C-x C-z") 'shell)
 (global-set-key (kbd "C-z") 'eshell)
 (global-set-key (kbd "M-g") 'goto-line)
 
@@ -40,3 +41,5 @@
 
 (global-set-key "\C-x~" 'set-80-columns)
 (global-set-key "\C-x M-q" 'unfill-paragraph)
+
+(global-set-key "\C-x\C-f" 'find-file-save-default-directory)

@@ -223,3 +223,17 @@
         (yas-minor-mode -1)))
 
 (setq scss-compile-at-save nil)
+
+(require 'find-dired)
+(setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+
+; properly format ansi colors on shell-command
+; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
+(require 'ansi-color)
+(defadvice display-message-or-buffer (before ansi-color activate)
+  "Process ANSI color codes in shell output."
+  (let ((buf (ad-get-arg 0)))
+    (and (bufferp buf)
+         (string= (buffer-name buf) "*Shell Command Output*")
+         (with-current-buffer buf
+           (ansi-color-apply-on-region (point-min) (point-max))))))
