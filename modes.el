@@ -1,21 +1,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (whitespace-mode)
-            (smart-tab-mode 1)
-            (local-set-key [f6] 'flymake-mode)
-            (local-unset-key (kbd "C-j"))
-            (local-set-key (kbd "C-j") 'end-of-line-indent)
-            (local-unset-key (kbd "M-m"))
-            (local-unset-key (kbd "C-a"))
-            (local-unset-key (kbd "C-c C-z")) ;; was python-shell-switch-to-shell
-            (local-set-key (kbd "C-a") 'back-to-indentation)
-            (local-set-key (kbd "M-m") 'move-beginning-of-line)
-            (local-set-key (kbd "\C-c>") 'indent-region)
-            (local-set-key (kbd "\C-c<") 'unindent-region)
-            ))
+(defun chn-python-hook ()
+  (whitespace-mode)
+  (smart-tab-mode 1)
+  (local-set-key [f6] 'flymake-mode)
+  (local-unset-key (kbd "C-j"))
+  (local-set-key (kbd "C-j") 'end-of-line-indent)
+  (local-unset-key (kbd "M-m"))
+  (local-unset-key (kbd "C-a"))
+  (local-unset-key (kbd "C-c C-z")) ;; was python-shell-switch-to-shell
+  (local-set-key (kbd "C-a") 'back-to-indentation)
+  (local-set-key (kbd "M-m") 'move-beginning-of-line)
+  (local-set-key (kbd "\C-c>") 'indent-region)
+  (local-set-key (kbd "\C-c<") 'unindent-region))
+
+(add-hook 'python-mode-hook 'chn-python-hook)
 
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . html-mode))
 
@@ -45,11 +45,12 @@
   (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
   (c-set-offset 'arglist-cont-nonempty 'c-lineup-math)) ; for DBTNG fields and values
 
+(defun chn-python-keys ()
+  (local-set-key (kbd "C-M-j") 'backward-word)
+  (local-set-key (kbd "M-j") 'backward-char))
+
 (add-hook 'php-mode-hook 'clean-php-mode)
-(add-hook 'php-mode-hook
-          (lambda()
-          (local-set-key (kbd "C-M-j") 'backward-word)
-          (local-set-key (kbd "M-j") 'backward-char)))
+(add-hook 'php-mode-hook 'chn-python-keys)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Web-Mode
@@ -68,10 +69,14 @@
 
 ;; Turn on ruby mode for vagrantfiles.
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-a") 'back-to-indentation)
-            (local-set-key (kbd "M-m") 'move-beginning-of-line)))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(defun chn-ruby-keys ()
+  (local-set-key (kbd "C-a") 'back-to-indentation)
+  (local-set-key (kbd "C-c C-z") 'run-test-file)
+  (local-set-key (kbd "M-m") 'move-beginning-of-line))
+(add-hook 'ruby-mode-hook 'chn-ruby-keys)
+;(add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
 
 ;(rvm-use-default)
 ;(setq rspec-use-rvm t)
@@ -136,26 +141,24 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Misc.
 ;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
+
+(defun chn-mail-mode-keys ()
+  (define-key mail-mode-map [(control c) (control c)]
+    (lambda ()
+      (interactive)
+      (save-buffer)
+      (server-edit)))
+  (define-key mail-mode-map (kbd "C-c C-d") 'kill-old-message)
+  (local-set-key (kbd "C-c C-d") 'kill-old-message))
+
   (add-to-list 'auto-mode-alist '("/mutt\\|itsalltext.*mail\\.google" . mail-mode))
   (add-hook 'mail-mode-hook 'turn-on-auto-fill)
-  (add-hook
-   'mail-mode-hook
-   (lambda ()
-     (define-key mail-mode-map [(control c) (control c)]
-       (lambda ()
-         (interactive)
-         (save-buffer)
-         (server-edit)))
-     (define-key mail-mode-map (kbd "C-c C-d") 'kill-old-message)))
+  (add-hook 'mail-mode-hook 'chn-mail-mode-keys)
 
-(add-hook 'mail-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-d") 'kill-old-message)))
-
+(defun chn-text-mode-keys ()
+  (local-set-key (kbd "M-c") 'capitalize-word))
 (add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'text-mode-hook
-          (lambda ()
-            (local-set-key (kbd "M-c") 'capitalize-word)))
+(add-hook 'text-mode-hook 'chn-text-mode-keys)
 
 (setq linum-mode-inhibit-modes-list
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode))
