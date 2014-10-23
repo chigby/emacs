@@ -40,4 +40,4 @@
 (program-shortcut "mutt"  (kbd "C-c m") t)  ; mail client
 
 (global-set-key "\C-x~" 'set-80-columns)
-(global-set-key "\C-x M-q" 'unfill-paragraph)
+;(global-set-key "\C-x M-q" 'unfill-paragraph)

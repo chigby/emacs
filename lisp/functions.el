@@ -162,7 +162,7 @@
 (defun set-80-columns ()
   "Set the selected window to 80 columns (ish)."
   (interactive)
-  (set-frame-size (selected-frame) 84 50))
+  (set-frame-size (selected-frame) 84 53))
 
 (defun unfill-paragraph ()
   "Takes a multi-line paragraph and makes it into a single line of text."
