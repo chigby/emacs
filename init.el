@@ -2,15 +2,13 @@
 
 (add-to-list 'load-path (concat emacs-root "lisp"))
 
-(load-library "paths")
-(load-library "functions")
-(load-library "packages")
+(load-library "paths") ;; exec paths for python, macports; backup and autosave dirs
+(load-library "functions") ;; my own one-off functions
+(load-library "packages") ;; install packages from melpa, etc.
+(load-library "modes") ;; mode-specific settings
+(load-library "keys") ;; my own keybindings
+(load-library "appearance") ;; fonts, colors, themes
+(load-library "tabs") ;; special settings for the "tab" key
+(load-library "misc") ;; hard-to-classify or not-yet-classified
 
-(load-library "modes")
-(load-library "keys")
-(load-library "appearance")
-(load-library "tabs")
-
-(load-library "misc")
-
-(eshell)
+(eshell) ;; begin with a shell
