@@ -1,0 +1,8 @@
+# name: var_dump
+# key: vd
+# contributor: Cameron Higby-Naquin
+# comment: format php var_dump so it's readable
+# --
+echo '<pre>';
+var_dump(${1:variable});
+echo '</pre>';

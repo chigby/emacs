@@ -1,0 +1,8 @@
+# name: test
+# key: test
+# contributor: Cameron Higby-Naquin
+# comment: create a mini-test type test for rails
+# --
+test "${1:testname}" do
+  $0
+end
