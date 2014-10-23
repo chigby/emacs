@@ -63,6 +63,9 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(defun chn-web-mode-keys ()
+  (local-set-key (kbd "C-c C-z") 'run-test-file))
+(add-hook 'web-mode-hook 'chn-web-mode-keys)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Ruby
@@ -76,6 +79,8 @@
   (local-set-key (kbd "C-c C-z") 'run-test-file)
   (local-set-key (kbd "M-m") 'move-beginning-of-line))
 (add-hook 'ruby-mode-hook 'chn-ruby-keys)
+; turn off overzealous indentation
+(setq ruby-deep-indent-paren nil)
 ;(add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
 
 ;(rvm-use-default)
