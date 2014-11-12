@@ -189,8 +189,10 @@
       whitespace-style '(tabs tab-mark indentation::space trailing lines-tail))
 
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/elpa/yasnippet-0.8.0/snippets"))
 (yas-global-mode 1)
+(defun chn-term-mode-hook ()
+  (setq yas-dont-activate t))
+(add-hook 'term-mode-hook 'chn-term-mode-hook)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
