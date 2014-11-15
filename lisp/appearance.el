@@ -54,3 +54,12 @@
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
 (set-face-attribute 'web-mode-html-attr-name-face nil :inherit 'font-lock-function-name-face :foreground nil)
 (set-face-attribute 'web-mode-symbol-face nil :inherit 'font-lock-constant-face :foreground nil)
+
+(add-to-list 'display-buffer-alist
+             '("\\*Help\\*" chn-temp-window))
+
+(add-to-list 'display-buffer-alist
+             '("\\*Shell Command Output\\*" chn-temp-window))
+
+(add-to-list 'display-buffer-alist
+             '("\\*Apropos\\*" chn-temp-window))

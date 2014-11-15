@@ -183,3 +183,12 @@
     (if (boundp 'chn-test-file)
         (shell-command (format "ruby -Itest %s" chn-test-file))
       (message "No test file defined. Try running one."))))
+
+;; display temporary/help messages in window "1" unless there is only
+;; 1 window, then pop up another one using emacs default settings.
+(defun chn-temp-window (buffer alist)
+  (if (= (length (window-list)) 1)
+      (display-buffer-pop-up-window buffer alist)
+    (let ((desired-window  (window-in-direction 'right (frame-first-window) nil 1)))
+      (set-window-buffer desired-window  buffer)
+      desired-window)))
