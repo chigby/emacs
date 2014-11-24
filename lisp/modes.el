@@ -226,8 +226,9 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 (require 'w3m-load)
-(add-hook 'w3m-mode-hook (lambda()
-        (yas-minor-mode -1)))
+(defun chn-w3m-mode-hook ()
+  (yas-minor-mode -1))
+(add-hook 'w3m-mode-hook 'chn-w3m-mode-hook)
 
 (setq scss-compile-at-save nil)
 
