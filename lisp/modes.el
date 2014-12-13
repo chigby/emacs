@@ -245,3 +245,5 @@
          (string= (buffer-name buf) "*Shell Command Output*")
          (with-current-buffer buf
            (ansi-color-apply-on-region (point-min) (point-max))))))
+
+(require 'evil)

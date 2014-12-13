@@ -13,8 +13,8 @@
 
 ;; C-M-j was comment-indent-new-line.  Also: should I be stealing from
 ;; evil-mode instead of viper mode?
-(global-set-key (kbd "C-M-j") 'evil-backward-word)
-(global-set-key (kbd "C-M-l") 'evil-forward-word)  ; was reposition-window
+(global-set-key (kbd "C-M-j") 'evil-backward-word-begin)
+(global-set-key (kbd "C-M-l") 'evil-forward-word-begin)  ; was reposition-window
 
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
 (global-set-key (kbd "M-8") 'goto-match-paren)
