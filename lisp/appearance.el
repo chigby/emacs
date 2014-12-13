@@ -49,6 +49,7 @@
                     'face 'linum)))
 
 (blink-cursor-mode t)
+(setq blink-cursor-blinks 100)
 
 (set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
