@@ -28,6 +28,14 @@
 
 ;; javascript
 (setq js-level-indent 2)
+(setq js-indent-level 2)
+
+;; coffeescript
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;; lua
 (setq lua-indent-level 2)
