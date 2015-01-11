@@ -1,0 +1,8 @@
+# name: trans
+# key: trans
+# contributor: Cameron Higby-Naquin
+# comment: wrap in an active record transaction
+# --
+ActiveRecord::Base.transaction do
+  $0
+end
