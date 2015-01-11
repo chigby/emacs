@@ -174,7 +174,8 @@
 (add-hook 'text-mode-hook 'chn-text-mode-keys)
 
 (setq linum-mode-inhibit-modes-list
-      '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode))
+      '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
+                  ack-and-a-half-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
