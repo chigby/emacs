@@ -104,6 +104,7 @@
 (require 'eshell)
 (setq eshell-scroll-to-bottom-on-output t)
 (setq eshell-scroll-show-maximum-output t)
+(setq eshell-cmpl-ignore-case t)
 (add-to-list 'eshell-output-filter-functions 'eshell-postoutput-scroll-to-bottom)
 
 (defadvice eshell-handle-ansi-color (around test activate)
