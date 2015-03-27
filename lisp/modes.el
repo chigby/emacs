@@ -201,7 +201,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 (defun chn-term-mode-hook ()
-  (setq yas-minor-mode -1))
+  (yas-minor-mode -1))
 (add-hook 'term-mode-hook 'chn-term-mode-hook)
 
 (require 'uniquify)
