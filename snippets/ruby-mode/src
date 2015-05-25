@@ -1,0 +1,16 @@
+# name: src
+# key: src
+# contributor: Cameron Higby-Naquin
+# comment: adjust a dance source
+# --
+ActiveRecord::Base.transaction do
+  d = Source.find_or_initialize_by(title: %Q{${1:title}})
+  d.update_attributes!(
+    short_name: "${2:shortname}",
+    author: "${3:nil}",
+    year: ${4:nil},
+    publisher: ${5:nil},
+    type: ${6:"book"},
+    notes: ${7:nil},
+  )
+end

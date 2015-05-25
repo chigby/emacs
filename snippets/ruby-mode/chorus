@@ -1,0 +1,17 @@
+# name: chorus
+# key: chorus
+# contributor: Cameron Higby-Naquin
+# comment: adjust a dance to be a figure_chorus dance
+# --
+ActiveRecord::Base.transaction do
+  d = Dance.find_by!(title: "${1:dancename}")
+  fgs = d.figure_groups.load
+  d.update_attributes!(
+    sequence: "figure_chorus",
+    musical_phrase_pattern: "${2:AABB}",
+    repetitions: ${3:3},
+    chorus_phrases: [${4:'B1', 'B2'}],
+    chorus_identical: ${5:true})
+  d.figure_groups.where(part: nil).update_all(part: 1)
+  $0
+end

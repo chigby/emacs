@@ -1,0 +1,10 @@
+# name: dance
+# key: dance
+# contributor: Cameron Higby-Naquin
+# comment: adjust a dance
+# --
+ActiveRecord::Base.transaction do
+  d = Dance.find_by!(title: "${1:dancename}")
+  d.update_attributes!(${2:attrs})
+  $0
+end
