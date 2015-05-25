@@ -1,0 +1,6 @@
+# name: ife
+# key: ife
+# contributor: Cameron Higby-Naquin
+# comment: if-else statement
+# --
+<<if ${1:predicate}>>$0<<else>> <<endif>>

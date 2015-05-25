@@ -1,0 +1,6 @@
+# name: con
+# key: con
+# contributor: Cameron Higby-Naquin
+# comment: continue block
+# --
+<<continue>>$0<<endcontinue>>

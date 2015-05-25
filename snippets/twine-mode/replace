@@ -1,0 +1,6 @@
+# name: rep
+# key: rep
+# contributor: Cameron Higby-Naquin
+# comment: replace statement
+# --
+<<replace "${1:predicate}">>$0<<endreplace>>

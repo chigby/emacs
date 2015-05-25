@@ -1,0 +1,6 @@
+# name: if
+# key: if
+# contributor: Cameron Higby-Naquin
+# comment: if statement
+# --
+<<if ${1:predicate}>>$0<<endif>>
