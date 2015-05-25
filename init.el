@@ -5,6 +5,7 @@
 (load-library "paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "functions") ;; my own one-off functions
 (load-library "packages") ;; install packages from melpa, etc.
+(load-library "twine-mode") ;; my twine mode
 (load-library "modes") ;; mode-specific settings
 (load-library "keys") ;; my own keybindings
 (load-library "appearance") ;; fonts, colors, themes
