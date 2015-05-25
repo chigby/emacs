@@ -6,7 +6,8 @@
 
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
-  (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140))
+  (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
+  (setq default-frame-alist '((cursor-type . box))))
 
 (defun x-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Liberation Mono-9")
@@ -60,3 +61,5 @@
 (add-to-list 'display-buffer-alist '("\\*Shell Command Output\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Apropos\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Ack-and-a-half\\*" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*Ack-and-a-half\\*" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*ag search" chn-temp-window))

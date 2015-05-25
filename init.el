@@ -1,3 +1,10 @@
+;; init.el
+
+;; The Xytaxehedron held to the stars,
+;; The incantation uttered with eager tongues,
+;; What long-shackled powers of the elder dark
+;; have our conjurings loosed?
+
 (setq emacs-root (expand-file-name "~/.emacs.d/"))
 
 (add-to-list 'load-path (concat emacs-root "lisp"))

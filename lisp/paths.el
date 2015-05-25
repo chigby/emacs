@@ -1,6 +1,7 @@
 (dolist (dir '(
                "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin"
                "/opt/local/bin"
+               "/opt/local/sbin"
                "/opt/local/share/emacs/site-lisp"
                "/usr/local/bin"
                "~/bin"))

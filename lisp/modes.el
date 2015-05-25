@@ -1,4 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; modes.el -- configuration for various and sundry modes
+
 ;;; Python
 
 (defun chn-python-hook ()
@@ -19,13 +20,13 @@
 
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . html-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Clojure
 
 ;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
-
+
 ;; javascript
 (setq js-level-indent 2)
 (setq js-indent-level 2)
@@ -38,11 +39,13 @@
 (add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;; lua
+(package-require 'lua-mode)
 (setq lua-indent-level 2)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; PHP
 
+(package-require 'php-mode)
 (require 'php-mode)
 (defun clean-php-mode ()
   (setq c-basic-offset 4) ; 4 tabs indenting
@@ -60,7 +63,7 @@
 (add-hook 'php-mode-hook 'clean-php-mode)
 (add-hook 'php-mode-hook 'chn-python-keys)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Web-Mode
 
 (require 'web-mode)
@@ -72,11 +75,14 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (defun chn-web-mode-keys ()
+  (setq web-mode-markup-indent-offset 2)
   (local-set-key (kbd "C-c C-z") 'run-test-file))
 (add-hook 'web-mode-hook 'chn-web-mode-keys)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Ruby
+
+(package-require 'rvm)
 
 ;; Turn on ruby mode for vagrantfiles.
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
@@ -87,17 +93,11 @@
   (local-set-key (kbd "C-c C-z") 'run-test-file)
   (local-set-key (kbd "M-m") 'move-beginning-of-line))
 (add-hook 'ruby-mode-hook 'chn-ruby-keys)
-; turn off overzealous indentation
+
+;; turn off overzealous indentation
 (setq ruby-deep-indent-paren nil)
-;(add-hook 'ruby-mode-hook 'rvm-activate-corresponding-ruby)
 
-;(rvm-use-default)
-;(setq rspec-use-rvm t)
-;(setq rspec-use-rake-flag nil)
-;(setq rspec-spec-command "rspec")
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Eshell
 
 ;; scroll to the bottom
@@ -116,7 +116,7 @@
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Ansi-term
 
 ;; let the shell know we want utf-8 everywhere
@@ -141,20 +141,20 @@
 
 (add-hook 'term-mode-hook 'my-term-hook)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; SQL
 
 (add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
 (setq sql-postgres-options (list "-p 6000"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Puppet
 
+(package-require 'puppet-mode)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Misc.
-;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
 
 (defun chn-mail-mode-keys ()
   (define-key mail-mode-map [(control c) (control c)]
@@ -176,7 +176,7 @@
 
 (setq linum-mode-inhibit-modes-list
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
-                  ack-and-a-half-mode))
+                  ack-and-a-half-mode ag-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
@@ -192,19 +192,20 @@
 (setq ido-enable-flex-matching t) ; fuzzy matching
 (setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
 
+(package-require 'whitespace)
 (require 'whitespace)  ;; display whitespace as characters
 ;; display only tails of lines longer than 80 columns, tabs and
 ;; trailing whitespaces
 (setq whitespace-line-column 79
       whitespace-style '(tabs tab-mark indentation::space trailing lines-tail))
 
+(package-require 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
 (defun chn-term-mode-hook ()
   (yas-minor-mode -1))
 (add-hook 'term-mode-hook 'chn-term-mode-hook)
 
-(require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
 (setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
@@ -219,12 +220,14 @@
 (setq auto-mode-alist
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
+(package-require 'markdown-mode)
 (require 'markdown-mode)
 (define-key markdown-mode-map (kbd "<tab>") nil)
 (setq markdown-command
       (concat "python -c \"import sys, markdown2 as m;"
               "print m.markdown(sys.stdin.read()).strip()\""))
 
+(package-require 'git-commit)
 (require 'git-commit)
 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 (add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
@@ -232,8 +235,15 @@
 (add-hook 'git-commit-commit-hook
           (lambda () (server-edit)))
 
+(package-require 'yaml-mode)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(defun chn-yaml-keys ()
+  (local-set-key (kbd "C-c C-z") 'run-test-file))
+(add-hook 'yaml-mode-hook 'chn-yaml-keys)
+
+(require 'twine-mode)
+(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
 
 (require 'w3m-load)
 (defun chn-w3m-mode-hook ()
@@ -242,12 +252,12 @@
 
 (setq scss-compile-at-save nil)
 
-(require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+
+(setq insert-directory-program (executable-find "gls"))
 
 ; properly format ansi colors on shell-command
 ; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
-(require 'ansi-color)
 (defadvice display-message-or-buffer (before ansi-color activate)
   "Process ANSI color codes in shell output."
   (let ((buf (ad-get-arg 0)))
@@ -256,5 +266,12 @@
          (with-current-buffer buf
            (ansi-color-apply-on-region (point-min) (point-max))))))
 
+(package-require 'evil)
 (require 'evil)
 (setq evil-default-cursor 'box)
+(setq evil-default-state 'emacs)
+
+(package-require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+(setq ag-reuse-buffers 't)

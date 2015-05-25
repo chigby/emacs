@@ -1,12 +1,11 @@
 (require 'package)
 
-(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn whitespace php-mode markdown-mode js2-mode yasnippet git-commit yaml-mode rvm lua-mode))
+(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn js2-mode))
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-;; install missing packages from package-list
-(dolist (package package-list)
+(defun package-require (package)
   (when (not (package-installed-p package))
     (package-install package)))
