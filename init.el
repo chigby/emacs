@@ -15,6 +15,7 @@
 (load-library "twine-mode") ;; my twine mode
 (load-library "modes") ;; mode-specific settings
 (load-library "keys") ;; my own keybindings
+(load-library "mail") ;; mu4e configuration
 (load-library "appearance") ;; fonts, colors, themes
 (load-library "tabs") ;; special settings for the "tab" key
 (load-library "misc") ;; hard-to-classify or not-yet-classified
