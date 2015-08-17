@@ -1,0 +1,10 @@
+# name: ifch
+# key: ifch
+# contributor: Cameron Higby-Naquin
+# comment: if-type choice
+# --
+{"text": "${1:text}",
+ "kind": "iftrue",
+ "test": ${2:test},
+ "iftrue": ${3:iftrue},
+ "orelse": ${4:orelse}},

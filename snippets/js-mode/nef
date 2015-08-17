@@ -1,0 +1,6 @@
+# name: nef
+# key: nef
+# contributor: Cameron Higby-Naquin
+# comment: kobold numeric effect
+# --
+{"kind": "${1:kind}", "n": ${2:n}},

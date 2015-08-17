@@ -1,0 +1,12 @@
+# name: event
+# key: event
+# contributor: Cameron Higby-Naquin
+# comment: kobold event
+# --
+${1:id}: {"id": $1,
+          "code": "${2:code}",
+          "weight": ${3:1.0},
+          "effects": [],
+          "html": "<p>${4:html}.</p>",
+          "choices": [],
+         },

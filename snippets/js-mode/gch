@@ -1,0 +1,8 @@
+# name: gch
+# key: gch
+# contributor: Cameron Higby-Naquin
+# comment: goto-type choice
+# --
+{"text": "${1:text}",
+ "kind": "goto",
+ "event": ${2:id}},
