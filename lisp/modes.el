@@ -79,6 +79,11 @@
   (local-set-key (kbd "C-c C-z") 'run-test-file))
 (add-hook 'web-mode-hook 'chn-web-mode-keys)
 
+(set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
+(set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
+(set-face-attribute 'web-mode-html-attr-name-face nil :inherit 'font-lock-function-name-face :foreground nil)
+(set-face-attribute 'web-mode-symbol-face nil :inherit 'font-lock-constant-face :foreground nil)
+
 
 ;;; Ruby
 
@@ -176,7 +181,8 @@
 
 (setq linum-mode-inhibit-modes-list
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
-                  ack-and-a-half-mode ag-mode))
+                  ack-and-a-half-mode ag-mode mu4e-main-mode mu4e-headers-mode
+                  mu4e-view-mode mu4e-compose-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
@@ -184,7 +190,7 @@
       ad-do-it))
 
 (ad-activate 'linum-on)
-(if (eq global-linum-mode nil) (global-linum-mode))
+(global-linum-mode t)
 
 (autoload 'awk-mode "cc-mode" nil t)
 
@@ -255,6 +261,8 @@
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 
 (setq insert-directory-program (executable-find "gls"))
+
+(setq dired-listing-switches "-alh")
 
 ; properly format ansi colors on shell-command
 ; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code

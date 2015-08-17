@@ -8,6 +8,7 @@
 (setq emacs-root (expand-file-name "~/.emacs.d/"))
 
 (add-to-list 'load-path (concat emacs-root "lisp"))
+(add-to-list 'load-path (concat emacs-root "site-lisp"))
 
 (load-library "paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "functions") ;; my own one-off functions

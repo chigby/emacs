@@ -1,26 +1,21 @@
-(dolist (dir '(
-               "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin"
-               "/opt/local/bin"
-               "/opt/local/sbin"
-               "/opt/local/share/emacs/site-lisp"
-               "/usr/local/bin"
-               "~/bin"))
-  (if (file-directory-p dir) (add-to-list 'exec-path (expand-file-name dir))))
-
-(setenv "PATH"
-        (concat
-         "/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin" ":"
-         "/opt/local/bin" ":"
-         (expand-file-name "~/bin") ":"
-         "/usr/local/bin" ":"
-         "/usr/local/texlive/2013/bin/x86_64-darwin/" ":"
-         (getenv "PATH")))
+(let ((paths (mapcar 'expand-file-name '("/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin"
+            "/opt/local/bin"
+            "/opt/local/sbin"
+            "/opt/local/share/emacs/site-lisp"
+            "/usr/local/bin"
+            "/usr/local/texlive/2013/bin/x86_64-darwin/"
+            "~/bin"))))
+  (setenv "PATH" (apply 'concat
+                        (append (mapcar (lambda (i) (concat i ":")) paths)
+                                (list (getenv "PATH")))))
+  (dolist (path paths) (when (file-directory-p path)
+                         (add-to-list 'exec-path path))))
 
 (setenv "MANPATH" (shell-command-to-string "manpath"))
 
 ;; Autosave and Backup
-(defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
-(defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
+(setq autosave-dir (expand-file-name (concat emacs-root "autosave")))
+(setq backup-dir (expand-file-name (concat emacs-root "backup")))
 (if (file-directory-p backup-dir)
     (progn
       (setq backup-directory-alist (list (cons ".*" backup-dir)))

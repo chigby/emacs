@@ -6,7 +6,7 @@
 
 ;; Trailing whitespace is unnecessary.
 (defun chn-save-hook ()
-  (if (not (eq 'markdown-mode major-mode)) (whitespace-cleanup)))
+  (when (not (eq 'markdown-mode major-mode)) (whitespace-cleanup)))
 (add-hook 'before-save-hook 'chn-save-hook)
 
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)

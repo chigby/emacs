@@ -178,8 +178,8 @@
   "If we are visiting a test file, run that. Otherwise, run the last one."
   (interactive)
   (let ((file-name (buffer-file-name (current-buffer))))
-    (if (string-match "_test.rb$" file-name)
-        (set-test-file file-name))
+    (when (string-match "_test.rb$" file-name)
+      (set-test-file file-name))
     (if (boundp 'chn-test-file)
         (shell-command (format "ruby -Itest %s" chn-test-file))
       (message "No test file defined. Try running one."))))
@@ -192,3 +192,6 @@
     (let ((desired-window  (window-in-direction 'right (frame-first-window) nil 1)))
       (set-window-buffer desired-window  buffer)
       desired-window)))
+
+(defun file-if-exists (path)
+  (if (file-exists-p path) path nil))

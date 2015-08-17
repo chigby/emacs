@@ -51,6 +51,7 @@
  'mu4e-view-actions
  '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
+(add-hook 'mu4e-view-mode-hook (lambda () (visual-line-mode)))
 (add-hook
  'mu4e-compose-pre-hook
  (lambda ()
