@@ -4,6 +4,14 @@
 (dolist (mode '(tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+              (set-frame-parameter frame 'background-mode mode)
+              (set-terminal-parameter frame 'background-mode mode))
+            (enable-theme 'solarized)))
+(load-theme 'solarized t)
+
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
   (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
@@ -20,7 +28,7 @@
                               (font . "Liberation Mono-9")
                               )))
 
-(cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0) (load-theme 'solarized-light t))
+(cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0))
       ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1))
       ((null window-system) (menu-bar-mode -1)))
 
