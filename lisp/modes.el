@@ -182,7 +182,8 @@
 (setq linum-mode-inhibit-modes-list
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
                   ack-and-a-half-mode ag-mode mu4e-main-mode mu4e-headers-mode
-                  mu4e-view-mode mu4e-compose-mode))
+                  mu4e-view-mode mu4e-compose-mode package-menu-mode
+                  compilation-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
