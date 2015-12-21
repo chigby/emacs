@@ -20,6 +20,7 @@
 (load-library "appearance") ;; fonts, colors, themes
 (load-library "tabs") ;; special settings for the "tab" key
 (load-library "editing") ;; text editing niceties
+(load-library "codestyle") ;; text editing niceties
 (load-library "misc") ;; hard-to-classify or not-yet-classified
 
 (eshell) ;; begin with a shell
