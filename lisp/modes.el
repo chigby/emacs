@@ -84,9 +84,7 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (defun chn-ruby-keys ()
-  (local-set-key (kbd "C-a") 'back-to-indentation)
-  (local-set-key (kbd "C-c C-z") 'run-test-file)
-  (local-set-key (kbd "M-m") 'move-beginning-of-line))
+  (local-set-key (kbd "C-c C-z") 'run-test-file))
 (add-hook 'ruby-mode-hook 'chn-ruby-keys)
 
 ;; turn off overzealous indentation
