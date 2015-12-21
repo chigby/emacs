@@ -67,6 +67,15 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.inc?\\'" . web-mode))
+(setq web-mode-engines-alist
+      '(("ctemplate"    . "\\.inc\\'")
+        ("django" . "/django.*\\.html\\'")
+        ("django" . "/littleweaverweb.*\\.html\\'")
+        ("erb" . "/ns-www.*\\.html\\'"))
+)
+
 (defun chn-web-mode-keys ()
   (setq web-mode-markup-indent-offset 2)
   (local-set-key (kbd "C-c C-z") 'run-test-file))
