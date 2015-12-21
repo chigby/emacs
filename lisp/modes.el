@@ -189,13 +189,6 @@
 (setq ido-enable-flex-matching t) ; fuzzy matching
 (setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
 
-(package-require 'whitespace)
-(require 'whitespace)  ;; display whitespace as characters
-;; display only tails of lines longer than 80 columns, tabs and
-;; trailing whitespaces
-(setq whitespace-line-column 79
-      whitespace-style '(tabs tab-mark indentation::space trailing lines-tail))
-
 (package-require 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -223,14 +216,6 @@
 (setq markdown-command
       (concat "python -c \"import sys, markdown2 as m;"
               "print m.markdown(sys.stdin.read()).strip()\""))
-
-(package-require 'git-commit)
-(require 'git-commit)
-(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
-(add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
-(add-hook 'git-commit-mode-hook 'turn-on-auto-fill)
-(add-hook 'git-commit-commit-hook
-          (lambda () (server-edit)))
 
 (package-require 'yaml-mode)
 (require 'yaml-mode)
