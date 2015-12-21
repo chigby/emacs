@@ -1,6 +1,6 @@
 (require 'package)
 
-(setq package-list '(ack-and-a-half auctex puppet-mode apache-mode dsvn js2-mode))
+(setq package-list '(auctex apache-mode js2-mode))
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
