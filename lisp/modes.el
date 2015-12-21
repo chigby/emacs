@@ -1,5 +1,8 @@
 ;;; modes.el -- configuration for various and sundry modes
 
+;;; elm
+(package-require 'elm-mode)
+
 ;;; Python
 
 (defun chn-python-hook ()
