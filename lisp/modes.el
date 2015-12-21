@@ -270,4 +270,6 @@
 
 (setq ag-reuse-buffers 't)
 
+(setq calc-settings-file (concat emacs-root "lisp/calc-settings.el"))
+
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
