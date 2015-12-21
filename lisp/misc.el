@@ -4,11 +4,6 @@
 (setq ns-use-system-highlight-color nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Trailing whitespace is unnecessary.
-(defun chn-save-hook ()
-  (when (not (eq 'markdown-mode major-mode)) (whitespace-cleanup)))
-(add-hook 'before-save-hook 'chn-save-hook)
-
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying 'Active processes exist' query when you quit Emacs."
   (flet ((process-list ())) ad-do-it))
