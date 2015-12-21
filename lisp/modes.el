@@ -269,3 +269,5 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 (setq ag-reuse-buffers 't)
+
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
