@@ -184,6 +184,16 @@
         (shell-command (format "ruby -Itest %s" chn-test-file))
       (message "No test file defined. Try running one."))))
 
+(defun run-python-test-file ()
+  "If we are visiting a test file, run that. Otherwise, run the last one."
+  (interactive)
+  (let ((file-name (buffer-file-name (current-buffer))))
+    (when (string-match "test_[a-z_]+.py$" file-name)
+      (set-test-file file-name))
+    (if (boundp 'chn-test-file)
+        (shell-command (format "./runtest %s" chn-test-file))
+      (message "No test file defined. Try running one."))))
+
 ;; display temporary/help messages in window "1" unless there is only
 ;; 1 window, then pop up another one using emacs default settings.
 (defun chn-temp-window (buffer alist)

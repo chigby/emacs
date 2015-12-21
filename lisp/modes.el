@@ -3,28 +3,18 @@
 ;;; Python
 
 (defun chn-python-hook ()
-  (whitespace-mode)
   (smart-tab-mode 1)
+  (local-set-key (kbd "C-c C-z") 'run-python-test-file)
   (local-set-key [f6] 'flymake-mode)
   (local-unset-key (kbd "C-j"))
   (local-set-key (kbd "C-j") 'end-of-line-indent)
-  (local-unset-key (kbd "M-m"))
-  (local-unset-key (kbd "C-a"))
-  (local-unset-key (kbd "C-c C-z")) ;; was python-shell-switch-to-shell
-  (local-set-key (kbd "C-a") 'back-to-indentation)
-  (local-set-key (kbd "M-m") 'move-beginning-of-line)
   (local-set-key (kbd "\C-c>") 'indent-region)
   (local-set-key (kbd "\C-c<") 'unindent-region))
 
 (add-hook 'python-mode-hook 'chn-python-hook)
-
-(add-to-list 'auto-mode-alist '("\\.mako\\'" . html-mode))
-
-
-;;; Clojure
-
-;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
+(package-require 'virtualenvwrapper)
+(require 'virtualenvwrapper)
+(setq venv-location "~/.virtualenvs")
 
 
 ;; javascript
