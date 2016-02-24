@@ -18,6 +18,7 @@
 (load-library "keys") ;; my own keybindings
 (load-library "mail") ;; mu4e configuration
 (load-library "appearance") ;; fonts, colors, themes
+(load-library "chn-ag") ;; the silver searcher settings
 (load-library "tabs") ;; special settings for the "tab" key
 (load-library "editing") ;; text editing niceties
 (load-library "codestyle") ;; text editing niceties
