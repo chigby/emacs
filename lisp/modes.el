@@ -36,30 +36,11 @@
 (setq lua-indent-level 2)
 
 
-;;; PHP
 
-(package-require 'php-mode)
-(require 'php-mode)
-(defun clean-php-mode ()
-  (setq c-basic-offset 4) ; 4 tabs indenting
-  (setq indent-tabs-mode nil)
-  (setq fill-column 78)
-  (c-set-offset 'case-label '+)
-  (c-set-offset 'arglist-close 'c-lineup-arglist-operators)
-  (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
-  (c-set-offset 'arglist-cont-nonempty 'c-lineup-math)) ; for DBTNG fields and values
-
-(defun chn-python-keys ()
-  (local-set-key (kbd "C-M-j") 'backward-word)
-  (local-set-key (kbd "M-j") 'backward-char))
-
-(add-hook 'php-mode-hook 'clean-php-mode)
-(add-hook 'php-mode-hook 'chn-python-keys)
-
-
 ;;; Web-Mode
 
 (require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
