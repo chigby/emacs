@@ -39,6 +39,7 @@
 
 ;;; Web-Mode
 
+(package-require 'web-mode)
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
