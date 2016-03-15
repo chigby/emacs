@@ -93,3 +93,6 @@
 ;;  smtpmail-queue-dir "~/Mail/chn/Queue/cur")
 
 (global-set-key (kbd "C-c m") 'mu4e)
+
+(define-key mu4e-main-mode-map (kbd ".") 'mu4e-update-mail-and-index)
+(define-key mu4e-headers-mode-map (kbd ".") 'mu4e-update-mail-and-index)
