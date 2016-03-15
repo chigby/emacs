@@ -54,6 +54,7 @@
       '(("ctemplate"    . "\\.inc\\'")
         ("django" . "/django.*\\.html\\'")
         ("django" . "/littleweaverweb.*\\.html\\'")
+        ("django" . "/muckrack.*\\.html\\'")
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
