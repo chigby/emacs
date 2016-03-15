@@ -186,7 +186,10 @@
 (yas-global-mode 1)
 (defun chn-term-mode-hook ()
   (yas-minor-mode -1))
+(defun chn-shell-mode-hook ()
+  (yas-minor-mode -1))
 (add-hook 'term-mode-hook 'chn-term-mode-hook)
+(add-hook 'shell-mode-hook 'chn-shell-mode-hook)
 
 (setq uniquify-buffer-name-style 'reverse)
 (setq uniquify-separator "/")
