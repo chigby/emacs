@@ -14,13 +14,13 @@
 (setenv "MANPATH" (shell-command-to-string "manpath"))
 
 ;; Autosave and Backup
-(setq autosave-dir (expand-file-name (concat emacs-root "autosave")))
+(setq autosave-dir (expand-file-name (concat emacs-root "autosave/")))
 (setq backup-dir (expand-file-name (concat emacs-root "backup")))
-(if (file-directory-p backup-dir)
-    (progn
-      (setq backup-directory-alist (list (cons ".*" backup-dir)))
-      (setq tramp-backup-directory-alist backup-directory-alist))
-  (message (concat "Directory does not exist: " backup-dir)))
+(if (not (file-directory-p backup-dir))
+    (make-directory backup-dir t))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq tramp-backup-directory-alist backup-directory-alist)
+
 (if (not (file-directory-p autosave-dir))
     (make-directory autosave-dir t))
 (setq auto-save-list-file-prefix autosave-dir)
