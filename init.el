@@ -10,6 +10,8 @@
 (add-to-list 'load-path (concat emacs-root "lisp"))
 (add-to-list 'load-path (concat emacs-root "site-lisp"))
 
+(setq custom-file (concat emacs-root "custom.el"))
+
 (load-library "paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "functions") ;; my own one-off functions
 (load-library "packages") ;; install packages from melpa, etc.
@@ -25,3 +27,6 @@
 (load-library "misc") ;; hard-to-classify or not-yet-classified
 
 (eshell) ;; begin with a shell
+
+;; Load custom settings
+(load custom-file 'noerror)
