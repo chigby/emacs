@@ -18,14 +18,14 @@
   (setq default-frame-alist '((cursor-type . box))))
 
 (defun x-font-setup ()
-  (set-fontset-font "fontset-default" 'symbol "Liberation Mono-9")
-  (set-face-attribute 'default nil :font "Liberation Mono-9")
+  (set-fontset-font "fontset-default" 'symbol "Ubuntu Mono-12")
+  (set-face-attribute 'default nil :font "Ubuntu Mono-12")
   (setq default-frame-alist '(
-                              (font . "Liberation Mono-9")
+                              (font . "Ubuntu Mono-12")
                               ))
 
   (setq initial-frame-alist '(
-                              (font . "Liberation Mono-9")
+                              (font . "Ubuntu Mono-12")
                               )))
 
 (cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0))
