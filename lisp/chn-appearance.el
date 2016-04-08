@@ -52,6 +52,7 @@
                      line)
                     'face 'linum)))
 
+(set-face-attribute 'linum nil :weight 'normal)
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 100)
 
