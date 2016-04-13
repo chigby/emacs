@@ -259,3 +259,6 @@
 (setq calc-settings-file (concat emacs-root "lisp/calc-settings.el"))
 
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+
+(package-require 'salt-mode)
+(add-to-list 'auto-mode-alist '("\\.sls\\'" . salt-mode))
