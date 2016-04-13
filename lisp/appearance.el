@@ -60,6 +60,7 @@
 (add-to-list 'display-buffer-alist '("\\*Apropos\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Ack-and-a-half\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*ag search" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*ag dired\\*" chn-temp-window))
 
 ;; Sometimes emacs smart-splitting is a little too smart.
 (setq split-height-threshold 90)
