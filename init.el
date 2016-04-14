@@ -12,19 +12,19 @@
 
 (setq custom-file (concat emacs-root "custom.el"))
 
-(load-library "paths") ;; exec paths for python, macports; backup and autosave dirs
-(load-library "functions") ;; my own one-off functions
-(load-library "packages") ;; install packages from melpa, etc.
-(load-library "twine-mode") ;; my twine mode
-(load-library "modes") ;; mode-specific settings
-(load-library "keys") ;; my own keybindings
-(load-library "mail") ;; mu4e configuration
-(load-library "appearance") ;; fonts, colors, themes
+(load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
+(load-library "chn-functions") ;; my own one-off functions
+(load-library "chn-packages") ;; install packages from melpa, etc.
+(load-library "chn-twine-mode") ;; my twine mode
+(load-library "chn-modes") ;; mode-specific settings
+(load-library "chn-keys") ;; my own keybindings
+(load-library "chn-mail") ;; mu4e configuration
+(load-library "chn-appearance") ;; fonts, colors, themes
 (load-library "chn-ag") ;; the silver searcher settings
-(load-library "tabs") ;; special settings for the "tab" key
-(load-library "editing") ;; text editing niceties
-(load-library "codestyle") ;; text editing niceties
-(load-library "misc") ;; hard-to-classify or not-yet-classified
+(load-library "chn-tabs") ;; special settings for the "tab" key
+(load-library "chn-editing") ;; text editing niceties
+(load-library "chn-codestyle") ;; text editing niceties
+(load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
 (eshell) ;; begin with a shell
 
