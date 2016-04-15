@@ -1,4 +1,5 @@
-(add-to-list 'custom-theme-load-path (concat emacs-root "themes/emacs-color-theme-solarized"))
+(package-require 'solarized-theme)
+
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message "")
 (dolist (mode '(tool-bar-mode scroll-bar-mode))
@@ -10,7 +11,7 @@
               (set-frame-parameter frame 'background-mode mode)
               (set-terminal-parameter frame 'background-mode mode))
             (enable-theme 'solarized)))
-(load-theme 'solarized t)
+(load-theme 'solarized-light t)
 
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
