@@ -246,11 +246,6 @@
          (with-current-buffer buf
            (ansi-color-apply-on-region (point-min) (point-max))))))
 
-(package-require 'evil)
-(require 'evil)
-(setq evil-default-cursor 'box)
-(setq evil-default-state 'emacs)
-
 (package-require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
