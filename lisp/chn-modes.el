@@ -223,16 +223,9 @@
 (require 'twine-mode)
 (add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
 
-(require 'w3m-load)
-(defun chn-w3m-mode-hook ()
-  (yas-minor-mode -1))
-(add-hook 'w3m-mode-hook 'chn-w3m-mode-hook)
-
 (setq scss-compile-at-save nil)
 
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
-
-(setq insert-directory-program (executable-find "gls"))
 
 (setq dired-listing-switches "-alh")
 
