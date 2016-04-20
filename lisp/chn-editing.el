@@ -4,3 +4,6 @@
 (package-require 'syntax-subword)
 (global-syntax-subword-mode)
 (setq syntax-subword-skip-spaces 'consistent)
+
+(package-require 'undo-tree)
+(global-undo-tree-mode)
