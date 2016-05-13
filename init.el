@@ -21,6 +21,7 @@
 (load-library "chn-mail") ;; mu4e configuration
 (load-library "chn-appearance") ;; fonts, colors, themes
 (load-library "chn-ag") ;; the silver searcher settings
+(load-library "chn-git") ;; git settings (not magit)
 (load-library "chn-tabs") ;; special settings for the "tab" key
 (load-library "chn-editing") ;; text editing niceties
 (load-library "chn-codestyle") ;; text editing niceties
