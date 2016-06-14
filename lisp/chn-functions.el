@@ -1,3 +1,9 @@
+(package-require 'dash)
+(package-require 'dash-functional)
+
+(require 'dash)
+(require 'dash-functional)
+
 (defalias 'qrr 'query-replace-regexp)
 
 (defun note ()
@@ -196,11 +202,14 @@
 
 ;; display temporary/help messages in window "1" unless there is only
 ;; 1 window, then pop up another one using emacs default settings.
+(defun right-edge (window) (nth 2 (window-edges window)))
+(defun top-edge (window) (nth 1 (window-edges window)))
+
 (defun chn-temp-window (buffer alist)
   (if (= (length (window-list)) 1)
       (display-buffer-pop-up-window buffer alist)
-    (let ((desired-window  (window-in-direction 'right (frame-first-window) nil 1)))
-      (set-window-buffer desired-window  buffer)
+    (let ((desired-window (-max-by (-on '> 'right-edge) (--filter (= 0 (top-edge it)) (window-list)))))
+      (set-window-buffer desired-window buffer)
       desired-window)))
 
 (defun file-if-exists (path)
