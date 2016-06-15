@@ -12,9 +12,17 @@
 
 (setq custom-file (concat emacs-root "custom.el"))
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
+(defun package-require (package)
+  (when (not (package-installed-p package))
+    (package-install package)))
+
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
-(load-library "chn-packages") ;; install packages from melpa, etc.
 (load-library "chn-twine-mode") ;; my twine mode
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
