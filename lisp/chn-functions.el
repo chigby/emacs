@@ -206,7 +206,7 @@
 (defun top-edge (window) (nth 1 (window-edges window)))
 
 (defun chn-temp-window (buffer alist)
-  (if (= (length (window-list)) 1)
+  (if (= (count-windows) 1)
       (display-buffer-pop-up-window buffer alist)
     (let ((desired-window (-max-by (-on '> 'right-edge) (--filter (= 0 (top-edge it)) (window-list)))))
       (set-window-buffer desired-window buffer)
