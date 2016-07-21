@@ -63,7 +63,11 @@
 (defun chn-web-mode-keys ()
   (setq web-mode-markup-indent-offset 2)
   (local-set-key (kbd "C-c C-z") 'run-test-file))
+(defun chn-web-mode-yasnippet ()
+  (yas-activate-extra-mode 'html-mode))
+
 (add-hook 'web-mode-hook 'chn-web-mode-keys)
+(add-hook 'web-mode-hook 'chn-web-mode-yasnippet)
 
 (set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
