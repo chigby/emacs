@@ -5,7 +5,8 @@ backup/*
 elpa/*
 tramp
 url/*
-eshell/*
+eshell/lastdir
+eshell/history
 abbrev_defs
 games/*
 tutorial/*

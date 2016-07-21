@@ -1,0 +1,12 @@
+alias thes dict -d  moby-thesaurus $*
+alias portup sudo port selfupdate && sudo port upgrade outdated
+alias rmold find ~/Downloads ~/temp -ctime +30 -delete -print
+alias prold find ~/Downloads ~/temp -ctime +30 -print
+alias proldsize find ~/Downloads ~/temp -ctime +30 -exec du -ch {} +|grep total$
+alias vv du -d1 -k | sort -nr | cut -f2 | gxargs -d '\n' du -sh
+alias ll ls -alh
+
+alias ff find-file $1
+alias FF find-file-other-window $1
+alias v view-file $1
+alias V view-file-other-window $1
