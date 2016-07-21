@@ -7,7 +7,6 @@
 ;;; Python
 
 (defun chn-python-hook ()
-  (smart-tab-mode 1)
   (local-set-key (kbd "C-c C-z") 'run-python-test-file)
   (local-set-key [f6] 'flymake-mode)
   (local-unset-key (kbd "C-j"))
