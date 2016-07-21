@@ -2,6 +2,7 @@
 
 ;;; elm
 (package-require 'elm-mode)
+(setq elm-indent-offset 4)
 
 ;;; Python
 
