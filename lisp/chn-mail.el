@@ -7,7 +7,7 @@
 
 (setq
  mu4e-maildir (concat (getenv "HOME") "/Mail")
- mu4e-get-mail-command "mbsyncwrapper"
+ mu4e-get-mail-command "mbsync --all"
  mu4e-drafts-folder "/chn/[Gmail]/.Drafts"
  mu4e-sent-folder "/chn/[Gmail]/.Sent Mail"
  mu4e-trash-folder "/chn/[Gmail]/.Trash"
