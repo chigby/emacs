@@ -14,6 +14,7 @@
  mu4e-sent-messages-behavior 'delete
  mu4e-headers-skip-duplicates t
  mu4e-confirm-quit nil
+ mu4e-index-update-error-continue nil
  )
 
 (setq
