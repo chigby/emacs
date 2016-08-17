@@ -39,6 +39,7 @@
 (setq web-mode-engines-alist
       '(("ctemplate"    . "\\.inc\\'")
         ("django" . "/django.*\\.html\\'")
+        ("django" . "/mybfinfo.*\\.html\\'")
         ("django" . "/littleweaverweb.*\\.html\\'")
         ("django" . "/muckrack.*\\.html\\'")
         ("erb" . "/ns-www.*\\.html\\'"))
