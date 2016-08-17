@@ -4,21 +4,6 @@
 (package-require 'elm-mode)
 (setq elm-indent-offset 4)
 
-;;; Python
-
-(defun chn-python-hook ()
-  (local-set-key (kbd "C-c C-z") 'run-python-test-file)
-  (local-set-key [f6] 'flymake-mode)
-  (local-unset-key (kbd "C-j"))
-  (local-set-key (kbd "C-j") 'end-of-line-indent)
-  (local-set-key (kbd "\C-c>") 'indent-region)
-  (local-set-key (kbd "\C-c<") 'unindent-region))
-
-(add-hook 'python-mode-hook 'chn-python-hook)
-(package-require 'virtualenvwrapper)
-(require 'virtualenvwrapper)
-(setq venv-location "~/.virtualenvs")
-
 
 ;; javascript
 (setq js-level-indent 2)
