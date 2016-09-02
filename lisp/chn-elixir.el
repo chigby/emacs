@@ -1,0 +1,1 @@
+(package-require 'elixir-mode)
