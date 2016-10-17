@@ -190,10 +190,13 @@
         (shell-command (format "ruby -Itest %s" chn-test-file))
       (message "No test file defined. Try running one."))))
 
+(autoload 'vc-git-root "vc-git")
+
 (defun run-python-test-file ()
   "If we are visiting a test file, run that. Otherwise, run the last one."
   (interactive)
-  (let ((file-name (buffer-file-name (current-buffer))))
+  (let* ((file-name (buffer-file-name (current-buffer)))
+         (default-directory (vc-git-root (file-name-directory file-name))))
     (when (string-match "test_[a-z_]+.py$" file-name)
       (set-test-file file-name))
     (if (boundp 'chn-test-file)
