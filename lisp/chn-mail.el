@@ -1,5 +1,7 @@
 (file-if-exists "~/.zshrc")
 
+;; this file (and mu4e itself) is installed with the command
+;; sudo port install mu +emacs
 (add-to-list 'load-path (file-if-exists "/opt/local/share/emacs/site-lisp/mu4e"))
 
 (require 'mu4e)
