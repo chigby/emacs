@@ -41,8 +41,10 @@
 (setq web-mode-engines-alist
       '(("ctemplate"    . "\\.inc\\'")
         ("django" . "/django.*\\.html\\'")
+        ("django" . "/lcv.*\\.html\\'")
         ("django" . "/mybfinfo.*\\.html\\'")
         ("django" . "/littleweaverweb.*\\.html\\'")
+        ("django" . "/freedom\.press.*\\.html\\'")
         ("django" . "/muckrack.*\\.html\\'")
         ("go" . "/git/anagnorisis.*\\.html\\'")
         ("go" . "/git/nintharchive.*\\.html\\'")
