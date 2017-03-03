@@ -4,9 +4,11 @@
 (setq ns-use-system-highlight-color nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(require 'cl-lib)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Prevent annoying 'Active processes exist' query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (cl-letf (((symbol-function #'process-list) (lambda ())))
+    ad-do-it))
 
 (setq confirm-kill-emacs #'yes-or-no-p)
 
