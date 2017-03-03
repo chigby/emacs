@@ -1,0 +1,15 @@
+# name: anagnorisis point of interest
+# key: point
+# contributor: Cameron Higby-Naquin
+# comment: insert a hugo-style menu in TOML format
+# --
++++
+title = "${1:Title}"
+scale = "point"
+area = "${2:area}"
+[menu.${2:$(downcase (replace-regexp-in-string "[[:space:]]" "-" yas-text))}]
+  name = "$1"
+  parent = "points"
+  post = "${3:<span class='stub-mark'>♢</span>}"
++++
+$0

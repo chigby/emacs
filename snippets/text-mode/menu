@@ -1,0 +1,9 @@
+# name: hugo menu
+# key: menu
+# contributor: Cameron Higby-Naquin
+# comment: insert a hugo-style menu in TOML format
+# --
+[menu.${1:$$(downcase (replace-regexp-in-string "[[:space:]]" "-" yas-text))}]
+  name = "${2:Name}"
+  parent = "${3:npcs}"
+  post = "${5:<span class='stub-mark'>♢</span>}"

@@ -1,0 +1,15 @@
+# name: anagnorisis npc
+# key: npc
+# contributor: Cameron Higby-Naquin
+# comment: insert a hugo-style menu in TOML format
+# --
++++
+title = "${1:Title}"
+genotype = "${2:unknown}"
+role = "${3:}"
+[menu.${4:$$(downcase (replace-regexp-in-string "[[:space:]]" "-" yas-text))}]
+  name = "$1"
+  parent = "npcs"
+  post = "${5:<span class='stub-mark'>♢</span>}"
++++
+$0
