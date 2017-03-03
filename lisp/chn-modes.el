@@ -235,9 +235,6 @@
          (with-current-buffer buf
            (ansi-color-apply-on-region (point-min) (point-max))))))
 
-(package-require 'haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
 (setq ag-reuse-buffers 't)
 
 (setq calc-settings-file (concat emacs-root "lisp/calc-settings.el"))
