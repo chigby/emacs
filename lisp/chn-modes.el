@@ -44,6 +44,8 @@
         ("django" . "/mybfinfo.*\\.html\\'")
         ("django" . "/littleweaverweb.*\\.html\\'")
         ("django" . "/muckrack.*\\.html\\'")
+        ("go" . "/git/anagnorisis.*\\.html\\'")
+        ("go" . "/git/nintharchive.*\\.html\\'")
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
