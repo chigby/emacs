@@ -45,6 +45,7 @@
         ("django" . "/mybfinfo.*\\.html\\'")
         ("django" . "/littleweaverweb.*\\.html\\'")
         ("django" . "/freedom\.press.*\\.html\\'")
+        ("django" . "/pressfreedom.*\\.html\\'")
         ("django" . "/muckrack.*\\.html\\'")
         ("go" . "/git/anagnorisis.*\\.html\\'")
         ("go" . "/git/nintharchive.*\\.html\\'")
