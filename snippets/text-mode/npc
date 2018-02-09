@@ -5,11 +5,10 @@
 # --
 +++
 title = "${1:Title}"
-genotype = "${2:unknown}"
+phenotype = "${2:unknown}"
 role = "${3:}"
-[menu.${4:$$(downcase (replace-regexp-in-string "[[:space:]]" "-" yas-text))}]
-  name = "$1"
-  parent = "npcs"
-  post = "${5:<span class='stub-mark'>♢</span>}"
+withintitle = "${4:}"
+withinlink = "${4:$(downcase (replace-regexp-in-string "[[:space:]]" "-" yas-text))}.md"
+stub = true
 +++
 $0
