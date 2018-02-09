@@ -1,0 +1,6 @@
+# name: anagnorisis relref
+# key: rr
+# contributor: Cameron Higby-Naquin
+# comment: insert a relative reference to a markdown document
+# --
+[${1:Title}]({{< relref "${1:$(downcase (replace-regexp-in-string "[[:space:]]" "-" (replace-regexp-in-string "[[:punct:]]" "" yas-text)))}.md" >}})
