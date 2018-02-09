@@ -26,7 +26,7 @@
 (load-library "chn-twine-mode") ;; my twine mode
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
-(load-library "chn-mail") ;; mu4e configuration
+;; (load-library "chn-mail") ;; mu4e configuration
 (load-library "chn-appearance") ;; fonts, colors, themes
 (load-library "chn-ag") ;; the silver searcher settings
 (load-library "chn-git") ;; git settings
