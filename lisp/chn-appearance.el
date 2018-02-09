@@ -15,6 +15,9 @@
             (enable-theme 'solarized)))
 (load-theme 'solarized-light t)
 
+(defun w32-font-setup ()
+  (set-default-font "Consolas 12"))
+
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
   (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
@@ -33,6 +36,7 @@
 
 (cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0))
       ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1))
+      ((eq window-system 'w32) (w32-font-setup) (menu-bar-mode -1))
       ((null window-system) (menu-bar-mode -1)))
 
 ;; move cursor one line when going past end of page
