@@ -4,6 +4,16 @@
 (package-require 'elm-mode)
 (setq elm-indent-offset 4)
 
+;; ahk
+(package-require 'ahk-mode)
+
+;; dhall
+(package-require 'dhall-mode)
+(setq dhall-format-at-save nil)
+
+;; powershell
+(package-require 'powershell)
+
 
 ;; javascript
 (setq js-level-indent 2)
