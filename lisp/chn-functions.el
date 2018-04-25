@@ -248,3 +248,25 @@
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(defun chn-dired-create-file (file)
+  "Create a file called FILE.
+If FILE already exists, signal an error."
+  (interactive
+   (list (read-file-name "Create file: " (dired-current-directory))))
+  (let* ((expanded (expand-file-name file))
+         (try expanded)
+         (dir (directory-file-name (file-name-directory expanded)))
+         new)
+    (if (file-exists-p expanded)
+        (error "Cannot create file %s: file exists" expanded))
+    ;; Find the topmost nonexistent parent dir (variable `new')
+    (while (and try (not (file-exists-p try)) (not (equal new try)))
+      (setq new try
+            try (directory-file-name (file-name-directory try))))
+    (when (not (file-exists-p dir))
+      (make-directory dir t))
+    (write-region "" nil expanded t)
+    (when new
+      (dired-add-file new)
+      (dired-move-to-filename))))
