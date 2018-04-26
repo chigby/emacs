@@ -235,7 +235,9 @@
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 
 (setq dired-listing-switches "-alh")
-(define-key dired-mode-map (kbd "_") 'chn-dired-create-file)
+(eval-after-load "dired" '(progn
+  (define-key dired-mode-map (kbd "_") 'chn-dired-create-file) ))
+
 
 ; properly format ansi colors on shell-command
 ; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
