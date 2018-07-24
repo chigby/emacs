@@ -12,7 +12,7 @@
     (revert-buffer t t t)))
 
 (defun chn-python-hook ()
-  (local-set-key (kbd "C-c C-z") 'run-python-test-file)
+  (local-set-key (kbd "C-c C-z") 'run-test-file)
   (local-set-key [f6] 'flymake-mode)
   (local-unset-key (kbd "C-j"))
   (local-set-key (kbd "C-j") 'end-of-line-indent)

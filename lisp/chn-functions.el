@@ -177,31 +177,32 @@
     (fill-paragraph nil)))
 
 (defun set-test-file (filename)
-  "Save the name of a ruby test/spec file for later."
+  "Save the name of a test file for later."
   (setq chn-test-file filename))
 
 (defun run-test-file ()
   "If we are visiting a test file, run that. Otherwise, run the last one."
   (interactive)
   (let ((file-name (buffer-file-name (current-buffer))))
-    (when (string-match "_test.rb$" file-name)
+    (when (string-match "\(_spec.rb\\|_test.rb\\|test_.*\.py\\|_test.py\)$" file-name)
       (set-test-file file-name))
     (if (boundp 'chn-test-file)
-        (shell-command (format "ruby -Itest %s" chn-test-file))
+        (run-test-command chn-test-file)
       (message "No test file defined. Try running one."))))
+
+(defun run-test-command (filename)
+  (let* ((default-directory (vc-git-root (file-name-directory filename))))
+    (when (boundp 'chruby-current-ruby-name)
+      (setenv "GEM_HOME" (expand-file-name (concat default-directory (file-name-as-directory ".gem") (file-name-as-directory (s-replace "-" "/" chruby-current-ruby-name))))))
+    (setenv "GEM_PATH" (getenv "GEM_HOME"))
+    (cond
+     ((file-readable-p "script/test")
+      (shell-command (format "script/test %s" filename)))
+     ((file-readable-p "bin/rails")
+      (shell-command (format "bin/rails test %s" filename)))
+     )))
 
 (autoload 'vc-git-root "vc-git")
-
-(defun run-python-test-file ()
-  "If we are visiting a test file, run that. Otherwise, run the last one."
-  (interactive)
-  (let* ((file-name (buffer-file-name (current-buffer)))
-         (default-directory (vc-git-root (file-name-directory file-name))))
-    (when (string-match "test_[a-z_]+.py$" file-name)
-      (set-test-file file-name))
-    (if (boundp 'chn-test-file)
-        (shell-command (format "./runtest %s" chn-test-file))
-      (message "No test file defined. Try running one."))))
 
 ;; display temporary/help messages in window "1" unless there is only
 ;; 1 window, then pop up another one using emacs default settings.

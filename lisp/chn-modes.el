@@ -62,9 +62,6 @@
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
-(defun chn-web-mode-keys ()
-  (setq web-mode-markup-indent-offset 2)
-  (local-set-key (kbd "C-c C-z") 'run-python-test-file))
 (defun chn-web-mode-yasnippet ()
   (yas-activate-extra-mode 'html-mode))
 
