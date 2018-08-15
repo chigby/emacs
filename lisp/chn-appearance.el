@@ -1,5 +1,3 @@
-(package-require 'solarized-theme)
-
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message "")
 (dolist (mode '(tool-bar-mode scroll-bar-mode))

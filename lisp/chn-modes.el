@@ -1,18 +1,10 @@
 ;;; modes.el -- configuration for various and sundry modes
 
 ;;; elm
-(package-require 'elm-mode)
 (setq elm-indent-offset 4)
 
-;; ahk
-(package-require 'ahk-mode)
-
 ;; dhall
-(package-require 'dhall-mode)
 (setq dhall-format-at-save nil)
-
-;; powershell
-(package-require 'powershell)
 
 
 ;; javascript
@@ -27,14 +19,11 @@
 (add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;; lua
-(package-require 'lua-mode)
 (setq lua-indent-level 2)
 
 
 
 ;;; Web-Mode
-
-(package-require 'web-mode)
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -59,6 +48,7 @@
         ("django" . "/muckrack.*\\.html\\'")
         ("go" . "/git/anagnorisis.*\\.html\\'")
         ("go" . "/git/nintharchive.*\\.html\\'")
+        ("go" . "/projects/chigby\.org.*\\.html\\'")
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
@@ -75,8 +65,6 @@
 
 
 ;;; Ruby
-
-(package-require 'rvm)
 
 ;; Turn on ruby mode for vagrantfiles.
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
@@ -142,7 +130,6 @@
 
 ;;; Puppet
 
-(package-require 'puppet-mode)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
 
@@ -170,7 +157,7 @@
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
                   ack-and-a-half-mode ag-mode mu4e-main-mode mu4e-headers-mode
                   mu4e-view-mode mu4e-compose-mode package-menu-mode
-                  compilation-mode))
+                  compilation-mode messages-mode))
 
 (defadvice linum-on (around linum-on-inhibit-for-modes)
   "Stop the load of linum-mode for some major modes."
@@ -186,7 +173,6 @@
 (setq ido-enable-flex-matching t) ; fuzzy matching
 (setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
 
-(package-require 'yasnippet)
 (require 'yasnippet)
 (yas-global-mode 1)
 (defun chn-term-mode-hook ()
@@ -210,14 +196,12 @@
 (setq auto-mode-alist
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
-(package-require 'markdown-mode)
 (require 'markdown-mode)
 (define-key markdown-mode-map (kbd "<tab>") nil)
 (setq markdown-command
       (concat "python -c \"import sys, markdown2 as m;"
               "print m.markdown(sys.stdin.read()).strip()\""))
 
-(package-require 'yaml-mode)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (defun chn-yaml-keys ()
@@ -235,6 +219,13 @@
 (eval-after-load "dired" '(progn
   (define-key dired-mode-map (kbd "_") 'chn-dired-create-file) ))
 
+(add-hook 'dired-load-hook
+          (lambda ()
+            (load "dired-x")
+            ;; Set dired-x global variables here.  For example:
+            ;; (setq dired-guess-shell-gnutar "gtar")
+            ;; (setq dired-x-hands-off-my-keys nil)
+            ))
 
 ; properly format ansi colors on shell-command
 ; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
@@ -252,5 +243,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
-(package-require 'salt-mode)
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . salt-mode))

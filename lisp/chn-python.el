@@ -1,6 +1,5 @@
 ;;; Python
 
-(package-require 'virtualenvwrapper)
 (require 'virtualenvwrapper)
 (setq venv-location "~/.virtualenvs")
 

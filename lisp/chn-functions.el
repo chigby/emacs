@@ -1,6 +1,3 @@
-(package-require 'dash)
-(package-require 'dash-functional)
-
 (require 'dash)
 (require 'dash-functional)
 
@@ -176,6 +173,9 @@
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
 
+(defun ubuntu-shell-command (command)
+  (shell-command (format "C:\\windows\\system32\\wsl.exe bash -ic \"%s\"" command)))
+
 (defun set-test-file (filename)
   "Save the name of a test file for later."
   (setq chn-test-file filename))
@@ -192,17 +192,25 @@
 
 (defun run-test-command (filename)
   (let* ((default-directory (vc-git-root (file-name-directory filename))))
-    (when (boundp 'chruby-current-ruby-name)
-      (setenv "GEM_HOME" (expand-file-name (concat default-directory (file-name-as-directory ".gem") (file-name-as-directory (s-replace "-" "/" chruby-current-ruby-name))))))
-    (setenv "GEM_PATH" (getenv "GEM_HOME"))
+    ;; (when (boundp 'chruby-current-ruby-name)
+    ;;   (setenv "GEM_HOME" (expand-file-name (concat default-directory (file-name-as-directory ".gem") (file-name-as-directory (s-replace "-" "/" chruby-current-ruby-name))))))
+    ;; (setenv "GEM_PATH" (getenv "GEM_HOME"))
     (cond
-     ((file-readable-p "script/test")
-      (shell-command (format "script/test %s" filename)))
+     ((file-readable-p "scripts/test")
+      (ubuntu-shell-command (format "scripts/test %s" filename)))
      ((file-readable-p "bin/rails")
-      (shell-command (format "bin/rails test %s" filename)))
+      (ubuntu-shell-command (format "bin/rails test %s" filename)))
      )))
 
 (autoload 'vc-git-root "vc-git")
+
+(defun run-powershell ()
+  "Run powershell"
+  (interactive)
+  (async-shell-command "c:/windows/system32/WindowsPowerShell/v1.0/powershell.exe -Command -"
+                       nil
+                       nil)
+  )
 
 ;; display temporary/help messages in window "1" unless there is only
 ;; 1 window, then pop up another one using emacs default settings.
@@ -249,6 +257,18 @@
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(defun titleize-region ($from $to)
+  (interactive "r")
+  (let ((output
+         (s-titleized-words (buffer-substring-no-properties $from $to))))
+  (save-excursion
+    (delete-region $from $to)
+    (goto-char $from)
+    (insert output)
+    )))
+(fset 'npcloc
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([19 109 101 110 117 46 return 67108896 5 2 134217847 1 15 119 105 116 104 105 110 116 105 116 108 101 32 61 32 34 25 34 2 24 24 134217848 116 105 116 108 tab return 1 15 119 105 116 104 105 110 108 105 110 107 32 61 32 34 25 46 109 100 34] 0 "%d")) arg)))
 
 (defun chn-dired-create-file (file)
   "Create a file called FILE.

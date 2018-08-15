@@ -13,13 +13,42 @@
 (setq custom-file (concat emacs-root "custom.el"))
 
 (require 'package)
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+(package-refresh-contents)
 
-(defun package-require (package)
-  (when (not (package-installed-p package))
-    (package-install package)))
+;; Check for and install missing packages
+(add-to-list 'package-selected-packages 'ag)
+(add-to-list 'package-selected-packages 'ahk-mode)
+(add-to-list 'package-selected-packages 'cargo)
+(add-to-list 'package-selected-packages 'dash)
+(add-to-list 'package-selected-packages 'dash-functional)
+(add-to-list 'package-selected-packages 'dhall-mode)
+(add-to-list 'package-selected-packages 'elixir-mode)
+(add-to-list 'package-selected-packages 'elm-mode)
+(add-to-list 'package-selected-packages 'ethan-wspace)
+(add-to-list 'package-selected-packages 'expand-region)
+(add-to-list 'package-selected-packages 'haskell-mode)
+(add-to-list 'package-selected-packages 'js2-mode)
+(add-to-list 'package-selected-packages 'lua-mode)
+(add-to-list 'package-selected-packages 'magit)
+(add-to-list 'package-selected-packages 'markdown-mode)
+(add-to-list 'package-selected-packages 'powershell)
+(add-to-list 'package-selected-packages 'puppet-mode)
+(add-to-list 'package-selected-packages 'rust-mode)
+(add-to-list 'package-selected-packages 'salt-mode)
+(add-to-list 'package-selected-packages 'scala-mode)
+(add-to-list 'package-selected-packages 'solarized-theme)
+(add-to-list 'package-selected-packages 'solarized-theme)
+(add-to-list 'package-selected-packages 'syntax-subword)
+(add-to-list 'package-selected-packages 'undo-tree)
+(add-to-list 'package-selected-packages 'virtualenvwrapper)
+(add-to-list 'package-selected-packages 'web-mode)
+(add-to-list 'package-selected-packages 'yaml-mode)
+(add-to-list 'package-selected-packages 'yasnippet)
+
+(package-install-selected-packages)
 
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions

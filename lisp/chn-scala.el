@@ -1,5 +1,4 @@
 ;; scala-mode2
-(package-require 'scala-mode)
 
 ; turn off tab indenting in scala
 (add-hook 'scala-mode-hook (lambda () (setq indent-tabs-mode nil)))
