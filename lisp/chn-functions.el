@@ -189,15 +189,22 @@
 
 (defun run-test-command (filename)
   (let* ((default-directory (vc-git-root (file-name-directory filename))))
-    ;; (when (boundp 'chruby-current-ruby-name)
-    ;;   (setenv "GEM_HOME" (expand-file-name (concat default-directory (file-name-as-directory ".gem") (file-name-as-directory (s-replace "-" "/" chruby-current-ruby-name))))))
-    ;; (setenv "GEM_PATH" (getenv "GEM_HOME"))
     (cond
+     ((file-readable-p "scripts/test.sh")
+      (execute-bash-script (format "scripts/test.sh %s" filename)))
      ((file-readable-p "scripts/test")
-      (ubuntu-shell-command (format "scripts/test %s" filename)))
+      (shell-command (format "scripts/test %s" filename)))
      ((file-readable-p "bin/rails")
-      (ubuntu-shell-command (format "bin/rails test %s" filename)))
+      (shell-command (format "bin/rails test %s" filename)))
      )))
+
+(defun execute-bash-script (filename)
+  (cond
+   ((eq system-type 'gnu/linux)
+    (shell-command filename))
+   ((eq system-type 'windows-nt)
+    (ubuntu-shell-command filename))
+  ))
 
 (autoload 'vc-git-root "vc-git")
 
@@ -288,3 +295,9 @@ If FILE already exists, signal an error."
     (when new
       (dired-add-file new)
       (dired-move-to-filename))))
+
+(defmacro with-system (type &rest body)
+  "Evaluate BODY if `system-type' equals TYPE."
+  (declare (indent defun))
+  `(when (eq system-type ',type)
+     ,@body))

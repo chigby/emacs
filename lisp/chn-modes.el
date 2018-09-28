@@ -55,7 +55,6 @@
 (defun chn-web-mode-yasnippet ()
   (yas-activate-extra-mode 'html-mode))
 
-(add-hook 'web-mode-hook 'chn-web-mode-keys)
 (add-hook 'web-mode-hook 'chn-web-mode-yasnippet)
 
 (set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
