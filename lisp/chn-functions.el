@@ -20,11 +20,8 @@
 (defun delete-enclosed-text ()
   "Deletes text between a pair of delimiters"
   (interactive)
-  (save-excursion
-    (let (p1 p2)
-      (skip-chars-backward "^(<['\"") (setq p1 (point)) (backward-char 1)
-      (forward-sexp 1) (backward-char 1) (setq p2 (point))
-      (delete-region p1 p2))))
+  (sp-beginning-of-sexp)
+  (sp-kill-hybrid-sexp 1))
 
 (defun goto-match-paren (arg)
      "Go to the matching parenthesis if on parenthesis. Else go to the
