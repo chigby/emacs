@@ -39,6 +39,7 @@
 (add-to-list 'package-selected-packages 'rust-mode)
 (add-to-list 'package-selected-packages 'salt-mode)
 (add-to-list 'package-selected-packages 'scala-mode)
+(add-to-list 'package-selected-packages 'smartparens)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'syntax-subword)
