@@ -57,6 +57,7 @@
 
 (require 'chn-elisp)
 (require 'chn-editing)
+(require 'chn-project)
 (require 'chn-rust)
 
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs

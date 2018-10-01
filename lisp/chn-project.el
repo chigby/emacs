@@ -2,3 +2,6 @@
 
 (use-package ag
   :bind ("M-'" . ag-project))
+
+
+(provide 'chn-project)
