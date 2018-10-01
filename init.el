@@ -36,7 +36,6 @@
 (add-to-list 'package-selected-packages 'elixir-mode)
 (add-to-list 'package-selected-packages 'elm-mode)
 (add-to-list 'package-selected-packages 'ethan-wspace)
-(add-to-list 'package-selected-packages 'expand-region)
 (add-to-list 'package-selected-packages 'haskell-mode)
 (add-to-list 'package-selected-packages 'js2-mode)
 (add-to-list 'package-selected-packages 'lua-mode)
@@ -47,7 +46,6 @@
 (add-to-list 'package-selected-packages 'rust-mode)
 (add-to-list 'package-selected-packages 'salt-mode)
 (add-to-list 'package-selected-packages 'scala-mode)
-(add-to-list 'package-selected-packages 'smartparens)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'syntax-subword)
@@ -57,7 +55,8 @@
 (add-to-list 'package-selected-packages 'yaml-mode)
 (add-to-list 'package-selected-packages 'yasnippet)
 
-(package-install-selected-packages)
+(require 'chn-elisp)
+(require 'chn-editing)
 
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
@@ -73,7 +72,6 @@
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-python") ;; python settings
 (load-library "chn-tabs") ;; special settings for the "tab" key
-(load-library "chn-editing") ;; text editing niceties
 (load-library "chn-codestyle") ;; text editing niceties
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
