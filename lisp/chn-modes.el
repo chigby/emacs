@@ -37,6 +37,14 @@
 (add-to-list 'auto-mode-alist '("\\.inc?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
+(defun chn/check-hugo ()
+  (let ((project-root (vc-git-root buffer-file-name)))
+    (when (and (file-directory-p (concat project-root "content"))
+               (file-directory-p (concat project-root "layouts")))
+      (web-mode-set-engine "go"))))
+
+(add-hook 'web-mode-hook 'chn/check-hugo)
+
 (setq web-mode-engines-alist
       '(("ctemplate"    . "\\.inc\\'")
         ("django" . "/django.*\\.html\\'")
@@ -46,9 +54,6 @@
         ("django" . "/freedom\.press.*\\.html\\'")
         ("django" . "/pressfreedom.*\\.html\\'")
         ("django" . "/muckrack.*\\.html\\'")
-        ("go" . "/git/anagnorisis.*\\.html\\'")
-        ("go" . "/git/nintharchive.*\\.html\\'")
-        ("go" . "/projects/chigby\.org.*\\.html\\'")
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
