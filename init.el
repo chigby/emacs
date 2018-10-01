@@ -27,12 +27,12 @@
 ;; manually.
 (setq use-package-always-ensure t)
 
+(require 'chn-lib)
+
 ;; Check for and install missing packages
 (add-to-list 'package-selected-packages 'ag)
 (add-to-list 'package-selected-packages 'ahk-mode)
 (add-to-list 'package-selected-packages 'cargo)
-(add-to-list 'package-selected-packages 'dash)
-(add-to-list 'package-selected-packages 'dash-functional)
 (add-to-list 'package-selected-packages 'dhall-mode)
 (add-to-list 'package-selected-packages 'elixir-mode)
 (add-to-list 'package-selected-packages 'elm-mode)

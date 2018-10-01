@@ -1,6 +1,3 @@
-(require 'dash)
-(require 'dash-functional)
-
 (defalias 'qrr 'query-replace-regexp)
 
 (defun note ()
@@ -228,9 +225,6 @@
       (set-window-buffer desired-window buffer)
       desired-window)))
 
-(defun file-if-exists (path)
-  (if (file-exists-p path) path nil))
-
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
   (interactive "^")
@@ -295,9 +289,3 @@ If FILE already exists, signal an error."
     (when new
       (dired-add-file new)
       (dired-move-to-filename))))
-
-(defmacro with-system (type &rest body)
-  "Evaluate BODY if `system-type' equals TYPE."
-  (declare (indent defun))
-  `(when (eq system-type ',type)
-     ,@body))
