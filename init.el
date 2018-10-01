@@ -13,10 +13,19 @@
 (setq custom-file (concat emacs-root "custom.el"))
 
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
-(package-refresh-contents)
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+(add-to-list 'package-selected-packages 'use-package)
+(package-install-selected-packages)
+
+(require 'use-package)
+
+;; Install every declared package, instead of making us do that
+;; manually.
+(setq use-package-always-ensure t)
 
 ;; Check for and install missing packages
 (add-to-list 'package-selected-packages 'ag)
