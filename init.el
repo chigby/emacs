@@ -65,7 +65,6 @@
 (load-library "chn-keys") ;; my own keybindings
 ;; (load-library "chn-mail") ;; mu4e configuration
 (load-library "chn-appearance") ;; fonts, colors, themes
-(load-library "chn-ag") ;; the silver searcher settings
 (load-library "chn-git") ;; git settings
 (load-library "chn-js") ;; javascript settings
 (load-library "chn-haskell") ;; haskell settings
