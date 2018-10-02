@@ -10,10 +10,13 @@
   :commands 'er/expand-region
   :bind ("C-=" . er/expand-region))
 
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :config (global-undo-tree-mode))
+
 (global-syntax-subword-mode)
 (setq syntax-subword-skip-spaces 'consistent)
 (setq save-interprogram-paste-before-kill t)
-(global-undo-tree-mode)
 
 ;; Duplicate start of line or region with C-<end>.
 ;; From http://www.emacswiki.org/emacs/DuplicateStartOfLineOrRegion

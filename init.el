@@ -49,7 +49,6 @@
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'syntax-subword)
-(add-to-list 'package-selected-packages 'undo-tree)
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
 (add-to-list 'package-selected-packages 'web-mode)
 (add-to-list 'package-selected-packages 'yaml-mode)
