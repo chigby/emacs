@@ -1,4 +1,4 @@
-;; init.el
+;;; init.el --- No small task, to awaken a universe from slumber.
 
 ;; The Xytaxehedron held to the stars,
 ;; The incantation uttered with eager tongues,
