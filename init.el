@@ -74,10 +74,12 @@
 (load-library "chn-haskell") ;; haskell settings
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-python") ;; python settings
-(load-library "chn-tabs") ;; special settings for the "tab" key
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
 (eshell) ;; begin with a shell
 
 ;; Load custom settings
 (load custom-file 'noerror)
+
+(add-hook 'kill-buffer-query-functions
+          (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
