@@ -26,6 +26,9 @@
 ;; Install every declared package, instead of making us do that
 ;; manually.
 (setq use-package-always-ensure t)
+;; "Diminished modes are minor modes with no modeline display."
+;; We want this feature of use-package.
+(use-package diminish)
 
 (require 'chn-lib)
 
