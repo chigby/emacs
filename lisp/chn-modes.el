@@ -1,25 +1,18 @@
 ;;; modes.el -- configuration for various and sundry modes
 
 ;;; elm
-(setq elm-indent-offset 4)
+
 
 ;; dhall
 (setq dhall-format-at-save nil)
 
 
-;; javascript
-(setq js-level-indent 2)
-(setq js-indent-level 2)
-
 ;; coffeescript
 (defun coffee-custom ()
   "coffee-mode-hook"
  (set (make-local-variable 'tab-width) 2))
 
 (add-hook 'coffee-mode-hook 'coffee-custom)
-
-;; lua
-(setq lua-indent-level 2)
 
 
 
@@ -72,9 +65,6 @@
 (defun chn-ruby-keys ()
   (local-set-key (kbd "C-c C-z") 'run-test-file))
 (add-hook 'ruby-mode-hook 'chn-ruby-keys)
-
-;; turn off overzealous indentation
-(setq ruby-deep-indent-paren nil)
 
 
 ;;; Eshell

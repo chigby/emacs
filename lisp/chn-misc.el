@@ -1,5 +1,3 @@
-(setq-default indent-tabs-mode nil)
-
 (setq column-number-mode t)
 (setq ns-use-system-highlight-color nil)
 (fset 'yes-or-no-p 'y-or-n-p)
