@@ -14,8 +14,6 @@
   :diminish undo-tree-mode
   :config (global-undo-tree-mode))
 
-(global-syntax-subword-mode)
-(setq syntax-subword-skip-spaces 'consistent)
 (setq save-interprogram-paste-before-kill t)
 
 ;; Duplicate start of line or region with C-<end>.

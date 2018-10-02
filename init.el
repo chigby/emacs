@@ -48,7 +48,6 @@
 (add-to-list 'package-selected-packages 'scala-mode)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'solarized-theme)
-(add-to-list 'package-selected-packages 'syntax-subword)
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
 (add-to-list 'package-selected-packages 'web-mode)
 (add-to-list 'package-selected-packages 'yaml-mode)
@@ -58,6 +57,7 @@
 (require 'chn-project)
 (require 'chn-rust)
 (require 'chn-snippets)
+(require 'chn-navigation)
 
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
