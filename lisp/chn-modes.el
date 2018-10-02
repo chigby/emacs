@@ -57,11 +57,6 @@
         ("erb" . "/ns-www.*\\.html\\'"))
 )
 
-(defun chn-web-mode-yasnippet ()
-  (yas-activate-extra-mode 'html-mode))
-
-(add-hook 'web-mode-hook 'chn-web-mode-yasnippet)
-
 (set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
 (set-face-attribute 'web-mode-html-attr-name-face nil :inherit 'font-lock-function-name-face :foreground nil)
@@ -176,15 +171,6 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching
 (setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
-
-(require 'yasnippet)
-(yas-global-mode 1)
-(defun chn-term-mode-hook ()
-  (yas-minor-mode -1))
-(defun chn-shell-mode-hook ()
-  (yas-minor-mode -1))
-(add-hook 'term-mode-hook 'chn-term-mode-hook)
-(add-hook 'shell-mode-hook 'chn-shell-mode-hook)
 
 (setq uniquify-buffer-name-style 'reverse)
 (setq uniquify-separator "/")

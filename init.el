@@ -53,12 +53,12 @@
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
 (add-to-list 'package-selected-packages 'web-mode)
 (add-to-list 'package-selected-packages 'yaml-mode)
-(add-to-list 'package-selected-packages 'yasnippet)
 
 (require 'chn-elisp)
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-rust)
+(require 'chn-snippets)
 
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
