@@ -12,3 +12,5 @@ games/*
 tutorial/*
 themes/*
 custom.el
+/ido.last
+/recentf
