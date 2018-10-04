@@ -15,47 +15,6 @@
 (add-hook 'coffee-mode-hook 'coffee-custom)
 
 
-
-;;; Web-Mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.inc?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-
-(defun chn/check-hugo ()
-  (let ((project-root (vc-git-root buffer-file-name)))
-    (when (and (file-directory-p (concat project-root "content"))
-               (file-directory-p (concat project-root "layouts")))
-      (web-mode-set-engine "go"))))
-
-(add-hook 'web-mode-hook 'chn/check-hugo)
-
-(setq web-mode-engines-alist
-      '(("ctemplate"    . "\\.inc\\'")
-        ("django" . "/django.*\\.html\\'")
-        ("django" . "/lcv.*\\.html\\'")
-        ("django" . "/mybfinfo.*\\.html\\'")
-        ("django" . "/littleweaverweb.*\\.html\\'")
-        ("django" . "/freedom\.press.*\\.html\\'")
-        ("django" . "/pressfreedom.*\\.html\\'")
-        ("django" . "/muckrack.*\\.html\\'")
-        ("erb" . "/ns-www.*\\.html\\'"))
-)
-
-(set-face-attribute 'web-mode-html-tag-face nil :inherit 'font-lock-function-name-face :foreground nil)
-(set-face-attribute 'web-mode-html-tag-bracket-face nil :inherit 'default :foreground nil)
-(set-face-attribute 'web-mode-html-attr-name-face nil :inherit 'font-lock-function-name-face :foreground nil)
-(set-face-attribute 'web-mode-symbol-face nil :inherit 'font-lock-constant-face :foreground nil)
-
-
 ;;; Ruby
 
 ;; Turn on ruby mode for vagrantfiles.

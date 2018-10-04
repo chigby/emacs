@@ -50,7 +50,6 @@
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'solarized-theme)
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
-(add-to-list 'package-selected-packages 'web-mode)
 (add-to-list 'package-selected-packages 'yaml-mode)
 
 (require 'chn-elisp)
@@ -58,6 +57,7 @@
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-rust)
+(require 'chn-html)
 (require 'chn-snippets)
 (require 'chn-navigation)
 (require 'chn-codestyle)
