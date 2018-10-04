@@ -36,14 +36,18 @@
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(setq linum-format
-      (lambda (line)
-        (propertize (format
-                     (let ((w (length (number-to-string
-                                       (count-lines (point-min) (point-max))))))
-                       (concat "%" (number-to-string w) "d "))
-                     line)
-                    'face 'linum)))
+;; Line numbers in buffers
+(global-linum-mode t)
+(setq linum-format 'dynamic)
+
+(setq linum-mode-inhibit-modes-list
+      '(term-mode eshell-mode comint-mode w3m-mode shell-mode
+                  ag-mode mu4e-main-mode mu4e-headers-mode
+                  mu4e-view-mode mu4e-compose-mode package-menu-mode
+                  compilation-mode messages-mode magit-status-mode))
+(defun linum-on ()
+  (unless (or (minibufferp) (member major-mode linum-mode-inhibit-modes-list))
+    (linum-mode 1)))
 
 (set-face-attribute 'linum nil :weight 'normal)
 

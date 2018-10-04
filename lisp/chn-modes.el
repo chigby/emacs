@@ -142,20 +142,6 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'chn-text-mode-keys)
 
-(setq linum-mode-inhibit-modes-list
-      '(term-mode eshell-mode comint-mode w3m-mode shell-mode eww-mode
-                  ack-and-a-half-mode ag-mode mu4e-main-mode mu4e-headers-mode
-                  mu4e-view-mode mu4e-compose-mode package-menu-mode
-                  compilation-mode messages-mode))
-
-(defadvice linum-on (around linum-on-inhibit-for-modes)
-  "Stop the load of linum-mode for some major modes."
-    (unless (member major-mode linum-mode-inhibit-modes-list)
-      ad-do-it))
-
-(ad-activate 'linum-on)
-(global-linum-mode t)
-
 (autoload 'awk-mode "cc-mode" nil t)
 
 (ido-mode t)
