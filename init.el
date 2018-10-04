@@ -34,7 +34,6 @@
 
 ;; Check for and install missing packages
 (add-to-list 'package-selected-packages 'ahk-mode)
-(add-to-list 'package-selected-packages 'cargo)
 (add-to-list 'package-selected-packages 'dhall-mode)
 (add-to-list 'package-selected-packages 'elixir-mode)
 (add-to-list 'package-selected-packages 'elm-mode)
