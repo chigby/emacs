@@ -12,13 +12,19 @@
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message nil)
 
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (let ((mode (if (display-graphic-p frame) 'light 'dark)))
-              (set-frame-parameter frame 'background-mode mode)
-              (set-terminal-parameter frame 'background-mode mode))
-            (enable-theme 'solarized)))
-(load-theme 'solarized-light t)
+;; Themes
+(use-package solarized-theme)
+(use-package base16-theme)
+
+(defun light-theme ()
+  "A low-contrast light theme to combat screen glare"
+  (interactive)
+  (load-theme 'solarized-light t))
+
+(defun dark-theme ()
+  "A dark theme to combat night-blindness"
+  (interactive)
+  (load-theme 'base16-materia t))
 
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
