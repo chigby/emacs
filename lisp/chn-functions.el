@@ -5,6 +5,12 @@
   (interactive)
   (dired "~/Dropbox/notesy"))
 
+(defun dot-emacs ()
+  "Return to the sanctum"
+  (interactive)
+  (dired emacs-root))
+(global-set-key (kbd "C-<f6>") 'dot-emacs)
+
 (defun prev-window ()
   (interactive)
   (other-window -1))
