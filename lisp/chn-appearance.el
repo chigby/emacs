@@ -2,7 +2,7 @@
 
 (when window-system
   (setq frame-title-format '("" "%f - " invocation-name "@" system-name))
-  (-bar-mode -1)
+  (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (mouse-wheel-mode t)
   (blink-cursor-mode t)
