@@ -61,7 +61,7 @@
     (end-of-line))
   (newline-and-indent))
 
-(defun open-line (&optional abovep)
+(defun vi-open-line (&optional abovep)
   "Insert a newline below the current line and put point at beginning.
 With a prefix argument, insert a newline above the current line."
   (interactive "P")
