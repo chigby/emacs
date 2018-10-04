@@ -1,9 +1,16 @@
-(setq inhibit-splash-screen t)
-(setq initial-scratch-message "")
-(dolist (mode '(tool-bar-mode scroll-bar-mode))
-  (when (fboundp mode) (funcall mode -1)))
+(menu-bar-mode -1)
 
-(setq frame-title-format '("" "%f - " invocation-name "@" system-name))
+(when window-system
+  (setq frame-title-format '("" "%f - " invocation-name "@" system-name))
+  (-bar-mode -1)
+  (scroll-bar-mode -1)
+  (mouse-wheel-mode t)
+  (blink-cursor-mode t)
+  (setq blink-cursor-blinks 100))
+
+(setq column-number-mode t)
+(setq inhibit-splash-screen t)
+(setq initial-scratch-message nil)
 
 (add-hook 'after-make-frame-functions
           (lambda (frame)
@@ -39,8 +46,6 @@
                     'face 'linum)))
 
 (set-face-attribute 'linum nil :weight 'normal)
-(blink-cursor-mode t)
-(setq blink-cursor-blinks 100)
 
 (add-to-list 'display-buffer-alist '("\\*Help\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Shell Command Output\\*" chn-temp-window))
