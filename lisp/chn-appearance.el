@@ -13,29 +13,10 @@
             (enable-theme 'solarized)))
 (load-theme 'solarized-light t)
 
-(defun w32-font-setup ()
-  (set-default-font "Consolas 12"))
-
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
   (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
   (setq default-frame-alist '((cursor-type . box))))
-
-(defun x-font-setup ()
-  (set-fontset-font "fontset-default" 'symbol "Ubuntu Mono-12")
-  (set-face-attribute 'default nil :font "Ubuntu Mono-12")
-  (setq default-frame-alist '(
-                              (font . "Ubuntu Mono-12")
-                              ))
-
-  (setq initial-frame-alist '(
-                              (font . "Ubuntu Mono-12")
-                              )))
-
-(cond ((eq window-system 'ns) (ns-font-setup) (set-fringe-mode 0))
-      ((eq window-system 'x) (x-font-setup) (menu-bar-mode -1))
-      ((eq window-system 'w32) (w32-font-setup) (menu-bar-mode -1))
-      ((null window-system) (menu-bar-mode -1)))
 
 ;; move cursor one line when going past end of page
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/

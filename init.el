@@ -62,6 +62,12 @@
 (require 'chn-navigation)
 (require 'chn-codestyle)
 
+(load-file (expand-file-name
+            (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")
+                  ((eq system-type 'gnu/linux) "lisp/chn-gnu.el")
+                  (t "default-system.el"))
+            user-emacs-directory))
+
 (load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-twine-mode") ;; my twine mode
@@ -83,3 +89,5 @@
 
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
+
+(load (expand-file-name "local.el" user-emacs-directory) 'no-error)

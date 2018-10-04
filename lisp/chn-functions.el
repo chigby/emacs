@@ -211,14 +211,6 @@
 
 (autoload 'vc-git-root "vc-git")
 
-(defun run-powershell ()
-  "Run powershell"
-  (interactive)
-  (async-shell-command "c:/windows/system32/WindowsPowerShell/v1.0/powershell.exe -Command -"
-                       nil
-                       nil)
-  )
-
 ;; display temporary/help messages in window "1" unless there is only
 ;; 1 window, then pop up another one using emacs default settings.
 (defun right-edge (window) (nth 2 (window-edges window)))
