@@ -54,6 +54,7 @@
 (add-to-list 'package-selected-packages 'yaml-mode)
 
 (require 'chn-elisp)
+(require 'chn-general)
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-rust)

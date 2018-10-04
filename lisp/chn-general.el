@@ -30,3 +30,5 @@
 (setq save-interprogram-paste-before-kill t)
 
 (transient-mark-mode t)
+
+(provide 'chn-general)
