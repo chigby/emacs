@@ -1,22 +1,24 @@
-;;; Python
+;;; chn-python.el --- The programmable pseudonatural
 
-(require 'virtualenvwrapper)
-(setq venv-location "~/.virtualenvs")
+(use-package python
+  :commands python-mode
+  :config
+  (use-package virtualenvwrapper
+    :commands venv-workon
+    :init
+    (setq venv-location "~/.virtualenvs"))
+  (bind-key "C-c C-z" nil python-mode-map) ;; used for running tests
+  (bind-key "C-j" 'end-of-line-indent python-mode-map)
+  (bind-key "C-c >" 'indent-region python-mode-map)
+  (bind-key "C-c <" 'unindent-region python-mode-map))
 
-(defun python-format ()
-  (interactive)
-  (when (eq major-mode 'python-mode)
-    (shell-command
-     (format "yapf --in-place %s" (shell-quote-argument  (buffer-file-name))))
-    (revert-buffer t t t)))
+(use-package docker-tramp)
 
-(defun chn-python-hook ()
-  (local-set-key (kbd "C-c C-z") 'run-test-file)
-  (local-set-key [f6] 'flymake-mode)
-  (local-unset-key (kbd "C-j"))
-  (local-set-key (kbd "C-j") 'end-of-line-indent)
-  (local-set-key (kbd "\C-c>") 'indent-region)
-  (local-set-key (kbd "\C-c<") 'unindent-region)
-  (local-set-key (kbd "C-c C-a") 'python-format))
+(defun module-spec-from-filename (filename)
+  (message filename)
+  (let* ((root-dir (expand-file-name (vc-git-root filename))))
+    (s-replace-all
+     `(("/" . ".") (,root-dir . "") (".py" . ""))
+     filename)))
 
-(add-hook 'python-mode-hook 'chn-python-hook)
+(provide 'chn-python)
