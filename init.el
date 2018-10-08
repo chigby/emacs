@@ -36,7 +36,6 @@
 (add-to-list 'package-selected-packages 'ahk-mode)
 (add-to-list 'package-selected-packages 'elixir-mode)
 (add-to-list 'package-selected-packages 'elm-mode)
-(add-to-list 'package-selected-packages 'haskell-mode)
 (add-to-list 'package-selected-packages 'js2-mode)
 (add-to-list 'package-selected-packages 'lua-mode)
 (add-to-list 'package-selected-packages 'magit)
@@ -53,6 +52,7 @@
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-rust)
+(require 'chn-haskell)
 (require 'chn-html)
 (require 'chn-snippets)
 (require 'chn-navigation)
@@ -73,7 +73,6 @@
 (load-library "chn-appearance") ;; fonts, colors, themes
 (load-library "chn-git") ;; git settings
 (load-library "chn-js") ;; javascript settings
-(load-library "chn-haskell") ;; haskell settings
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-python") ;; python settings
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified

@@ -1,6 +1,7 @@
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;; chn-haskell.el --- "We must use this because Hask is not a category"
 
-;; (package-require 'idris-mode)
-;; (require 'idris-mode)
-;; (add-to-list 'auto-mode-alist '("\\.idr$" . idris-mode))
-;; (setup-haskell-arrows 'idris-mode idris-mode-map)
+(use-package haskell-mode
+  :config
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent))
+
+(provide 'chn-haskell)
