@@ -4,7 +4,9 @@
 
 
 ;; dhall
-(setq dhall-format-at-save nil)
+(use-package dhall-mode
+  :config
+  (setq dhall-format-at-save nil))
 
 
 ;; coffeescript
