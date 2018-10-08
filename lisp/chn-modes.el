@@ -116,19 +116,6 @@
 
 (setq-default ispell-program-name "aspell")
 
-;; (autoload 'markdown-mode "markdown-mode"
-;;   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
-
-(require 'markdown-mode)
-(define-key markdown-mode-map (kbd "<tab>") nil)
-(setq markdown-command
-      (concat "python -c \"import sys, markdown2 as m;"
-              "print m.markdown(sys.stdin.read()).strip()\""))
-
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (defun chn-yaml-keys ()
