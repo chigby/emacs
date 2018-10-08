@@ -44,7 +44,6 @@
 (add-to-list 'package-selected-packages 'markdown-mode)
 (add-to-list 'package-selected-packages 'powershell)
 (add-to-list 'package-selected-packages 'puppet-mode)
-(add-to-list 'package-selected-packages 'rust-mode)
 (add-to-list 'package-selected-packages 'salt-mode)
 (add-to-list 'package-selected-packages 'scala-mode)
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
