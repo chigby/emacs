@@ -58,6 +58,7 @@
 (require 'chn-snippets)
 (require 'chn-navigation)
 (require 'chn-codestyle)
+(require 'chn-testing)
 
 (load-file (expand-file-name
             (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")

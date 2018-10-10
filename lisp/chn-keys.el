@@ -48,3 +48,4 @@
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file) ; was ido-find-file-read-only
 
 (global-set-key (kbd "C-c C-z") 'run-test-file)
+(global-set-key (kbd "C-c t") 'run-nearest-test)

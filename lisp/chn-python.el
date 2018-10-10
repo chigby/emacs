@@ -15,7 +15,6 @@
 (use-package docker-tramp)
 
 (defun module-spec-from-filename (filename)
-  (message filename)
   (let* ((root-dir (expand-file-name (vc-git-root filename))))
     (s-replace-all
      `(("/" . ".") (,root-dir . "") (".py" . ""))
