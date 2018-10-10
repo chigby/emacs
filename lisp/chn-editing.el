@@ -2,9 +2,14 @@
 
 (use-package smartparens
   :diminish smartparens-mode
+  :commands
+  smartparens-mode
+  smartparens-strict-mode
+  sp-local-pair
   :config
   (require 'smartparens-config)
-  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil))
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-pair "(" ")" :wrap "C-("))
 
 (use-package expand-region
   :commands 'er/expand-region
