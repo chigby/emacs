@@ -1,19 +1,6 @@
 ;; Command is meta in OS X.
 (setq ns-command-modifier (quote meta))
 
-;; taken from http://xahlee.org/emacs/effective_emacs.html -- try this one out??
-(global-set-key (kbd "M-j") 'backward-char) ; was indent-new-comment-line
-(global-set-key (kbd "M-l") 'forward-char)  ; was downcase-word
-(global-set-key (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
-(global-set-key (kbd "M-k") 'next-line) ; was kill-sentence
-
-;; the below have also been forward-word, forward-same-syntax and
-;; forward-to-word (backward: mutatis mutandis).  Not sure which is
-;; best.
-
-(global-set-key (kbd "C-M-j") 'backward-word) ; was comment-indent-new-line
-(global-set-key (kbd "C-M-l") 'forward-word)  ; was reposition-window
-
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
 (global-set-key (kbd "M-8") 'goto-match-paren)
 
