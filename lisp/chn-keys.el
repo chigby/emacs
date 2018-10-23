@@ -28,11 +28,8 @@
 
 (global-set-key (kbd "M-=") 'count-words) ; was count-words-region
 
-(global-set-key (kbd "C-x C-j") 'dired-jump) ; was count-words-region
-
 (global-set-key "\C-x~" 'set-80-columns)
 ;(global-set-key "\C-x M-q" 'unfill-paragraph)
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file) ; was ido-find-file-read-only
 
 (global-set-key (kbd "C-c C-z") 'run-test-file)
 (global-set-key (kbd "C-c t") 'run-nearest-test)
