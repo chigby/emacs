@@ -10,9 +10,6 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "M-]") 'other-window)
-(global-set-key (kbd "M-[") 'prev-window)
-
 (global-set-key (kbd "\C-c>") 'indent-region)
 (global-set-key (kbd "\C-c<") 'unindent-region)
 

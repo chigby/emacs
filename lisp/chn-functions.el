@@ -11,10 +11,6 @@
   (dired emacs-root))
 (global-set-key (kbd "C-<f6>") 'dot-emacs)
 
-(defun prev-window ()
-  (interactive)
-  (other-window -1))
-
 (defun end-of-line-indent ()
   (interactive)
   (end-of-line)
@@ -182,18 +178,6 @@
 ;;     (run-test-file (concat "." spec-class-function))))
 
 (autoload 'vc-git-root "vc-git")
-
-;; display temporary/help messages in window "1" unless there is only
-;; 1 window, then pop up another one using emacs default settings.
-(defun right-edge (window) (nth 2 (window-edges window)))
-(defun top-edge (window) (nth 1 (window-edges window)))
-
-(defun chn-temp-window (buffer alist)
-  (if (= (count-windows) 1)
-      (display-buffer-pop-up-window buffer alist)
-    (let ((desired-window (-max-by (-on '> 'right-edge) (--filter (= 0 (top-edge it)) (window-list)))))
-      (set-window-buffer desired-window buffer)
-      desired-window)))
 
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
