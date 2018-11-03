@@ -4,6 +4,8 @@
   :config
   (add-hook 'rust-mode-hook #'smartparens-mode))
 
-(use-package cargo)
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode)
+  )
 
 (provide 'chn-rust)
