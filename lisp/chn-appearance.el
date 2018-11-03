@@ -13,18 +13,27 @@
 (setq initial-scratch-message nil)
 
 ;; Themes
+(defun chn/disable-all-themes ()
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes))
+
+(defun chn/load-theme (theme)
+  "Enhance `load-theme' by first disabling enabled themes."
+  (chn/disable-all-themes)
+  (load-theme theme))
+
 (use-package solarized-theme)
 (use-package base16-theme)
 
 (defun light-theme ()
   "A low-contrast light theme to combat screen glare"
   (interactive)
-  (load-theme 'solarized-light t))
+  (chn/load-theme 'solarized-light))
 
 (defun dark-theme ()
   "A dark theme to combat night-blindness"
   (interactive)
-  (load-theme 'base16-materia t))
+  (chn/load-theme 'base16-materia))
 
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
