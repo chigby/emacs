@@ -11,10 +11,6 @@
   (dired emacs-root))
 (global-set-key (kbd "C-<f6>") 'dot-emacs)
 
-(defun prev-window ()
-  (interactive)
-  (other-window -1))
-
 (defun end-of-line-indent ()
   (interactive)
   (end-of-line)
@@ -183,18 +179,6 @@
 
 (autoload 'vc-git-root "vc-git")
 
-;; display temporary/help messages in window "1" unless there is only
-;; 1 window, then pop up another one using emacs default settings.
-(defun right-edge (window) (nth 2 (window-edges window)))
-(defun top-edge (window) (nth 1 (window-edges window)))
-
-(defun chn-temp-window (buffer alist)
-  (if (= (count-windows) 1)
-      (display-buffer-pop-up-window buffer alist)
-    (let ((desired-window (-max-by (-on '> 'right-edge) (--filter (= 0 (top-edge it)) (window-list)))))
-      (set-window-buffer desired-window buffer)
-      desired-window)))
-
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
   (interactive "^")
@@ -202,23 +186,6 @@
     (back-to-indentation)
     (and (= oldpos (point))
          (beginning-of-line))))
-
-(defun rename-current-buffer-file ()
-  "Renames current buffer and file it is visiting."
-  (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-name)))))))
 
 (defun sudo-edit (&optional arg)
   (interactive "p")
@@ -237,25 +204,3 @@
     )))
 (fset 'npcloc
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([19 109 101 110 117 46 return 67108896 5 2 134217847 1 15 119 105 116 104 105 110 116 105 116 108 101 32 61 32 34 25 34 2 24 24 134217848 116 105 116 108 tab return 1 15 119 105 116 104 105 110 108 105 110 107 32 61 32 34 25 46 109 100 34] 0 "%d")) arg)))
-
-(defun chn-dired-create-file (file)
-  "Create a file called FILE.
-If FILE already exists, signal an error."
-  (interactive
-   (list (read-file-name "Create file: " (dired-current-directory))))
-  (let* ((expanded (expand-file-name file))
-         (try expanded)
-         (dir (directory-file-name (file-name-directory expanded)))
-         new)
-    (if (file-exists-p expanded)
-        (error "Cannot create file %s: file exists" expanded))
-    ;; Find the topmost nonexistent parent dir (variable `new')
-    (while (and try (not (file-exists-p try)) (not (equal new try)))
-      (setq new try
-            try (directory-file-name (file-name-directory try))))
-    (when (not (file-exists-p dir))
-      (make-directory dir t))
-    (write-region "" nil expanded t)
-    (when new
-      (dired-add-file new)
-      (dired-move-to-filename))))
