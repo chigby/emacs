@@ -78,11 +78,6 @@
 (setq sql-postgres-options (list "-p 6000"))
 
 
-;;; Puppet
-
-(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
-
-
 ;;; Misc.
 
 (defun chn-mail-mode-keys ()

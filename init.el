@@ -40,7 +40,6 @@
 (add-to-list 'package-selected-packages 'lua-mode)
 (add-to-list 'package-selected-packages 'magit)
 (add-to-list 'package-selected-packages 'powershell)
-(add-to-list 'package-selected-packages 'puppet-mode)
 (add-to-list 'package-selected-packages 'salt-mode)
 (add-to-list 'package-selected-packages 'scala-mode)
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
