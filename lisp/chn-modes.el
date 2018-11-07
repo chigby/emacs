@@ -17,25 +17,6 @@
 (add-hook 'ruby-mode-hook 'chn-ruby-keys)
 
 
-;;; Eshell
-
-;; scroll to the bottom
-(require 'eshell)
-(setq eshell-scroll-to-bottom-on-output t)
-(setq eshell-scroll-show-maximum-output t)
-(setq eshell-cmpl-ignore-case t)
-(add-to-list 'eshell-output-filter-functions 'eshell-postoutput-scroll-to-bottom)
-
-(defadvice eshell-handle-ansi-color (around test activate)
-   (ansi-color-apply-on-region (1- eshell-last-output-start)
-                               (1- eshell-last-output-end)))
-
-(require 'em-smart)
-(setq eshell-where-to-jump 'begin)
-(setq eshell-review-quick-commands nil)
-(setq eshell-smart-space-goes-to-end t)
-
-
 ;;; Ansi-term
 
 ;; let the shell know we want utf-8 everywhere

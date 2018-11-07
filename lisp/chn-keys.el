@@ -5,7 +5,6 @@
 (global-set-key (kbd "M-8") 'goto-match-paren)
 
 (global-set-key (kbd "C-x C-z") 'shell)
-(global-set-key (kbd "C-z") 'eshell)
 (global-set-key (kbd "M-g") 'goto-line)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)

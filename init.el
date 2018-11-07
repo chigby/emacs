@@ -45,6 +45,8 @@
 (add-to-list 'package-selected-packages 'virtualenvwrapper)
 (add-to-list 'package-selected-packages 'yaml-mode)
 
+(require 'chn-complete)
+
 (require 'chn-elisp)
 (require 'chn-general)
 (require 'chn-editing)
@@ -59,6 +61,7 @@
 (require 'chn-codestyle)
 (require 'chn-testing)
 (require 'chn-dired)
+(require 'chn-eshell)
 (require 'chn-window-nav)
 
 (load-file (expand-file-name
@@ -67,7 +70,6 @@
                   (t "default-system.el"))
             user-emacs-directory))
 
-(load-library "chn-paths") ;; exec paths for python, macports; backup and autosave dirs
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-twine-mode") ;; my twine mode
 (load-library "chn-modes") ;; mode-specific settings
