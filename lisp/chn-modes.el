@@ -1,20 +1,9 @@
 ;;; modes.el -- configuration for various and sundry modes
 
-;;; elm
-
-
 ;; dhall
 (use-package dhall-mode
   :config
   (setq dhall-format-at-save nil))
-
-
-;; coffeescript
-(defun coffee-custom ()
-  "coffee-mode-hook"
- (set (make-local-variable 'tab-width) 2))
-
-(add-hook 'coffee-mode-hook 'coffee-custom)
 
 
 ;;; Ruby
@@ -70,12 +59,6 @@
   (goto-address-mode))
 
 (add-hook 'term-mode-hook 'my-term-hook)
-
-
-;;; SQL
-
-(add-to-list 'auto-mode-alist '("psql.edit" . sql-mode))
-(setq sql-postgres-options (list "-p 6000"))
 
 
 ;;; Misc.
