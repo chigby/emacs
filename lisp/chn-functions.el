@@ -41,17 +41,6 @@
                             (backward-char 1)))
                      ))))))
 
-(defun kill-old-message ()
-  "Delete everything in the buffer except sig line."
-  (interactive)
-  (save-excursion
-    (let (p1 p2)
-      (setq p1 (point))
-      (goto-char (point-max))
-      (previous-line 2)
-      (setq p2 (point))
-      (delete-region p1 p2))))
-
 (defun increment-number-at-point (&optional arg)
   "Increment the number forward from point by 'arg'."
   (interactive "p*")

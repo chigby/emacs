@@ -57,8 +57,7 @@
 
 (setq linum-mode-inhibit-modes-list
       '(term-mode eshell-mode comint-mode w3m-mode shell-mode
-                  ag-mode mu4e-main-mode mu4e-headers-mode
-                  mu4e-view-mode mu4e-compose-mode package-menu-mode
+                  ag-mode package-menu-mode
                   compilation-mode messages-mode magit-status-mode))
 (defun linum-on ()
   (unless (or (minibufferp) (member major-mode linum-mode-inhibit-modes-list))

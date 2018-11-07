@@ -63,19 +63,6 @@
 
 ;;; Misc.
 
-(defun chn-mail-mode-keys ()
-  (define-key mail-mode-map [(control c) (control c)]
-    (lambda ()
-      (interactive)
-      (save-buffer)
-      (server-edit)))
-  (define-key mail-mode-map (kbd "C-c C-d") 'kill-old-message)
-  (local-set-key (kbd "C-c C-d") 'kill-old-message))
-
-  (add-to-list 'auto-mode-alist '("/mutt\\|itsalltext.*mail\\.google" . mail-mode))
-  (add-hook 'mail-mode-hook 'turn-on-auto-fill)
-  (add-hook 'mail-mode-hook 'chn-mail-mode-keys)
-
 (defun chn-text-mode-keys ()
   (local-set-key (kbd "M-c") 'capitalize-word))
 (add-hook 'text-mode-hook 'visual-line-mode)

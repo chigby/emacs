@@ -99,3 +99,27 @@
 
 (define-key mu4e-main-mode-map (kbd ".") 'mu4e-update-mail-and-index)
 (define-key mu4e-headers-mode-map (kbd ".") 'mu4e-update-mail-and-index)
+
+(defun kill-old-message ()
+  "Delete everything in the buffer except sig line."
+  (interactive)
+  (save-excursion
+    (let (p1 p2)
+      (setq p1 (point))
+      (goto-char (point-max))
+      (previous-line 2)
+      (setq p2 (point))
+      (delete-region p1 p2))))
+
+(defun chn-mail-mode-keys ()
+  (define-key mail-mode-map [(control c) (control c)]
+    (lambda ()
+      (interactive)
+      (save-buffer)
+      (server-edit)))
+  (define-key mail-mode-map (kbd "C-c C-d") 'kill-old-message)
+  (local-set-key (kbd "C-c C-d") 'kill-old-message))
+
+(add-to-list 'auto-mode-alist '("/mutt\\|itsalltext.*mail\\.google" . mail-mode))
+(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+(add-hook 'mail-mode-hook 'chn-mail-mode-keys)
