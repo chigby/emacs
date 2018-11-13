@@ -17,12 +17,12 @@
 (defun chn/check-hugo ()
   (let ((project-root (vc-git-root buffer-file-name)))
     (when (and (file-directory-p (concat project-root "content"))
-               (file-directory-p (concat project-root "layouts")))
+               (f-exists? (concat project-root "config.toml")))
       (web-mode-set-engine "go"))))
 
 (defun chn/check-django ()
   (let ((project-root (vc-git-root buffer-file-name)))
-    (when (file-directory-p (concat project-root "manage.py"))
-      (web-mode-set-engine "go"))))
+    (when (f-exists? (concat project-root "manage.py"))
+      (web-mode-set-engine "django"))))
 
 (provide 'chn-html)
