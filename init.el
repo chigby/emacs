@@ -38,7 +38,6 @@
 (add-to-list 'package-selected-packages 'elm-mode)
 (add-to-list 'package-selected-packages 'js2-mode)
 (add-to-list 'package-selected-packages 'lua-mode)
-(add-to-list 'package-selected-packages 'magit)
 (add-to-list 'package-selected-packages 'powershell)
 (add-to-list 'package-selected-packages 'salt-mode)
 (add-to-list 'package-selected-packages 'scala-mode)
@@ -46,7 +45,7 @@
 (add-to-list 'package-selected-packages 'yaml-mode)
 
 (require 'chn-complete)
-
+(require 'chn-git)
 (require 'chn-elisp)
 (require 'chn-general)
 (require 'chn-editing)
@@ -75,7 +74,6 @@
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
 (load-library "chn-appearance") ;; fonts, colors, themes
-(load-library "chn-git") ;; git settings
 (load-library "chn-js") ;; javascript settings
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-python") ;; python settings
