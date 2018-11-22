@@ -12,6 +12,8 @@
   (bind-key "C-c >" 'indent-region python-mode-map)
   (bind-key "C-c <" 'unindent-region python-mode-map))
 
+(add-hook 'python-mode-hook #'smartparens-mode)
+
 (use-package docker-tramp)
 
 (defun module-spec-from-filename (filename)
