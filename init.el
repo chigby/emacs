@@ -5,7 +5,8 @@
 ;; What long-shackled powers of the elder dark
 ;; have our conjurings loosed?
 
-(setq emacs-root (expand-file-name "~/.emacs.d/"))
+(setq emacs-root (file-name-directory
+                  (or (buffer-file-name) (file-chase-links load-file-name))))
 
 (add-to-list 'load-path (concat emacs-root "lisp"))
 (add-to-list 'load-path (concat emacs-root "site-lisp"))
