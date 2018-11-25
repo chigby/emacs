@@ -2,6 +2,7 @@
 
 ;; dhall
 (use-package dhall-mode
+  :mode ("\\.dhall\\'" . dhall-mode)
   :config
   (setq dhall-format-at-save nil))
 
