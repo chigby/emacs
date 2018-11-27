@@ -17,7 +17,7 @@
 (defun chn/check-hugo ()
   (let ((project-root (vc-git-root buffer-file-name)))
     (when (and (file-directory-p (concat project-root "content"))
-               (or (f-exists (concat project-root "config.json")) (f-exists? (concat project-root "config.toml"))))
+               (or (f-exists? (concat project-root "config.json")) (f-exists? (concat project-root "config.toml"))))
       (web-mode-set-engine "go"))))
 
 (defun chn/check-django ()
