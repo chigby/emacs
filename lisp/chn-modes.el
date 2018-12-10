@@ -6,6 +6,9 @@
   :config
   (setq dhall-format-at-save nil))
 
+(use-package yaml-mode
+  :mode ("\\.yml\\'" . yaml-mode))
+
 
 ;;; Ruby
 
@@ -63,11 +66,11 @@
 
 (setq-default ispell-program-name "aspell")
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(defun chn-yaml-keys ()
-  (local-set-key (kbd "C-c C-z") 'run-test-file))
-(add-hook 'yaml-mode-hook 'chn-yaml-keys)
+;; (require 'yaml-mode)
+;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;; (defun chn-yaml-keys ()
+;;   (local-set-key (kbd "C-c C-z") 'run-test-file))
+;; (add-hook 'yaml-mode-hook 'chn-yaml-keys)
 
 (require 'twine-mode)
 (add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
