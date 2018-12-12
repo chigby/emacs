@@ -55,6 +55,7 @@
 (require 'chn-haskell)
 (require 'chn-html)
 (require 'chn-markdown)
+(require 'chn-js)
 (require 'chn-python)
 (require 'chn-snippets)
 (require 'chn-navigation)
