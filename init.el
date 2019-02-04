@@ -36,7 +36,6 @@
 ;; Check for and install missing packages
 (add-to-list 'package-selected-packages 'ahk-mode)
 (add-to-list 'package-selected-packages 'elixir-mode)
-(add-to-list 'package-selected-packages 'elm-mode)
 (add-to-list 'package-selected-packages 'js2-mode)
 (add-to-list 'package-selected-packages 'lua-mode)
 (add-to-list 'package-selected-packages 'powershell)
@@ -51,6 +50,7 @@
 (require 'chn-general)
 (require 'chn-editing)
 (require 'chn-project)
+(require 'chn-elm)
 (require 'chn-rust)
 (require 'chn-haskell)
 (require 'chn-html)
