@@ -14,6 +14,13 @@
   (add-hook 'web-mode-hook 'chn/check-hugo)
   (add-hook 'web-mode-hook 'chn/check-django))
 
+(use-package emmet-mode
+  :commands emmet-mode
+  :config
+  ;; C-j is my open-line-below binding that I like too much to clobber
+  (define-key emmet-mode-keymap (kbd "C-j") nil)
+  :hook (html-mode web-mode))
+
 (defun chn/check-hugo ()
   (let ((project-root (vc-git-root buffer-file-name)))
     (when (and (file-directory-p (concat project-root "content"))
