@@ -3,7 +3,9 @@
 (use-package yasnippet
   :diminish yas-minor-mode
   :commands yas-minor-mode
-  :bind ("s-<tab>" . yas-expand)
+  :init
+  (add-hook 'js-mode-hook #'yas-minor-mode)
+  :bind ("C-<tab>" . yas-expand)
   :config
   ;; prevent TAB conflicts with other things
   (define-key yas-minor-mode-map [tab] nil)
