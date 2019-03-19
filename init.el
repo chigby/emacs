@@ -72,7 +72,7 @@
             user-emacs-directory))
 
 (load-library "chn-functions") ;; my own one-off functions
-(load-library "chn-twine-mode") ;; my twine mode
+(load-library "chn-sugarcube-mode") ;; my twine mode
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
 (load-library "chn-appearance") ;; fonts, colors, themes

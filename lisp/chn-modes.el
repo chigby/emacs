@@ -72,8 +72,9 @@
 ;;   (local-set-key (kbd "C-c C-z") 'run-test-file))
 ;; (add-hook 'yaml-mode-hook 'chn-yaml-keys)
 
-(require 'twine-mode)
-(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
+(require 'sugarcube-mode)
+;;(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
+(add-to-list 'auto-mode-alist '("\\.twee$" . sugarcube-mode))
 
 (setq scss-compile-at-save nil)
 
