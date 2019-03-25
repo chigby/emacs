@@ -8,3 +8,8 @@
   (setq initial-frame-alist '(
                               (font . "Ubuntu Mono-12")
                               )))
+
+
+(set-default-font "Hack 13")
+
+(add-to-list 'exec-path (expand-file-name "~/.nodenv/shims"))
