@@ -9,7 +9,6 @@
   "Return to the sanctum"
   (interactive)
   (dired emacs-root))
-(global-set-key (kbd "C-<f6>") 'dot-emacs)
 
 (defun end-of-line-indent ()
   (interactive)
