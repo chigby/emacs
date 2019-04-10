@@ -10,7 +10,17 @@
 
 (setq column-number-mode t)
 (setq inhibit-splash-screen t)
-(setq initial-scratch-message nil)
+(setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
+
+;; No one should ever work.
+;; Work is the source of nearly all the misery in the world. Almost
+;; any evil you’d care to name comes from working or from living in a
+;; world designed for work. In order to stop suffering, we have to
+;; stop working.
+
+;; Curiosity, not ambition.
+
+")
 
 ;; Themes
 (defun chn/disable-all-themes ()
@@ -29,6 +39,7 @@
   "A low-contrast light theme to combat screen glare"
   (interactive)
   (chn/load-theme 'solarized-light))
+;; try leuven-theme here??
 
 (defun dark-theme ()
   "A dark theme to combat night-blindness"

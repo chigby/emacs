@@ -81,8 +81,6 @@
 (load-library "chn-python") ;; python settings
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
-(eshell) ;; begin with a shell
-
 ;; Load custom settings
 (load custom-file 'noerror)
 
