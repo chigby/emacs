@@ -10,17 +10,6 @@
   :mode ("\\.yml\\'" . yaml-mode))
 
 
-;;; Ruby
-
-;; Turn on ruby mode for vagrantfiles.
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(defun chn-ruby-keys ()
-  (local-set-key (kbd "C-c C-z") 'run-test-file))
-(add-hook 'ruby-mode-hook 'chn-ruby-keys)
-
-
 ;;; Ansi-term
 
 ;; let the shell know we want utf-8 everywhere

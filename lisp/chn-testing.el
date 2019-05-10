@@ -8,7 +8,7 @@
   (let ((file-name (buffer-file-name (current-buffer)))
         (suffix (if command-suffix command-suffix "")))
     (cond
-     ((string-match "\(_spec.rb\\|_test.rb\)$" file-name)
+     ((string-match "\\(_spec.rb\\|_test.rb\\)$" file-name)
       (set-test-file file-name suffix))
      ((string-match "\\(test_.*\.py\\|_test.py\\)$" file-name)
       (set-test-file (module-spec-from-filename file-name) suffix))

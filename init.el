@@ -56,6 +56,7 @@
 (require 'chn-html)
 (require 'chn-markdown)
 (require 'chn-js)
+(require 'chn-ruby)
 (require 'chn-python)
 (require 'chn-snippets)
 (require 'chn-navigation)

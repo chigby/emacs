@@ -19,7 +19,6 @@
 (setq sh-basic-offset 2)
 (setq js2-basic-offset 2)
 (setq lua-indent-level 2)
-(setq ruby-deep-indent-paren nil)
 (setq elm-indent-offset 4)
 
 (provide 'chn-codestyle)
