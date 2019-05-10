@@ -14,7 +14,7 @@
  'sugarcube-mode
  `((,"\:\:.*" . 'twine-passage-face)
    (,"\\[\\[[^\]]+\\]\\]" . font-lock-constant-face)
-   (,"\$[a-z]+" . font-lock-variable-name-face)
+   (,"\$[a-zA-Z0-9]+" . font-lock-variable-name-face)
    (,sugarcube-macros-regexp
      (1 font-lock-keyword-face)
      (2 font-lock-type-face)
