@@ -2,6 +2,6 @@
 # name: do-block
 # key: do
 # --
-do ${1:|${2:var}|}
+do${1: |${2:var}|}
   $0
 end
