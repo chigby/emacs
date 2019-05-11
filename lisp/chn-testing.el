@@ -24,6 +24,7 @@
   ;; interaction with the test runner.. future ruby support for this
   ;; should use the line number of the individual test to be run).
   (let ((spec-class-function (which-function)))
+    ;; possible use for save-excursion here, to fix weirdness with blank lines in tests. (save-excursion (backward-word) (run-test-file ...))
     (run-test-file (concat "." spec-class-function))))
 
 (defun set-test-file (filename command-suffix)
@@ -35,10 +36,13 @@
     (cond
      ((file-readable-p "scripts/test.sh")
       (execute-bash-script (format "scripts/test.sh %s" filename)))
+     ((file-readable-p "scripts/test.cmd")
+      ;;(message (format "scripts/test.cmd %s" filename)))
+      (shell-command (format "call scripts/test.cmd %s" filename)))
      ((file-readable-p "scripts/test")
       (shell-command (format "scripts/test %s" filename)))
-     ((file-readable-p "bin/rails")
-      (shell-command (format "bin/rails test %s" filename)))
+     ((and (file-readable-p "bin/rails") (file-readable-p "Gemfile"))
+      (execute-bash-script (format "bundle exec rails test %s" (file-relative-name filename default-directory))))
      )))
 
 (provide 'chn-testing)
