@@ -11,7 +11,10 @@
 (add-to-list 'load-path (concat emacs-root "lisp"))
 (add-to-list 'load-path (concat emacs-root "site-lisp"))
 
+;; Define where the custom user settings are kept
 (setq custom-file (concat emacs-root "custom.el"))
+;; Load custom settings
+(load custom-file 'noerror)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -81,9 +84,6 @@
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-python") ;; python settings
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified
-
-;; Load custom settings
-(load custom-file 'noerror)
 
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
