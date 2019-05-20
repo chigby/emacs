@@ -22,8 +22,9 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
-(add-to-list 'package-selected-packages 'use-package)
-(package-install-selected-packages)
+
+(when (not (package-installed-p 'use-package))
+(package-install 'use-package))
 
 (require 'use-package)
 
