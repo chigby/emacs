@@ -5,7 +5,7 @@
   :commands yas-minor-mode
   :init
   (add-hook 'js-mode-hook #'yas-minor-mode)
-  (add-hook 'enh-ruby-mode-hook #'yas-minor-mode)
+  (add-hook 'ruby-mode-hook #'yas-minor-mode)
   (add-hook 'ruby-mode-hook #'yas-minor-mode)
   :bind ("C-<tab>" . yas-expand)
   :config
