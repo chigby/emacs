@@ -21,15 +21,14 @@
   (define-key emmet-mode-keymap (kbd "C-j") nil)
   :hook (html-mode web-mode))
 
+(defun in-project-root? (file)
+  (f-exists? (concat (vc-git-root buffer-file-name) file)))
+
 (defun chn/check-hugo ()
-  (let ((project-root (vc-git-root buffer-file-name)))
-    (when (and (file-directory-p (concat project-root "content"))
-               (-any? (lambda (file) (f-exists? (concat project-root file))) '("config.json" "config.yaml" "config.toml")))
-      (web-mode-set-engine "go"))))
+  (when (and (in-project-root? "content") (-any? 'in-project-root? '("config.json" "config.yaml" "config.toml")))
+    (web-mode-set-engine "go")))
 
 (defun chn/check-django ()
-  (let ((project-root (vc-git-root buffer-file-name)))
-    (when (f-exists? (concat project-root "manage.py"))
-      (web-mode-set-engine "django"))))
+  (when (in-project-root? "manage.py") (web-mode-set-engine "django")))
 
 (provide 'chn-html)
