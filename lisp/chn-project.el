@@ -9,7 +9,7 @@
 
 ;; refer to https://oremacs.com/2015/01/06/rushing-headlong/
 (use-package headlong
-  :bind ("M-p" . headlong-bookmark-jump))
+  :bind ("M-;" . headlong-bookmark-jump))
 
 
 (provide 'chn-project)
