@@ -34,6 +34,12 @@
 
 (use-package solarized-theme)
 (use-package base16-theme)
+(use-package doom-themes)
+
+(defun white-theme ()
+  "A white-background for the brightest of days"
+  (interactive)
+  (chn/load-theme 'doom-one-light))
 
 (defun light-theme ()
   "A low-contrast light theme to combat screen glare"
