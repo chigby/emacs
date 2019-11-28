@@ -27,4 +27,18 @@
     (ubuntu-shell-command filename))
   ))
 
+(defun chn/exec (command)
+  "Run a shell command and return its output as a string, whitespace trimmed."
+  (s-trim (shell-command-to-string command)))
+
+(defun chn/is-exec (command)
+  "Returns true if `command' is an executable on the system search path."
+  (let ((which-output (s-trim (shell-command-to-string (s-concat "which " command)))))
+    (and (s-present? which-output) (f-executable? which-output))))
+
+(defun chn/exec-if-exec (command args)
+  "If `command' satisfies `chn/is-exec', run it with `args' and return its
+output as per `chn/exec'. Otherwise, return nil."
+  (when (chn/is-exec command) (chn/exec (s-concat command " " args))))
+
 (provide 'chn-lib)
