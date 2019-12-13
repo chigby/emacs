@@ -80,4 +80,13 @@ With a prefix argument, insert a newline above the current line."
 (global-set-key (kbd "C-o") 'open-line-above)
 (global-set-key (kbd "C-j") 'open-line-below)
 
+(defun chn/isearch-comment-result ()
+  "During an incremental search, comment lines spanned from
+search start to search end."
+  (interactive)
+  (isearch-exit)
+  (activate-mark)
+  (call-interactively 'comment-line))
+(define-key isearch-mode-map (kbd "C-;") 'chn/isearch-comment-result)
+
 (provide 'chn-editing)
