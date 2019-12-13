@@ -1,6 +1,9 @@
 ;;; chn-project.el --- taskmasters, overseers, and orchestrators
 
 (use-package ag
+  :custom
+  (ag-highlight-search t)
+  (ag-reuse-window t)
   :bind ("M-'" . ag-project))
 
 (require 'bookmark)
