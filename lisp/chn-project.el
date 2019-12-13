@@ -4,6 +4,7 @@
   :custom
   (ag-highlight-search t)
   (ag-reuse-window t)
+  (ag-reuse-buffers t)
   :bind ("M-'" . ag-project))
 
 (require 'bookmark)

@@ -75,8 +75,6 @@
          (with-current-buffer buf
            (ansi-color-apply-on-region (point-min) (point-max))))))
 
-(setq ag-reuse-buffers 't)
-
 (setq calc-settings-file (concat emacs-root "lisp/calc-settings.el"))
 
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
