@@ -44,10 +44,6 @@
 
 (autoload 'awk-mode "cc-mode" nil t)
 
-(ido-mode t)
-(setq ido-enable-flex-matching t) ; fuzzy matching
-(setq ido-use-virtual-buffers t)  ;; Find past buffers as well as existing ones
-
 (setq uniquify-buffer-name-style 'reverse)
 (setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
