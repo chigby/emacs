@@ -51,17 +51,9 @@
 
 (setq-default ispell-program-name "aspell")
 
-;; (require 'yaml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; (defun chn-yaml-keys ()
-;;   (local-set-key (kbd "C-c C-z") 'run-test-file))
-;; (add-hook 'yaml-mode-hook 'chn-yaml-keys)
-
 (require 'sugarcube-mode)
 ;;(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
 (add-to-list 'auto-mode-alist '("\\.twee$" . sugarcube-mode))
-
-(setq scss-compile-at-save nil)
 
 (setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 
