@@ -37,17 +37,6 @@
 
 (require 'chn-lib)
 
-;; Check for and install missing packages
-(add-to-list 'package-selected-packages 'ahk-mode)
-(add-to-list 'package-selected-packages 'elixir-mode)
-(add-to-list 'package-selected-packages 'js2-mode)
-(add-to-list 'package-selected-packages 'lua-mode)
-(add-to-list 'package-selected-packages 'powershell)
-(add-to-list 'package-selected-packages 'salt-mode)
-(add-to-list 'package-selected-packages 'scala-mode)
-(add-to-list 'package-selected-packages 'virtualenvwrapper)
-(add-to-list 'package-selected-packages 'yaml-mode)
-
 (require 'chn-complete)
 (require 'chn-git)
 (require 'chn-elisp)
