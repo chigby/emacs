@@ -7,6 +7,9 @@
 ;; Brevity is the soul of wit.
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Disable lockfiles (I almost never run more than one emacs instance)
+(setq create-lockfiles nil)
+
 ;; Consolidate backups
 (setq backup-dir (expand-file-name (concat emacs-root "backup")))
 (when (not (file-directory-p backup-dir))
