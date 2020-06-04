@@ -1,4 +1,4 @@
-;;; chn-general.el --- Toolds, fundaments, oddities various and sundry
+;;; chn-general.el --- Tools, fundaments, oddities various and sundry
 
 ;; Use UTF8 whenever possible.
 (set-language-environment "UTF-8")
