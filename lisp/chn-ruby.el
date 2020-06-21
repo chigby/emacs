@@ -11,7 +11,7 @@
    :config
    (setq ruby-deep-indent-paren nil))
 
-(setq chn/ruby-version "2.6.3")
+(setq chn/ruby-version "2.6.6")
 
 (use-package chruby
   :config
