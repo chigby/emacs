@@ -15,3 +15,8 @@ custom.el
 /ido.last
 /recentf
 /history
+
+# straight
+/straight/*
+!/straight/versions/
+!/straight/versions/*

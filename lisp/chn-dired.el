@@ -6,7 +6,7 @@
 (setq dired-listing-switches "-alh")
 
 (use-package dired
-  :ensure nil
+  :straight (:type built-in)
   :bind (:map dired-mode-map
               ("_" . chn-dired-create-file))
   :config

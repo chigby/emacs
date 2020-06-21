@@ -16,21 +16,23 @@
 ;; Load custom settings
 (load custom-file 'noerror)
 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(when (not (package-installed-p 'use-package))
-(package-install 'use-package))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
-(require 'use-package)
-
-;; Install every declared package, instead of making us do that
-;; manually.
-(setq use-package-always-ensure t)
 ;; "Diminished modes are minor modes with no modeline display."
 ;; We want this feature of use-package.
 (use-package diminish)
