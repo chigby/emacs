@@ -12,6 +12,7 @@
 
 ;; We're not using vc for anything, and it's enabled by default, so
 ;; turn it off.
-(setq vc-handled-backends nil)
+;; actually rg-el uses this.. so let's turn it back on? chn 2020-06-15
+;; (setq vc-handled-backends nil)
 
 (provide 'chn-git)
