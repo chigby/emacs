@@ -24,6 +24,8 @@
 (add-to-list 'display-buffer-alist '("\\*ag dired\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*elm\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*elm-make\\*" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*rg\\*" chn-temp-window))
+
 
 ;; Sometimes emacs smart-splitting is a little too smart.
 (setq split-height-threshold 90)
