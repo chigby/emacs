@@ -4,6 +4,7 @@
   :commands magit-status
   :config
   (setq magit-auto-revert-mode nil)
+  (setq magit-diff-refine-hunk t)
   :bind ("C-x g" . magit-status))
 
 ;; (defun turn-off-ethan-wspace ()
