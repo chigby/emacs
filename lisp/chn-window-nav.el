@@ -37,11 +37,14 @@
   (delete-other-windows (get-buffer-window (current-buffer)))
   (split-window-right)
   (other-window 1)
+  (mode-line-other-buffer)
   (split-window-right)
   (other-window 1)
+  (mode-line-other-buffer)
   (split-window-vertically)
   (balance-windows)
-  (other-window 2))
+  (other-window 1)
+  (mode-line-other-buffer))
 
 ;; I find this much easier than "C-x o" and friends
 (global-set-key (kbd "M-]") 'other-window)
