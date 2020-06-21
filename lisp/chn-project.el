@@ -1,11 +1,11 @@
 ;;; chn-project.el --- taskmasters, overseers, and orchestrators
 
-(use-package ag
+(use-package rg
+  :config
+  (setq rg-default-alias-fallback "all")
   :custom
-  (ag-highlight-search t)
-  (ag-reuse-window t)
-  (ag-reuse-buffers t)
-  :bind ("M-'" . ag-project))
+  (rg-enable-menu)
+  :bind ("M-'" . rg-project))
 
 (require 'bookmark)
 (bookmark-maybe-load-default-file)
