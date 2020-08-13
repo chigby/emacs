@@ -14,7 +14,7 @@
 
 ;; let the shell know we want utf-8 everywhere
 (defadvice ansi-term (after advise-ansi-term-coding-system)
-    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+    (set-process-coding-system 'utf-8-unix 'utf-8-unix))
 (ad-activate 'ansi-term)
 
 (setenv "LC_CTYPE" "en_US.UTF-8")

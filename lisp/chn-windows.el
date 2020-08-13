@@ -1,4 +1,4 @@
-(set-default-font "Consolas 14")
+(set-frame-font "Consolas 14")
 
 (use-package powershell)
 (use-package ahk-mode)
