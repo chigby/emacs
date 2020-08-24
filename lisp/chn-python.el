@@ -1,4 +1,4 @@
-;;; chn-python.el --- The programmable pseudonatural
+;;; chn-python.el --- For the pseudonatural integration of parts
 
 (use-package python
   :commands python-mode
