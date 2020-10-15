@@ -89,4 +89,18 @@ search start to search end."
   (call-interactively 'comment-line))
 (define-key isearch-mode-map (kbd "C-;") 'chn/isearch-comment-result)
 
+(defun chn/occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning)
+             (region-end))
+          (let ((sym (thing-at-point 'symbol)))
+            (when (stringp sym)
+              (regexp-quote sym))))
+        regexp-history)
+  (call-interactively 'occur))
+(global-set-key (kbd "M-s p") 'chn/occur-dwim)
+
 (provide 'chn-editing)
