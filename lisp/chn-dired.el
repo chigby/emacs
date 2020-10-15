@@ -8,7 +8,8 @@
 (use-package dired
   :straight (:type built-in)
   :bind (:map dired-mode-map
-              ("_" . chn-dired-create-file))
+              ("_" . chn-dired-create-file)
+              ("b" . magit-status))
   :config
   (require 'dired-x))
 
