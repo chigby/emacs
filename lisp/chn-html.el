@@ -11,6 +11,7 @@
          ("\\.mustache\\'" . web-mode)
          ("\\.djhtml\\'" . web-mode))
   :config
+  (define-key web-mode-map (kbd "M-;") nil)  ;; I use this for bookmark jumping
   (add-hook 'web-mode-hook 'chn/check-hugo)
   (add-hook 'web-mode-hook 'chn/check-django))
 
