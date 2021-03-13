@@ -3,6 +3,13 @@
 ;; Tabs, begone!
 (setq-default indent-tabs-mode nil)
 
+(straight-use-package 'prettier)
+
+(use-package flycheck
+  :bind (:map flycheck-mode-map
+              ("M-n" . flycheck-next-error)
+              ("M-p" . flycheck-previous-error)))
+
 (use-package ethan-wspace
   :config
   (global-ethan-wspace-mode 1)
