@@ -26,6 +26,7 @@
 (add-to-list 'display-buffer-alist '("\\*elm-make\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*rg\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Occur\\*" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*Async Shell Command\\*" chn-temp-window))
 
 (setq help-window-select t)
 
