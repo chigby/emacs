@@ -5,7 +5,8 @@
   (setq rg-default-alias-fallback "all")
   :custom
   (rg-enable-menu)
-  :bind ("M-'" . rg-project))
+  :bind ("M-'" . rg-project)
+  ("C-M-'" . rg-menu))
 
 (require 'bookmark)
 (bookmark-maybe-load-default-file)
