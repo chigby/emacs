@@ -103,4 +103,15 @@ search start to search end."
   (call-interactively 'occur))
 (global-set-key (kbd "M-s p") 'chn/occur-dwim)
 
+(defun chn/pop-local-mark-ring ()
+  "Move cursor to last mark position of current buffer.
+Call this repeatedly will cycle all positions in `mark-ring'.
+URL `http://ergoemacs.org/emacs/emacs_jump_to_previous_position.html'
+Version 2016-04-04"
+  (interactive)
+  (set-mark-command t))
+
+(global-set-key (kbd "<f2>") 'pop-global-mark)
+(global-set-key (kbd "<f3>") 'chn/pop-local-mark-ring)
+
 (provide 'chn-editing)
