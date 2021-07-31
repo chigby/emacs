@@ -70,6 +70,7 @@
 
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-sugarcube-mode") ;; my twine mode
+(load-library "chn-octo-mode") ;; mode for editing Octo files
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
 (load-library "chn-appearance") ;; fonts, colors, themes
