@@ -85,7 +85,7 @@ Group 2 matches the header title.")
 
   ;; (modify-syntax-entry ?# "< b" mydsl-mode-syntax-table)
   ;; (modify-syntax-entry ?\n "> b" mydsl-mode-syntax-table))
-
+)
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.octo\\'" . octo-mode))
 
