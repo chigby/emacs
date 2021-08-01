@@ -24,11 +24,15 @@ Group 1 matches the hyphen signs preceding the title.
 Group 2 matches the header title.")
 
 (defvar octo-fields
-  '("title" "subtitle" "visible-if" "selectable-if" "priority" "frequency" "min-choices" "max-choices" "max-visits" "goto" "game-over"))
+  '("title" "subtitle" "goto"))
 
 ;; Expression keywords, not sure exactly how to make these highlight only inside expressions, yet.
 (defvar octo-keywords
-  '("mod" "raise" "raise-by" "lower" "lower-by" "not" "high" "up" "mid" "down" "low" "if" "location" "and" "or"))
+  '("mod" "raise" "raise-by" "lower" "lower-by" "not" "high" "up" "mid" "down" "low" "if" "then" "else" "location" "and" "or" "true" "false" "yes" "on" "no" "off"))
+
+(defvar octo-expr-fields
+  '("visible-if" "priority" "selectable-if" "frequency" "min-choices" "max-choices" "max-visits" "game-over")
+  )
 
 (defvar octo-tab-width 4 "Width of a tab for Octo mode")
 
@@ -63,7 +67,21 @@ Group 2 matches the header title.")
 
      ;; Field names
      (,(concat "^\\(" (regexp-opt octo-fields 'words) "\\):") 1 font-lock-type-face)
-     )))
+
+     ;; Expression field names
+     (,(concat "^\\(" (regexp-opt octo-expr-fields 'words) "\\):")
+      ;; fontify the field name
+      (1 font-lock-type-face)
+      ;; look for expression keywords after the ":"
+      (,(regexp-opt octo-keywords 'words)
+       ;; set the limit of the search to the current line only
+       (save-excursion (move-end-of-line 1) (point))
+       ;; when we've found all the keywords in the region, move back
+       ;; to the `:' marker
+       (re-search-backward ":")
+       ;; fontify matched symbols as keywords
+       (0 font-lock-keyword-face))
+      ))))
 
 (define-derived-mode octo-mode text-mode "Octo script"
   "Octo mode is a major mode for editing Octo files"
