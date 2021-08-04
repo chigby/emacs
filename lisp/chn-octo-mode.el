@@ -69,7 +69,7 @@ Group 2 matches the header title.")
      ("\*[^ ][^/\r\n]*\*" . 'octo-bold1)
 
      ;; stuff between double quotes
-     ("\"[^\r\n]*\\?" . font-lock-string-face)
+     ("\"[^\"]*\"" . font-lock-string-face)
 
      ;; Field names
      (,(concat "^\\(" (regexp-opt octo-fields 'words) "\\):") 1 font-lock-type-face)
