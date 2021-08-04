@@ -1,6 +1,9 @@
 (defface octo-emphasis1 '((t :inherit italic))
   "Face used for simple emphasis.")
 
+(defface octo-bold1 '((t :inherit bold))
+  "Face used for bold emphasis.")
+
 (defface octo-shadow-face
   '((t (:inherit shadow)))
   "Face for Octo headers and glue.")
@@ -61,6 +64,9 @@ Group 2 matches the header title.")
 
      ;; Italic text
      ("/[^/\r\n]*/" . 'octo-emphasis1)
+
+     ;; Bold text
+     ("\*[^ ][^/\r\n]*\*" . 'octo-bold1)
 
      ;; stuff between double quotes
      ("\"[^\r\n]*\\?" . font-lock-string-face)
