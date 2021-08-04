@@ -8,6 +8,10 @@
   '((t (:inherit shadow)))
   "Face for Octo headers and glue.")
 
+(defface octo-arrow-face
+  '((t (:inherit font-lock-builtin-face)))
+  "Face for Octo choice arrows.")
+
 (defconst octo-loc-header
   "^\\(?1:#+\\)\\s-*\\(?2:[[:alnum:]_-]+\\)"
   "Regexp identifying Octo location headers.
@@ -70,6 +74,14 @@ Group 2 matches the header title.")
 
      ;; stuff between double quotes
      ("\"[^\"]*\"" . font-lock-string-face)
+
+     ;; Choices
+     ("^\\(?1:\*\\) "
+      (1 font-lock-keyword-face)
+      ("\\(-\\|#|=\\)>"
+       (save-excursion (move-end-of-line 1) (point))
+       nil
+       (0 'octo-arrow-face t)))
 
      ;; Field names
      (,(concat "^\\(" (regexp-opt octo-fields 'words) "\\):") 1 font-lock-type-face)
