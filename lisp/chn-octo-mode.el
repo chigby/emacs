@@ -70,7 +70,7 @@ Group 2 matches the header title.")
      ("/[^/\r\n]*/" . 'octo-emphasis1)
 
      ;; Bold text
-     ("\*[^ ][^/\r\n]*\*" . 'octo-bold1)
+     ("\\*[^ ][^\*]*?\\*" . 'octo-bold1)
 
      ;; stuff between double quotes
      ("\"[^\"]*\"" . font-lock-string-face)
