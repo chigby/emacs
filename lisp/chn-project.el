@@ -16,5 +16,8 @@
 (use-package headlong
   :bind ("M-;" . headlong-bookmark-jump))
 
+(use-package dumb-jump
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (provide 'chn-project)
