@@ -47,6 +47,7 @@
 (require 'chn-project)
 (require 'chn-elm)
 (require 'chn-rust)
+(require 'chn-nim)
 (require 'chn-haskell)
 (require 'chn-html)
 (require 'chn-markdown)
