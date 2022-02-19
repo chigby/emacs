@@ -73,7 +73,7 @@
 (setq linum-format 'dynamic)
 
 (setq linum-mode-inhibit-modes-list
-      '(term-mode eshell-mode comint-mode w3m-mode shell-mode
+      '(term-mode eshell-mode comint-mode w3m-mode shell-mode nim-compile
                   rg-mode ag-mode package-menu-mode elm-compilation-mode
                   compilation-mode messages-mode magit-status-mode))
 (defun linum-on ()

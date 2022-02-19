@@ -3,6 +3,7 @@
             "/opt/local/sbin"
             "/opt/local/share/emacs/site-lisp"
             "/usr/local/bin"
+            "~/.nimble/bin"
             "C:/Program Files/Git/bin" ;; needed for magit
             "/usr/local/texlive/2013/bin/x86_64-darwin/"
             "~/bin"))))
