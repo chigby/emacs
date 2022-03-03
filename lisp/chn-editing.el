@@ -114,4 +114,7 @@ Version 2016-04-04"
 (global-set-key (kbd "<f2>") 'pop-global-mark)
 (global-set-key (kbd "<f3>") 'chn/pop-local-mark-ring)
 
+;; non-editing
+(setq view-read-only t)
+
 (provide 'chn-editing)
