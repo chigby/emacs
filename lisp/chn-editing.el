@@ -90,7 +90,7 @@ search start to search end."
 (define-key isearch-mode-map (kbd "C-;") 'chn/isearch-comment-result)
 
 (defun chn/occur-dwim ()
-  "Call `occur' with a sane default."
+  "Call `occur' with a default argument of symbol under cursor."
   (interactive)
   (push (if (region-active-p)
             (buffer-substring-no-properties
