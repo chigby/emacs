@@ -1,3 +1,5 @@
+;;; chn-appearance.el --- Silver, copper, gold.
+
 (menu-bar-mode -1)
 
 (when window-system
@@ -68,16 +70,29 @@
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;; Line numbers in buffers
-(global-linum-mode t)
-(setq linum-format 'dynamic)
+;; Line numbers and other indicators
+(require 'hl-line)
+(require 'display-line-numbers)
 
-(setq linum-mode-inhibit-modes-list
-      '(term-mode eshell-mode comint-mode w3m-mode shell-mode nim-compile
-                  rg-mode ag-mode package-menu-mode elm-compilation-mode
-                  compilation-mode messages-mode magit-status-mode))
-(defun linum-on ()
-  (unless (or (minibufferp) (member major-mode linum-mode-inhibit-modes-list))
-    (linum-mode 1)))
+(defun chn/numbers-toggle ()
+  "Toggle line numbers."
+  (interactive)
+  (if (bound-and-true-p display-line-numbers-mode)
+      (display-line-numbers-mode -1)
+    (display-line-numbers-mode 1)))
 
-(set-face-attribute 'linum nil :weight 'normal)
+(defun chn/hl-line-toggle ()
+  "Toggle line highlighting."
+  (interactive)
+  (if (bound-and-true-p hl-line-mode) (hl-line-mode -1) (hl-line-mode 1)))
+
+(defun chn/code-visibility ()
+  "Enable or disable code visibility markers."
+  (interactive)
+  (chn/numbers-toggle)
+  (chn/hl-line-toggle))
+
+(let ((map global-map))
+  (define-key map (kbd "C-c z") 'chn/code-visibility))
+
+(provide 'chn-appearance)

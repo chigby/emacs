@@ -39,6 +39,7 @@
 
 (require 'chn-lib)
 
+(require 'chn-appearance)
 (require 'chn-complete)
 (require 'chn-git)
 (require 'chn-elisp)
