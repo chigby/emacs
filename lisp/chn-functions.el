@@ -192,3 +192,6 @@
     )))
 (fset 'npcloc
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([19 109 101 110 117 46 return 67108896 5 2 134217847 1 15 119 105 116 104 105 110 116 105 116 108 101 32 61 32 34 25 34 2 24 24 134217848 116 105 116 108 tab return 1 15 119 105 116 104 105 110 108 105 110 107 32 61 32 34 25 46 109 100 34] 0 "%d")) arg)))
+
+(defun remove-electric-indent-mode ()
+  (electric-indent-local-mode -1))
