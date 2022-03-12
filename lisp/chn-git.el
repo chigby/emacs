@@ -7,7 +7,9 @@
   :config
   (setq magit-auto-revert-mode nil)
   (setq magit-diff-refine-hunk t)
-  :bind ("C-x g" . magit-status))
+  :bind
+  ("C-x g" . magit-status)
+  ("C-c g" . magit-file-dispatch))
 
 ;; (defun turn-off-ethan-wspace ()
 ;;   (ethan-wspace-mode -1))
