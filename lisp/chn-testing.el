@@ -1,16 +1,18 @@
 ;;; chn-testing.el --- Proving ground of all reason
 
 (require 'chn-lib)
+(require 'which-func)
 
 (defun run-test-file (&optional command-suffix)
   "If we are visiting a test file, run that. Otherwise, run the last one."
   (interactive)
-  (let ((file-name (buffer-file-name (current-buffer)))
+  (let* ((file-name (buffer-file-name (current-buffer)))
+        (fname (f-filename file-name))
         (suffix (if command-suffix command-suffix "")))
     (cond
-     ((string-match "\\(_spec.rb\\|_test.rb\\)$" file-name)
+     ((string-match "\\(_spec.rb\\|_test.rb\\)$" fname)
       (set-test-file file-name suffix))
-     ((string-match "\\(test_.*\.py\\|_test.py\\)$" file-name)
+     ((string-match "^\\(test_.*\.py\\|_test.py\\|tests\.py\\)$" fname)
       (set-test-file (module-spec-from-filename file-name) suffix))
      )
     (if (boundp 'chn-test-file)
