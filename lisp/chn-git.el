@@ -1,5 +1,7 @@
 ;;; chn-git.el --- Taming the quanta of versioning
 
+(use-package git-link)
+
 (use-package magit
   :commands magit-status
   :config
