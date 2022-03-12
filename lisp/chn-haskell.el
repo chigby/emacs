@@ -10,6 +10,14 @@
 
 (use-package haskell-mode
   :config
-  (add-hook 'haskell-mode-hook 'haskell-setup))
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp)
+  ;;(add-hook 'haskell-mode-hook 'haskell-setup)
+  )
+
+(-when-let (ghcup-bin (file-if-exists "~/.ghcup/bin"))
+  (let* ((expanded (expand-file-name ghcup-bin)))
+    (add-to-list 'exec-path (expand-file-name ghcup-bin))
+    (setenv "PATH" (format "%s:%s" (expand-file-name ghcup-bin) (getenv "PATH")))))
 
 (provide 'chn-haskell)

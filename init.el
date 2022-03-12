@@ -41,6 +41,7 @@
 (require 'chn-lib)
 
 (require 'chn-appearance)
+(require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
 (require 'chn-elisp)
