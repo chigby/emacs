@@ -29,7 +29,7 @@
 (setq c-basic-offset 4)
 (setq css-indent-offset 2)
 (setq sh-basic-offset 2)
-(setq js2-basic-offset 2)
+(setq js-indent-level 2)
 (setq lua-indent-level 2)
 (setq elm-indent-offset 4)
 
