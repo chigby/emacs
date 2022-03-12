@@ -75,7 +75,6 @@
 (load-library "chn-octo-mode") ;; mode for editing Octo files
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
-(load-library "chn-appearance") ;; fonts, colors, themes
 (load-library "chn-scala") ;; scala settings
 (load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
