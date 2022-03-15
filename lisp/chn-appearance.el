@@ -1,17 +1,12 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
-(menu-bar-mode -1)
-
 (when window-system
   (setq frame-title-format '("" "%f - " invocation-name "@" system-name))
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
   (mouse-wheel-mode t)
   (blink-cursor-mode t)
   (setq blink-cursor-blinks 100))
 
 (setq column-number-mode t)
-(setq inhibit-splash-screen t)
 (setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
 
 ;; No one should ever work.
