@@ -1,5 +1,3 @@
-(defalias 'qrr 'query-replace-regexp)
-
 (defun note ()
   "Jump to the Notesy folder inside Dropbox."
   (interactive)
@@ -164,8 +162,6 @@
 ;;   ;; should use the line number of the individual test to be run).
 ;;   (let ((spec-class-function (which-function)))
 ;;     (run-test-file (concat "." spec-class-function))))
-
-(autoload 'vc-git-root "vc-git")
 
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
