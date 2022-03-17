@@ -22,6 +22,8 @@
 
 (use-package undo-tree
   :diminish undo-tree-mode
+  :custom
+  (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))
   :config (global-undo-tree-mode))
 
 (setq save-interprogram-paste-before-kill t)
