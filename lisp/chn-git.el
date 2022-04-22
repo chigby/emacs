@@ -1,8 +1,7 @@
 ;;; chn-git.el --- Taming the quanta of versioning
 
-(use-package git-link)
-
 (use-package magit
+  :defer t
   :commands magit-status
   :config
   (setq magit-auto-revert-mode nil)
@@ -10,6 +9,9 @@
   :bind
   ("C-x g" . magit-status)
   ("C-c g" . magit-file-dispatch))
+
+(use-package git-link
+  :commands git-link)
 
 ;; (defun turn-off-ethan-wspace ()
 ;;   (ethan-wspace-mode -1))

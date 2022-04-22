@@ -61,7 +61,7 @@
 (fset 'inline-fill
    [?\C-a ?\C-e ?\C-o ?\C-a return ?\M-q backspace ?\M-\} ?\C-d])
 
-(require 'term)
+;;(require 'term)
 (defun visit-ansi-term ()
   "If the current buffer is:
      1) a running ansi-term named *ansi-term*, rename it.
