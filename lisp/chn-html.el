@@ -9,6 +9,7 @@
          ("\\.as[cp]x\\'" . web-mode)
          ("\\.erb\\'" . web-mode)
          ("\\.mustache\\'" . web-mode)
+         ("\\.njk\\'" . web-mode)
          ("\\.djhtml\\'" . web-mode))
   :config
   (define-key web-mode-map (kbd "M-;") nil)  ;; I use this for bookmark jumping
