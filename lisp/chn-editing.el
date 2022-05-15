@@ -7,14 +7,17 @@
   smartparens-strict-mode
   sp-local-pair
   :bind (("<C-right>" . sp-forward-slurp-sexp)
-         ("<C-left>" . sp-forward-barf-sexp))
+         ("<C-left>" . sp-forward-barf-sexp)
+         ("C-," . sp-rewrap-sexp))
   :hook
   (elm-mode . smartparens-mode)
   (haskell-mode . smartparens-mode)
   :config
   (require 'smartparens-config)
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-  (sp-pair "(" ")" :wrap "C-("))
+  (sp-pair "(" ")" :wrap "C-(")
+  (sp-pair "[" "]" :wrap "C-c [")
+  (sp-pair "{" "}" :wrap "C-c {"))
 
 (use-package expand-region
   :commands 'er/expand-region
