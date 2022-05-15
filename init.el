@@ -16,6 +16,7 @@
 ;; Load custom settings
 (load custom-file 'noerror)
 
+(defvar comp-deferred-compilation-deny-list nil)
 ;; straight.el
 (setq straight-check-for-modifications '(check-on-save find-when-checking))
 (defvar bootstrap-version)
