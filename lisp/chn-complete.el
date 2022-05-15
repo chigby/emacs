@@ -55,19 +55,27 @@
   (when (string-suffix-p "," pattern)
     `(orderless-initialism . ,(substring pattern 0 -1))))
 
+(defun chn-orderless-literal-dispatcher (pattern _index _total)
+  "Literal style dispatcher with equals sign suffix."
+  (when (string-suffix-p "=" pattern)
+    `(orderless-literal . ,(substring pattern 0 -1))))
+
+(use-package marginalia
+  :config (marginalia-mode))
+
 (use-package orderless
   :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-defaults nil)
-  (orderless-style-dispatchers '(chn-orderless-initialism-dispatcher)))
+  (orderless-style-dispatchers '(chn-orderless-initialism-dispatcher chn-orderless-literal-dispatcher)))
 
 (setq completion-category-overrides
       '((file (styles . (basic partial-completion orderless)))
-          (project-file (styles . (basic substring partial-completion orderless)))
-          (imenu (styles . (basic substring orderless)))
-          (kill-ring (styles . (basic substring orderless)))
-          (consult-location (styles . (basic substring orderless)))))
+        (project-file (styles . (basic substring partial-completion orderless)))
+        (imenu (styles . (basic substring orderless)))
+        (kill-ring (styles . (basic substring orderless)))
+        (consult-location (styles . (basic substring orderless)))))
 
 ;; (let ((map minibuffer-local-completion-map))
 ;;       (define-key map (kbd "SPC") nil)
@@ -79,5 +87,25 @@
 ;;       '(
 ;;         (bookmark (styles . (basic)))
 ;;         ))
+
+(use-package embark
+  :ensure t
+
+  :bind
+  (("M-." . embark-act)         ;; pick some comfortable binding
+   ("C-." . embark-dwim)        ;; good alternative: M-.
+   ;;("C-h B" . embark-bindings)  ;; alternative for `describe-bindings'
+   )
+
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
 
 (provide 'chn-complete)
