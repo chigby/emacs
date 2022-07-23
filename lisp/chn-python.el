@@ -14,7 +14,8 @@
 
 (add-hook 'python-mode-hook #'smartparens-mode)
 
-(use-package docker-tramp)
+(use-package docker-tramp
+  :disabled)
 
 (defun module-spec-from-filename (filename)
   (let* ((root-dir (expand-file-name (vc-git-root filename))))

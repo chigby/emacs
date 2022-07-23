@@ -1,6 +1,7 @@
 ;;; chn-elm.el --- Elm Language Support
 
 (use-package elm-mode
+  :defer t
   :config
   (setq elm-format-on-save t)
   (bind-key "C-c C-c" 'elm-compile-main elm-mode-map)

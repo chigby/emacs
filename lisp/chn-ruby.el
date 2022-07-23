@@ -1,7 +1,8 @@
 ;;; chn-ruby.el --- the shimmering chainsaw
 
 (use-package ruby-mode
-   :mode (("\\.rb$" . ruby-mode)
+  :defer t
+  :mode (("\\.rb$" . ruby-mode)
          ("Rakefile$" . ruby-mode)
          ("\\.rake$" . ruby-mode)
          ("Gemfile$" . ruby-mode)
@@ -14,6 +15,7 @@
 (setq chn/ruby-version "2.6.6")
 
 (use-package chruby
+  :after ruby
   :config
   (chruby chn/ruby-version))
 

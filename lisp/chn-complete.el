@@ -1,18 +1,19 @@
 ;;; chn-complete.el --- What was sundered and undone / shall be whole
 
 (use-package company
-  :demand t
+  :defer 3
   :commands company-mode
   :config
-  (global-company-mode)
   (setq company-minimum-prefix-length 2
         company-selection-wrap-around t
         company-show-numbers t
         company-tooltip-align-annotations t
         company-require-match nil
         company-dabbrev-downcase nil
-        company-dabbrev-ignore-case nil)
-  )
+        company-dabbrev-ignore-case nil
+        company-global-modes '(python-mode emacs-lisp-mode ruby-mode elm-mode
+                                           sh-mode lisp-interaction-mode js-mode))
+  (global-company-mode))
 
 (use-package vertico
   :straight (vertico

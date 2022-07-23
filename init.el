@@ -65,6 +65,7 @@
 (require 'chn-dired)
 (require 'chn-eshell)
 (require 'chn-window-nav)
+(require 'sugarcube-mode)
 
 (load-file (expand-file-name
             (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")
@@ -73,7 +74,6 @@
             user-emacs-directory))
 
 (load-library "chn-functions") ;; my own one-off functions
-(load-library "chn-sugarcube-mode") ;; my twine mode
 (load-library "chn-octo-mode") ;; mode for editing Octo files
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings

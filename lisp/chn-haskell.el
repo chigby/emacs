@@ -9,6 +9,7 @@
   (setq indent-line-function 'indent-relative))
 
 (use-package haskell-mode
+  :defer t
   :config
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp)

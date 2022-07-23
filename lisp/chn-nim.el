@@ -1,6 +1,7 @@
 ;;; chn-nim.el --- the nim programming language
 
-(use-package nim-mode)
+(use-package nim-mode
+  :defer t)
 
 (-when-let (nimble-bin (file-if-exists "~/.nimble/bin"))
   (let* ((expanded (expand-file-name nimble-bin)))

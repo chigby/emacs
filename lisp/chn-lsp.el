@@ -7,6 +7,7 @@
 ;; optionally
 ;; (use-package lsp-ui :commands lsp-ui-mode)
 
-(use-package lsp-haskell)
+(use-package lsp-haskell
+  :defer t)
 
 (provide 'chn-lsp)

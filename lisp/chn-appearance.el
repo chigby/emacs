@@ -30,8 +30,10 @@
   (load-theme theme))
 
 (use-package solarized-theme)
-(use-package base16-theme)
-(use-package doom-themes)
+(use-package base16-theme
+  :defer t)
+(use-package doom-themes
+  :defer t)
 
 (defun white-theme ()
   "A white-background for the brightest of days"
