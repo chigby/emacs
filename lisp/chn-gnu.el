@@ -12,8 +12,6 @@
                               )))
 
 
-(set-frame-font "Hack 13")
-
 (-when-let (nodenv-root (chn/exec-if-exec "nodenv" "root"))
   (let ((nodenv-shims (concat nodenv-root "/shims")))
     (add-to-list 'exec-path nodenv-shims)
