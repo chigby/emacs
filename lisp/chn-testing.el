@@ -45,6 +45,7 @@
       (shell-command (format "scripts/test %s" filename)))
      ((and (file-readable-p "bin/rails") (file-readable-p "Gemfile"))
       (execute-bash-script (format "bundle exec rails test %s" (file-relative-name filename default-directory))))
+     (t (error "Could not locate acceptable test command."))
      )))
 
 (provide 'chn-testing)

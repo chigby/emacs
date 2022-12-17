@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : pretty print
+# --
+
+import pprint
+pprintp.print($0)

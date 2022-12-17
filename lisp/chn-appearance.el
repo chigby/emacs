@@ -74,14 +74,14 @@
 (defun chn/numbers-toggle ()
   "Toggle line numbers."
   (interactive)
-  (if (bound-and-true-p display-line-numbers-mode)
-      (display-line-numbers-mode -1)
-    (display-line-numbers-mode 1)))
+  (if (bound-and-true-p global-display-line-numbers-mode)
+      (global-display-line-numbers-mode -1)
+    (global-display-line-numbers-mode 1)))
 
 (defun chn/hl-line-toggle ()
   "Toggle line highlighting."
   (interactive)
-  (if (bound-and-true-p hl-line-mode) (hl-line-mode -1) (hl-line-mode 1)))
+  (if (bound-and-true-p global-hl-line-mode) (global-hl-line-mode -1) (global-hl-line-mode 1)))
 
 (defun chn/code-visibility ()
   "Enable or disable code visibility markers."

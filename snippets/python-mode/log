@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : formatted print
+# --
+print(f'{$0=}')

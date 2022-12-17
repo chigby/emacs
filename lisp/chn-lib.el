@@ -1,7 +1,6 @@
 ;;; chn-lib --- Component compounds of a wild law
 
 (use-package dash)
-(use-package dash-functional)
 (use-package s)
 (use-package f)
 
