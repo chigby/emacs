@@ -40,7 +40,7 @@
       (execute-bash-script (format "scripts/test.sh %s" filename)))
      ((file-readable-p "scripts/test.cmd")
       ;;(message (format "scripts/test.cmd %s" filename)))
-      (shell-command (format "call scripts/test.cmd %s" filename)))
+      (async-shell-command (format "call scripts/test.cmd %s" filename)))
      ((file-readable-p "scripts/test")
       (shell-command (format "scripts/test %s" filename)))
      ((and (file-readable-p "bin/rails") (file-readable-p "Gemfile"))
