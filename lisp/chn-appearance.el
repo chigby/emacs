@@ -51,6 +51,11 @@
   (interactive)
   (chn/load-theme 'base16-materia))
 
+(defun cyber-theme ()
+  "A festive, dark theme for revels and the cybernetic midnight horizon"
+  (interactive)
+  (chn/load-theme 'doom-laserwave))
+
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
   (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
