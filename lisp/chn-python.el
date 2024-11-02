@@ -1,6 +1,7 @@
 ;;; chn-python.el --- For the pseudonatural integration of parts
 
 (use-package python
+  :ensure nil
   :commands python-mode
   :config
   (use-package virtualenvwrapper

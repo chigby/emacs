@@ -16,7 +16,10 @@
   (global-company-mode))
 
 (use-package vertico
-  :straight (vertico
+  :ensure (vertico
+	     :host github
+	     :repo "minad/vertico"
+	     :branch "main"
              :files (:defaults "extensions/vertico-directory.el")
              :includes (vertico-directory))
   :init
@@ -37,7 +40,6 @@
 
 ;; Configure directory extension.
 (use-package vertico-directory
-  :straight nil
   :after vertico
   :ensure nil
   ;; More convenient directory navigation commands

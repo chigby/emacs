@@ -29,11 +29,9 @@
   (chn/disable-all-themes)
   (load-theme theme))
 
-(use-package solarized-theme)
-(use-package base16-theme
-  :defer t)
-(use-package doom-themes
-  :defer t)
+(elpaca solarized-theme)
+(elpaca base16-theme)
+(elpaca doom-themes (chn/load-theme 'doom-one-light))
 
 (defun white-theme ()
   "A white-background for the brightest of days"

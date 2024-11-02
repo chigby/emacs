@@ -1,5 +1,11 @@
 ;;; chn-git.el --- Taming the quanta of versioning
 
+;; see https://github.com/magit/magit/issues/4931
+(require 'cursor-sensor)
+
+(elpaca transient
+  (require 'transient))
+
 (use-package magit
   :defer t
   :commands magit-status
