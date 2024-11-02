@@ -1,6 +1,7 @@
 ;;; chn-python.el --- For the pseudonatural integration of parts
 
 (use-package python
+  :ensure nil
   :commands python-mode
   :config
   (use-package virtualenvwrapper
@@ -13,6 +14,7 @@
   (bind-key "C-c <" 'unindent-region python-mode-map))
 
 (add-hook 'python-mode-hook #'smartparens-mode)
+(add-hook 'python-mode-hook #'which-function-mode)
 
 (use-package docker-tramp
   :disabled)

@@ -1,6 +1,7 @@
 ;;; chn-ruby.el --- the shimmering chainsaw
 
 (use-package ruby-mode
+  :ensure nil
   :defer t
   :mode (("\\.rb$" . ruby-mode)
          ("Rakefile$" . ruby-mode)

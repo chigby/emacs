@@ -6,7 +6,7 @@
 (setq dired-listing-switches "-alh")
 
 (use-package dired
-  :straight (:type built-in)
+  :ensure nil
   :bind (:map dired-mode-map
               ("_" . chn-dired-create-file)
               ("b" . magit-status))

@@ -1,8 +1,8 @@
 ;;; chn-lib --- Component compounds of a wild law
 
-(use-package dash)
-(use-package s)
-(use-package f)
+;; (elpaca (dash :wait t))
+;; (elpaca (s :wait t))
+;; (elpaca (f :wait t))
 
 (defmacro with-system (type &rest body)
   "Evaluate BODY if `system-type' equals TYPE."

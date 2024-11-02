@@ -23,6 +23,7 @@
 ;; more about project.el: https://www.reddit.com/r/emacs/comments/kfubcb/comment/ggav4un/
 
 (use-package project
+  :ensure nil ;; elpaca shouldn't manage the built-in library
   :custom
   (project-switch-commands
    '((?f "File" project-find-file)

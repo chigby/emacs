@@ -16,7 +16,7 @@
   ;;(add-hook 'haskell-mode-hook 'haskell-setup)
   )
 
-(-when-let (ghcup-bin (file-if-exists "~/.ghcup/bin"))
+(when-let (ghcup-bin (file-if-exists "~/.ghcup/bin"))
   (let* ((expanded (expand-file-name ghcup-bin)))
     (add-to-list 'exec-path (expand-file-name ghcup-bin))
     (setenv "PATH" (format "%s:%s" (expand-file-name ghcup-bin) (getenv "PATH")))))
