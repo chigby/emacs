@@ -9,13 +9,17 @@
 (setq column-number-mode t)
 (setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
 
-;; No one should ever work.
-;; Work is the source of nearly all the misery in the world. Almost
-;; any evil you’d care to name comes from working or from living in a
-;; world designed for work. In order to stop suffering, we have to
-;; stop working.
+;; Yes... it's rough, blunt, unfinished... just like Seiji's
+;; violin. You've shown me the rough stone you've just cut out of
+;; the rock. You've worked hard. You're wonderful. There's no
+;; need to rush now. Take your time and polish it.
 
-;; Curiosity, not ambition.
+;; The more your drive, the less intelligent you are.
+
+;; Computation is intrinsically self-obviating, which is to mean
+;; that the computational system, by design, tries to make itself
+;; less and less necessary to the realization of its purpose, and
+;; gradually allow people to provide for their own welfare.
 
 ")
 
