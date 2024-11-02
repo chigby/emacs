@@ -1,5 +1,7 @@
 ;;; chn-navigation.el --- correspondance, time, and movement
 
+(use-package symbol-overlay)
+
 (use-package syntax-subword
   :config
   (global-syntax-subword-mode)
