@@ -95,4 +95,8 @@
 (let ((map global-map))
   (define-key map (kbd "C-c z") 'chn/code-visibility))
 
+(defun chn/display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
 (provide 'chn-appearance)
