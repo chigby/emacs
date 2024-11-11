@@ -2,6 +2,12 @@
 
 (use-package symbol-overlay)
 
+(global-set-key (kbd "M-m") 'symbol-overlay-put)
+(global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "S-<f8>") 'symbol-overlay-remove-all)
+
+
 (use-package syntax-subword
   :config
   (global-syntax-subword-mode)
