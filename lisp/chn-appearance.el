@@ -35,28 +35,27 @@
 
 (elpaca solarized-theme)
 (elpaca base16-theme)
-(elpaca doom-themes (chn/load-theme 'doom-one-light))
+(elpaca ef-themes (chn/load-theme 'ef-light))
 
 (defun white-theme ()
   "A white-background for the brightest of days"
   (interactive)
-  (chn/load-theme 'doom-one-light))
+  (chn/load-theme 'ef-light))
 
 (defun light-theme ()
   "A low-contrast light theme to combat screen glare"
   (interactive)
-  (chn/load-theme 'solarized-light))
-;; try leuven-theme here??
+  (chn/load-theme 'ef-melissa-light))
 
 (defun dark-theme ()
   "A dark theme to combat night-blindness"
   (interactive)
-  (chn/load-theme 'base16-materia))
+  (chn/load-theme 'ef-dark))
 
 (defun cyber-theme ()
   "A festive, dark theme for revels and the cybernetic midnight horizon"
   (interactive)
-  (chn/load-theme 'doom-laserwave))
+  (chn/load-theme 'ef-cherie))
 
 (defun ns-font-setup ()
   (set-fontset-font "fontset-default" 'symbol "Menlo")
