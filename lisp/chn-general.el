@@ -4,9 +4,6 @@
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 
-;; Brevity is the soul of wit.
-(fset 'yes-or-no-p 'y-or-n-p)
-
 ;; Disable lockfiles (I almost never run more than one emacs instance)
 (setq create-lockfiles nil)
 
