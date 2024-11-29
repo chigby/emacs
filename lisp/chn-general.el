@@ -38,6 +38,9 @@
 (setq recentf-max-saved-items 100)
 
 ;; Keep minibuffer history across sessions
-(savehist-mode 1)
+(use-package savehist
+  :ensure nil ; it is built-in
+  :hook (after-init . savehist-mode))
+
 
 (provide 'chn-general)
