@@ -4,9 +4,6 @@
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 
-;; Brevity is the soul of wit.
-(fset 'yes-or-no-p 'y-or-n-p)
-
 ;; Disable lockfiles (I almost never run more than one emacs instance)
 (setq create-lockfiles nil)
 
@@ -38,6 +35,36 @@
 (setq recentf-max-saved-items 100)
 
 ;; Keep minibuffer history across sessions
-(savehist-mode 1)
+(use-package savehist
+  :ensure nil ; it is built-in
+  :hook (after-init . savehist-mode))
+
+;; via https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/#h:83c8afc4-2359-4ebe-8b5c-f2e5257bdda3
+(defun chn/keyboard-quit-dwim ()
+  "Do-What-I-Mean behaviour for a general `keyboard-quit'.
+
+The generic `keyboard-quit' does not do the expected thing when
+the minibuffer is open.  Whereas we want it to close the
+minibuffer, even without explicitly focusing it.
+
+The DWIM behaviour of this command is as follows:
+
+- When the region is active, disable it.
+- When a minibuffer is open, but not focused, close the minibuffer.
+- When the Completions buffer is selected, close it.
+- In every other case use the regular `keyboard-quit'."
+  (interactive)
+  (cond
+   ((region-active-p)
+    (keyboard-quit))
+   ((derived-mode-p 'completion-list-mode)
+    (delete-completion-window))
+   ((> (minibuffer-depth) 0)
+    (abort-recursive-edit))
+   (t
+    (keyboard-quit))))
+
+(define-key global-map (kbd "C-g") #'chn/keyboard-quit-dwim)
+
 
 (provide 'chn-general)
