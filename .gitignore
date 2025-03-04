@@ -3,6 +3,7 @@ autosave/*
 auto-save-list/*
 backup/*
 elpa/*
+eln-cache/
 tramp
 url/*
 eshell/lastdir
@@ -21,3 +22,6 @@ undo-tree/*
 /straight/*
 !/straight/versions/
 !/straight/versions/*
+
+# elpaca
+/elpaca
