@@ -25,9 +25,19 @@
   ;; currently, this only works for python tests (due to its
   ;; interaction with the test runner.. future ruby support for this
   ;; should use the line number of the individual test to be run).
-  (let ((spec-class-function (which-function)))
+  (save-excursion
+    (treesit-beginning-of-defun)
+    (end-of-line)
+
+   (let ((spec-class-function (which-function)))
     ;; possible use for save-excursion here, to fix weirdness with blank lines in tests. (save-excursion (backward-word) (run-test-file ...))
-    (run-test-file (concat "." spec-class-function))))
+    (run-test-file (concat "." spec-class-function)))))
+
+
+
+;; (save-excursion (treesit-beginning-of-defun) (end-of-line) (run-test-file (concat "." spec-class-function)))
+;; (save-excursion (treesit-beginning-of-defun) (end-of-line) (message (which-function)))
+;; (treesit-defun-name (treesit-defun-at-point))
 
 (defun set-test-file (filename command-suffix)
   "Save the name of a test file (or testable object) for later."

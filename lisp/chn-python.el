@@ -9,12 +9,19 @@
     :init
     (setq venv-location "~/.virtualenvs"))
   (bind-key "C-c C-z" nil python-mode-map) ;; used for running tests
+  (bind-key "C-c C-z" nil python-ts-mode-map) ;; used for running tests
   (bind-key "C-j" 'end-of-line-indent python-mode-map)
+  (bind-key "C-j" 'end-of-line-indent python-ts-mode-map)
   (bind-key "C-c >" 'indent-region python-mode-map)
-  (bind-key "C-c <" 'unindent-region python-mode-map))
+  (bind-key "C-c >" 'indent-region python-ts-mode-map)
+  (bind-key "C-c <" 'unindent-region python-mode-map)
+  (bind-key "C-c <" 'unindent-region python-ts-mode-map)
+  )
 
 (add-hook 'python-mode-hook #'smartparens-mode)
+(add-hook 'python-ts-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'which-function-mode)
+(add-hook 'python-ts-mode-hook #'which-function-mode)
 
 (use-package docker-tramp
   :disabled)
