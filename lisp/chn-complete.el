@@ -11,8 +11,8 @@
         company-require-match nil
         company-dabbrev-downcase nil
         company-dabbrev-ignore-case nil
-        company-global-modes '(python-mode emacs-lisp-mode ruby-mode elm-mode
-                                           sh-mode lisp-interaction-mode js-mode))
+        company-global-modes '(python-mode python-ts-mode emacs-lisp-mode ruby-mode elm-mode
+                                           sh-mode lisp-interaction-mode js-mode js-ts-mode))
   (global-company-mode))
 
 (use-package vertico
