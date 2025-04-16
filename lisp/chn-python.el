@@ -2,19 +2,13 @@
 
 (use-package python
   :ensure nil
-  :commands python-mode
-  :config
-  (use-package virtualenvwrapper
-    :commands venv-workon
-    :init
-    (setq venv-location "~/.virtualenvs"))
-  (bind-key "C-c C-z" nil python-mode-map) ;; used for running tests
-  (bind-key "C-j" 'end-of-line-indent python-mode-map)
-  (bind-key "C-c >" 'indent-region python-mode-map)
-  (bind-key "C-c <" 'unindent-region python-mode-map))
-
-(add-hook 'python-mode-hook #'smartparens-mode)
-(add-hook 'python-mode-hook #'which-function-mode)
+  :mode ("\\.py\\'" . python-ts-mode)
+  :bind
+  (:map python-base-mode-map
+        ([remap python-shell-switch-to-shell] . run-test-file)
+        ("C-j" . end-of-line-indent)
+        ("C-c <" . unindent-region)
+        ("C-c >" . indent-region)))
 
 (use-package docker-tramp
   :disabled)

@@ -7,6 +7,7 @@
   (add-hook 'js-mode-hook #'yas-minor-mode)
   (add-hook 'ruby-mode-hook #'yas-minor-mode)
   (add-hook 'python-mode-hook #'yas-minor-mode)
+  (add-hook 'python-ts-mode-hook #'yas-minor-mode)
   :bind ("C-<tab>" . yas-expand)
   :config
   ;; prevent TAB conflicts with other things

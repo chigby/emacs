@@ -66,5 +66,8 @@ The DWIM behaviour of this command is as follows:
 
 (define-key global-map (kbd "C-g") #'chn/keyboard-quit-dwim)
 
+(use-package which-func
+  :ensure nil
+  :hook ((python-base-mode) . which-function-mode))
 
 (provide 'chn-general)
