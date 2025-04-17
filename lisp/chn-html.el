@@ -20,9 +20,10 @@
 
 (use-package emmet-mode
   :commands emmet-mode
-  :config
-  ;; C-j is my open-line-below binding that I like too much to clobber
-  (define-key emmet-mode-keymap (kbd "C-j") nil)
+  :bind
+  (:map emmet-mode-keymap
+        ;; C-j is my open-line-below binding that I like too much to clobber
+        ("C-j" . nil))
   :hook (html-mode web-mode))
 
 (defun in-project-root? (file)

@@ -78,6 +78,7 @@
 ;; We want this feature of use-package.
 (use-package diminish :ensure t :demand t)
 
+(require 'chn-emacs)
 (require 'chn-lib)
 
 
