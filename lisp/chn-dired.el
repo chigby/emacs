@@ -9,9 +9,7 @@
   :ensure nil
   :bind (:map dired-mode-map
               ("_" . chn-dired-create-file)
-              ("b" . magit-status))
-  :config
-  (require 'dired-x))
+              ("b" . magit-status)))
 
 (defun chn-dired-create-file (file)
   "Create a file called FILE.
