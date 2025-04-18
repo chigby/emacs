@@ -9,7 +9,7 @@
   :bind (("<C-right>" . sp-forward-slurp-sexp)
          ("<C-left>" . sp-forward-barf-sexp)
          ("C-," . sp-rewrap-sexp))
-  :hook  ((emacs-lisp-mode . smartparens-strict-mode)
+  :hook  (((lisp-data-mode emacs-lisp-mode) . smartparens-strict-mode)
           ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . smartparens-mode))
   :config
   (require 'smartparens-config)
