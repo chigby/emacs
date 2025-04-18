@@ -151,11 +151,13 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
-(load-file (expand-file-name
-            (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")
-                  ((eq system-type 'gnu/linux) "lisp/chn-gnu.el")
-                  (t "default-system.el"))
-            user-emacs-directory))
+(use-package chn-windows
+  :ensure nil
+  :if (equal system-type 'windows-nt))
+
+(use-package chn-gnu
+  :ensure nil
+  :if (equal system-type 'gnu/linux))
 
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings
