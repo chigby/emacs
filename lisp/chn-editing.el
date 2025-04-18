@@ -9,8 +9,8 @@
   :bind (("<C-right>" . sp-forward-slurp-sexp)
          ("<C-left>" . sp-forward-barf-sexp)
          ("C-," . sp-rewrap-sexp))
-  :hook
-  (elm-mode haskell-mode js-base-mode python-base-mode rust-mode)
+  :hook  ((emacs-lisp-mode . smartparens-strict-mode)
+          ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . smartparens-mode))
   :config
   (require 'smartparens-config)
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)

@@ -134,7 +134,6 @@
 (require 'chn-git)
 (require 'chn-general)
 (require 'chn-editing)
-(require 'chn-elisp)
 (require 'chn-project)
 (require 'chn-elm)
 (require 'chn-rust)
