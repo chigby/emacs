@@ -68,6 +68,11 @@
   :ensure nil ;; it's a local package, don't try to install it from a repo
   :mode "\\.twee\\'")
 
+(use-package chn-octo-mode
+  :ensure nil
+  :mode "\\.octo\\'"
+  )
+
 (use-package find-dired
   :ensure nil
   :custom
