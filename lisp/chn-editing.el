@@ -28,6 +28,11 @@
   (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))
   :hook (emacs-startup . global-undo-tree-mode))
 
+ ;; Eliminate duplicates in the kill ring.
+(setq kill-do-not-save-duplicates t)
+
+;; Preserve text copied from the operating system before overwriting
+;; it with something else from within emacs.
 (setq save-interprogram-paste-before-kill t)
 
 ;; Duplicate start of line or region with C-<end>.
