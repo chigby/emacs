@@ -5,6 +5,14 @@
 ;; What long-shackled powers of the elder dark
 ;; have our conjurings loosed?
 
+(if init-file-debug
+      (setq use-package-verbose t
+            use-package-expand-minimally nil
+            use-package-compute-statistics t
+            debug-on-error t)
+    (setq use-package-verbose nil
+          use-package-expand-minimally t))
+
 (setq emacs-root (file-name-directory
                   (or (buffer-file-name) (file-chase-links load-file-name))))
 
