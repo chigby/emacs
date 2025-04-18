@@ -81,7 +81,6 @@
 (require 'chn-emacs)
 (require 'chn-lib)
 
-
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
                  "v0.23.3"))
