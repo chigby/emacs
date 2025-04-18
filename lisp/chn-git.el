@@ -7,13 +7,12 @@
   (require 'transient))
 
 (use-package magit
-  :defer t
   :commands magit-status
-  :config
-  (setq magit-auto-revert-mode nil
-        magit-diff-refine-hunk t
-        magit-bury-buffer-function #'magit-restore-window-configuration
-        magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1)
+  :custom
+  (magit-auto-revert-mode t)
+  (magit-diff-refine-hunk t)
+  (magit-bury-buffer-function #'magit-restore-window-configuration)
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1)
   :bind
   ("C-x g" . magit-status)
   ("C-c g" . magit-file-dispatch))

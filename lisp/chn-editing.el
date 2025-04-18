@@ -9,8 +9,8 @@
   :bind (("<C-right>" . sp-forward-slurp-sexp)
          ("<C-left>" . sp-forward-barf-sexp)
          ("C-," . sp-rewrap-sexp))
-  :hook
-  (elm-mode haskell-mode js-base-mode python-base-mode)
+  :hook  (((lisp-data-mode emacs-lisp-mode) . smartparens-strict-mode)
+          ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . smartparens-mode))
   :config
   (require 'smartparens-config)
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
@@ -26,8 +26,13 @@
   :diminish undo-tree-mode
   :custom
   (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))
-  :config (global-undo-tree-mode))
+  :hook (emacs-startup . global-undo-tree-mode))
 
+ ;; Eliminate duplicates in the kill ring.
+(setq kill-do-not-save-duplicates t)
+
+;; Preserve text copied from the operating system before overwriting
+;; it with something else from within emacs.
 (setq save-interprogram-paste-before-kill t)
 
 ;; Duplicate start of line or region with C-<end>.

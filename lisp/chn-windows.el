@@ -17,3 +17,5 @@
   (async-shell-command "C:/Program Files/PowerShell/6.0.3/pwsh.exe -Command -"
                        nil
                        nil))
+
+(provide 'chn-windows)

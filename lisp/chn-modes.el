@@ -2,16 +2,14 @@
 
 ;; dhall
 (use-package dhall-mode
-  :mode ("\\.dhall\\'" . dhall-mode)
-  :config
-  (setq dhall-format-at-save nil))
+  :mode "\\.dhall\\'"
+  :custom
+  (dhall-format-at-save . nil))
 
 (use-package yaml-mode
   :mode ("\\.yml\\'" . yaml-mode))
 
-
 (use-package dockerfile-mode
-  :defer t
   :mode (("Dockerfile" . dockerfile-mode)))
 
 
@@ -42,38 +40,56 @@
 
 ;;; Misc.
 
-(defun chn-text-mode-keys ()
-  (local-set-key (kbd "M-c") 'capitalize-word))
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'text-mode-hook 'chn-text-mode-keys)
+(use-package text-mode
+  :ensure nil
+  :bind
+  (:map text-mode-map
+        ("M-c" . capitalize-word))
+  :hook
+  (text-mode . visual-line-mode))
 
 (autoload 'awk-mode "cc-mode" nil t)
 
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator "/")
-(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+(use-package uniquify
+  :ensure nil
+  :custom
+  (uniquify-buffer-name-style 'reverse)
+  (uniquify-separator "/")
 
-(setq-default ispell-program-name "aspell")
+  (uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
+  )
 
-(require 'sugarcube-mode)
-;;(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
-(add-to-list 'auto-mode-alist '("\\.twee$" . sugarcube-mode))
+(use-package ispell
+  :ensure nil
+  :custom
+  (ispell-program-name "hunspell"))
 
-(setq find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
+(use-package sugarcube-mode
+  :ensure nil ;; it's a local package, don't try to install it from a repo
+  :mode "\\.twee\\'")
+
+(use-package chn-octo-mode
+  :ensure nil
+  :mode "\\.octo\\'"
+  )
+
+(use-package find-dired
+  :ensure nil
+  :custom
+  find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
 
 ; properly format ansi colors on shell-command
 ; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
-(defadvice display-message-or-buffer (before ansi-color activate)
-  "Process ANSI color codes in shell output."
-  (let ((buf (ad-get-arg 0)))
-    (and (bufferp buf)
-         (string= (buffer-name buf) "*Shell Command Output*")
-         (with-current-buffer buf
-           (ansi-color-apply-on-region (point-min) (point-max))))))
 
-(setq calc-settings-file (concat emacs-root "lisp/calc-settings.el"))
 
-(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
-(add-to-list 'auto-mode-alist '("\\.sls\\'" . salt-mode))
+;; (defadvice display-message-or-buffer (before ansi-color activate)
+;;   "Process ANSI color codes in shell output."
+;;   (let ((buf (ad-get-arg 0)))
+;;     ))
+
+(use-package calc
+  :ensure nil
+  :commands calc
+  :custom
+  (calc-settings-file (concat emacs-root "lisp/calc-settings.el")))

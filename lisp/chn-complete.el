@@ -22,8 +22,7 @@
 	     :branch "main"
              :files (:defaults "extensions/vertico-directory.el")
              :includes (vertico-directory))
-  :init
-  (vertico-mode)
+  :hook (emacs-startup . vertico-mode)
 
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
@@ -64,7 +63,7 @@
     `(orderless-literal . ,(substring pattern 0 -1))))
 
 (use-package marginalia
-  :config (marginalia-mode))
+  :hook emacs-startup)
 
 (use-package orderless
   :ensure t

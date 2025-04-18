@@ -5,6 +5,14 @@
 ;; What long-shackled powers of the elder dark
 ;; have our conjurings loosed?
 
+(if init-file-debug
+      (setq use-package-verbose t
+            use-package-expand-minimally nil
+            use-package-compute-statistics t
+            debug-on-error t)
+    (setq use-package-verbose nil
+          use-package-expand-minimally t))
+
 (setq emacs-root (file-name-directory
                   (or (buffer-file-name) (file-chase-links load-file-name))))
 
@@ -78,8 +86,8 @@
 ;; We want this feature of use-package.
 (use-package diminish :ensure t :demand t)
 
+(require 'chn-emacs)
 (require 'chn-lib)
-
 
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
@@ -133,7 +141,6 @@
 (require 'chn-git)
 (require 'chn-general)
 (require 'chn-editing)
-(require 'chn-elisp)
 (require 'chn-project)
 (require 'chn-elm)
 (require 'chn-rust)
@@ -151,16 +158,16 @@
 (require 'chn-dired)
 (require 'chn-eshell)
 (require 'chn-window-nav)
-(require 'sugarcube-mode)
 
-(load-file (expand-file-name
-            (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")
-                  ((eq system-type 'gnu/linux) "lisp/chn-gnu.el")
-                  (t "default-system.el"))
-            user-emacs-directory))
+(use-package chn-windows
+  :ensure nil
+  :if (equal system-type 'windows-nt))
+
+(use-package chn-gnu
+  :ensure nil
+  :if (equal system-type 'gnu/linux))
 
 (load-library "chn-functions") ;; my own one-off functions
-(load-library "chn-octo-mode") ;; mode for editing Octo files
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
 (load-library "chn-scala") ;; scala settings
@@ -169,4 +176,5 @@
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
 
-(load (expand-file-name "local.el" user-emacs-directory) 'no-error)
+(use-package extra-config :ensure nil :if (f-exists-p "~/extra")
+  :load-path "~/extra")

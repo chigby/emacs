@@ -3,16 +3,11 @@
 (use-package yasnippet
   :diminish yas-minor-mode
   :commands yas-minor-mode
-  :init
-  (add-hook 'js-mode-hook #'yas-minor-mode)
-  (add-hook 'ruby-mode-hook #'yas-minor-mode)
-  (add-hook 'python-mode-hook #'yas-minor-mode)
-  (add-hook 'python-ts-mode-hook #'yas-minor-mode)
-  :bind ("C-<tab>" . yas-expand)
-  :config
-  ;; prevent TAB conflicts with other things
-  (define-key yas-minor-mode-map [tab] nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (yas-reload-all))
+  :hook ((js-base-mode python-base-mode ruby-mode) . yas-minor-mode)
+  :bind (("C-<tab>" . yas-expand)
+         :map yas-minor-mode-map
+         ([tab] . nil)  ;; prevent TAB conflicts with other things
+         )
+  :config (yas-reload-all))
 
 (provide 'chn-snippets)

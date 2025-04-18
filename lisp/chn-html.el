@@ -11,16 +11,19 @@
          ("\\.mustache\\'" . web-mode)
          ("\\.njk\\'" . web-mode)
          ("\\.djhtml\\'" . web-mode))
-  :config
-  (define-key web-mode-map (kbd "M-;") nil)  ;; I use this for bookmark jumping
-  (add-hook 'web-mode-hook 'chn/check-hugo)
-  (add-hook 'web-mode-hook 'chn/check-django))
+  :hook
+  (web-mode . chn/check-hugo)
+  (web-mode . chn/check-django)
+  :bind
+  (:map web-mode-map
+        ([remap web-mode-comment-or-uncomment] . project-switch-project)))
 
 (use-package emmet-mode
   :commands emmet-mode
-  :config
-  ;; C-j is my open-line-below binding that I like too much to clobber
-  (define-key emmet-mode-keymap (kbd "C-j") nil)
+  :bind
+  (:map emmet-mode-keymap
+        ;; C-j is my open-line-below binding that I like too much to clobber
+        ("C-j" . nil))
   :hook (html-mode web-mode))
 
 (defun in-project-root? (file)

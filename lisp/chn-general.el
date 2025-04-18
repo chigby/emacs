@@ -25,10 +25,6 @@
   kept-old-versions 2
   version-control t)
 
-;; Preserve text copied from the operating system before overwriting
-;; it with something else from within emacs.
-(setq save-interprogram-paste-before-kill t)
-
 (transient-mark-mode t)
 
 ;; Keep up to 100 recent files in 'M-x b' history

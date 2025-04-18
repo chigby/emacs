@@ -16,3 +16,5 @@
   (let ((nodenv-shims (concat nodenv-root "/shims")))
     (add-to-list 'exec-path nodenv-shims)
     (setenv "PATH" (concat nodenv-shims ":" (getenv "PATH")))))
+
+(provide 'chn-gnu)
