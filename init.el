@@ -168,4 +168,5 @@
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
 
-(load (expand-file-name "local.el" user-emacs-directory) 'no-error)
+(use-package extra-config :ensure nil :if (f-exists-p "~/extra")
+  :load-path "~/extra")
