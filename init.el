@@ -150,7 +150,6 @@
 (require 'chn-dired)
 (require 'chn-eshell)
 (require 'chn-window-nav)
-(require 'sugarcube-mode)
 
 (load-file (expand-file-name
             (cond ((eq system-type 'windows-nt) "lisp/chn-windows.el")

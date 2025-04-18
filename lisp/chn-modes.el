@@ -64,9 +64,9 @@
   :custom
   (ispell-program-name "hunspell"))
 
-(require 'sugarcube-mode)
-;;(add-to-list 'auto-mode-alist '("\\.tws$" . twine-mode))
-(add-to-list 'auto-mode-alist '("\\.twee$" . sugarcube-mode))
+(use-package sugarcube-mode
+  :ensure nil ;; it's a local package, don't try to install it from a repo
+  :mode "\\.twee\\'")
 
 (use-package find-dired
   :ensure nil
