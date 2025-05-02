@@ -10,16 +10,6 @@
               ("M-n" . flycheck-next-error)
               ("M-p" . flycheck-previous-error)))
 
-(use-package ethan-wspace
-  :config
-  (global-ethan-wspace-mode 1)
-
-  ;; Do not insert newline at EOF in snippets files, often we want this.
-  (add-hook 'snippet-mode-hook
-            (lambda()
-              (setq ethan-wspace-errors (remove 'no-nl-eof ethan-wspace-errors))))
-  :diminish ethan-wspace-mode)
-
 (setq mode-require-final-newline nil)
 (setq require-final-newline nil)
 
