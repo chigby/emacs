@@ -23,4 +23,7 @@
 (setq lua-indent-level 2)
 (setq elm-indent-offset 4)
 
+(use-package editorconfig
+  :hook prog-mode)
+
 (provide 'chn-codestyle)
