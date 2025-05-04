@@ -40,6 +40,18 @@
 
 ;;; Misc.
 
+(use-package prog-mode
+  :ensure nil
+  :custom
+  (show-trailing-whitespace t)
+  :bind
+  (:map prog-mode-map
+        ("C-c w" . delete-trailing-whitespace))
+  :custom-face
+  ;; (trailing-whitespace ((t (:foreground nil :background nil :underline (:style wave :color "#bf5f00")))))
+  (trailing-whitespace ((t (:foreground nil :background "#fac200"))))
+  )
+
 (use-package text-mode
   :ensure nil
   :bind

@@ -2,10 +2,11 @@
 
 (use-package rg
   :config
-  (setq rg-default-alias-fallback "all")
-  :custom
   (rg-enable-menu)
-  :bind ("M-'" . rg-project)
+  :custom
+  (rg-default-alias-fallback "all")
+  :bind
+  ("M-'" . rg-project)
   ("C-M-'" . rg-menu))
 
 (require 'bookmark)
@@ -25,6 +26,7 @@
 (use-package project
   :ensure nil ;; elpaca shouldn't manage the built-in library
   :custom
+  (project-key-prompt-style 'brackets)
   (project-switch-commands
    '((?f "File" project-find-file)
      (?d "Dired" project-dired)
