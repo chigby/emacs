@@ -25,6 +25,7 @@
 (use-package project
   :ensure nil ;; elpaca shouldn't manage the built-in library
   :custom
+  (project-key-prompt-style 'brackets)
   (project-switch-commands
    '((?f "File" project-find-file)
      (?d "Dired" project-dired)
