@@ -25,5 +25,7 @@
 
 (use-package editorconfig
   :hook prog-mode)
+  :init
+  (add-hook 'editorconfig-after-apply-functions (lambda (_) (setq web-mode-attr-indent-offset nil))))
 
 (provide 'chn-codestyle)
