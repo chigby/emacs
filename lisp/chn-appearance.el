@@ -9,17 +9,23 @@
 (setq column-number-mode t)
 (setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
 
-;; Yes... it's rough, blunt, unfinished... just like Seiji's
-;; violin. You've shown me the rough stone you've just cut out of
-;; the rock. You've worked hard. You're wonderful. There's no
-;; need to rush now. Take your time and polish it.
+;; There is a vitality, a life force, a quickening that is translated
+;; through you into action, and there is only one of you in all time,
+;; this expression is unique, and if you block it, it will never exist
+;; through any other medium; and be lost. The world will not have it. It
+;; is not your business to determine how good it is, not how it compares
+;; with other expression. It is your business to keep it yours clearly
+;; and directly, to keep the channel open.
 
-;; The more your drive, the less intelligent you are.
+;; The mind of the moon is oblique & manifold, running at cross-currents
+;; to the established vectors of the human psyche. Those among us who
+;; choose trust the moon do so at their own peril — they are the bravest
+;; among us, or the most foolish. perhaps, in a way, they are both.
 
-;; Computation is intrinsically self-obviating, which is to mean
-;; that the computational system, by design, tries to make itself
-;; less and less necessary to the realization of its purpose, and
-;; gradually allow people to provide for their own welfare.
+;; Roll on, thou deep and dark blue Ocean, roll!
+;; Ten thousand fleets sweep over thee in vain;
+;; Man marks the earth with ruin; his control
+;; Stops with the shore
 
 ")
 

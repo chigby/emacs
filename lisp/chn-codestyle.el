@@ -24,6 +24,8 @@
 (setq elm-indent-offset 4)
 
 (use-package editorconfig
-  :hook prog-mode)
+  :hook prog-mode
+  :init
+  (add-hook 'editorconfig-after-apply-functions (lambda (_) (setq web-mode-attr-indent-offset nil))))
 
 (provide 'chn-codestyle)

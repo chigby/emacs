@@ -14,6 +14,8 @@
   :hook
   (web-mode . chn/check-hugo)
   (web-mode . chn/check-django)
+  :custom
+  (web-mode-enable-auto-indentation nil)
   :bind
   (:map web-mode-map
         ([remap web-mode-comment-or-uncomment] . project-switch-project)))
