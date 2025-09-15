@@ -73,14 +73,7 @@
   (setq elpaca-use-package-by-default t)
 )
 
-;;(elpaca (dash :wait t) (message "dash done"))
-(elpaca f)
-(elpaca s)
-(elpaca-wait)
-;;(require 'dash)
-(require 's)
-(require 'f)
-
+(use-package f :ensure (:wait t) :demand t)
 
 ;; "Diminished modes are minor modes with no modeline display."
 ;; We want this feature of use-package.
