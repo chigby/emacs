@@ -33,6 +33,7 @@
      (?r "Ripgrep" rg-project)
      (?m "Magit" magit-project-status)
      (?b "Buffer" project-switch-to-buffer)
+     (?s "Shell" project-shell)
      ))
   :bind ("M-;" . project-switch-project))
 
