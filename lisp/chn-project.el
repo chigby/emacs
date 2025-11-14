@@ -35,7 +35,10 @@
      (?b "Buffer" project-switch-to-buffer)
      (?s "Shell" project-shell)
      ))
-  :bind ("M-;" . project-switch-project))
+  :bind
+  ("M-;" . project-switch-project)
+  ("<f9>" . project-shell)
+  )
 
 ;; some next ideas:
 ;;
