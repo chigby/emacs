@@ -27,7 +27,7 @@
 (defvar native-comp-deferred-compilation-deny-list nil)
 ;;(defvar comp-deferred-compilation-deny-list nil)
 ;; elpaca
-(defvar elpaca-installer-version 0.8)
+(defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
