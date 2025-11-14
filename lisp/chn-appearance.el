@@ -41,7 +41,10 @@
 
 (elpaca solarized-theme)
 (elpaca base16-theme)
-(elpaca ef-themes (chn/load-theme 'ef-light))
+
+(use-package ef-themes
+  :config
+  (chn/load-theme 'ef-light))
 
 (defun white-theme ()
   "A white-background for the brightest of days"
