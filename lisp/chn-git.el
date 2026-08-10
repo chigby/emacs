@@ -7,6 +7,7 @@
   :ensure t
   :commands magit-status
   :custom
+  (git-commit-summary-max-length 50)
   (magit-auto-revert-mode t)
   (magit-diff-refine-hunk t)
   (magit-bury-buffer-function #'magit-restore-window-configuration)
