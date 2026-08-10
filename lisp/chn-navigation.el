@@ -1,6 +1,6 @@
 ;;; chn-navigation.el --- correspondance, time, and movement
 
-(use-package symbol-overlay)
+(use-package symbol-overlay :ensure t)
 
 (global-set-key (kbd "M-m") 'symbol-overlay-put)
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
@@ -9,6 +9,7 @@
 
 
 (use-package syntax-subword
+  :ensure t
   :config
   (global-syntax-subword-mode)
   (setq syntax-subword-skip-spaces 'consistent))

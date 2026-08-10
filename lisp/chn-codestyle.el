@@ -6,6 +6,7 @@
 (elpaca prettier)
 
 (use-package flycheck
+  :ensure t
   :bind (:map flycheck-mode-map
               ("M-n" . flycheck-next-error)
               ("M-p" . flycheck-previous-error)))

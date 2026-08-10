@@ -1,6 +1,7 @@
 ;;; chn-snippets.el --- Repetition is the enemy of progress
 
 (use-package yasnippet
+  :ensure t
   :diminish yas-minor-mode
   :commands yas-minor-mode
   :hook ((js-base-mode python-base-mode ruby-mode) . yas-minor-mode)

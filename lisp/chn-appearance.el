@@ -43,6 +43,7 @@
 (elpaca base16-theme)
 
 (use-package ef-themes
+  :ensure t
   :config
   (chn/load-theme 'ef-light))
 

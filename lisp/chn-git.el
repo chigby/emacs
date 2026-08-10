@@ -7,6 +7,7 @@
   (require 'transient))
 
 (use-package magit
+  :ensure t
   :commands magit-status
   :custom
   (magit-auto-revert-mode t)
@@ -18,6 +19,7 @@
   ("C-c g" . magit-file-dispatch))
 
 (use-package git-link
+  :ensure t
   :commands git-link)
 
 ;; (defun turn-off-ethan-wspace ()

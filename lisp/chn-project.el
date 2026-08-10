@@ -1,6 +1,7 @@
 ;;; chn-project.el --- taskmasters, overseers, and orchestrators
 
 (use-package rg
+  :ensure t
   :config
   (rg-enable-menu)
   :custom
@@ -24,7 +25,7 @@
 ;; more about project.el: https://www.reddit.com/r/emacs/comments/kfubcb/comment/ggav4un/
 
 (use-package project
-  :ensure nil ;; elpaca shouldn't manage the built-in library
+  :ensure nil
   :custom
   (project-key-prompt-style 'brackets)
   (project-switch-commands
@@ -53,6 +54,7 @@
 
 
 (use-package dumb-jump
+  :ensure t
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 

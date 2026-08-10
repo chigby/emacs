@@ -63,6 +63,7 @@
     `(orderless-literal . ,(substring pattern 0 -1))))
 
 (use-package marginalia
+  :ensure t
   :hook emacs-startup)
 
 (use-package orderless

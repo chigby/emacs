@@ -2,11 +2,13 @@
 
 ;; dhall
 (use-package dhall-mode
+  :ensure t
   :mode "\\.dhall\\'"
   :custom
   (dhall-format-at-save . nil))
 
 (use-package yaml-mode
+  :ensure t
   :mode ("\\.yml\\'" . yaml-mode))
 
 (use-package dockerfile-mode

@@ -1,6 +1,7 @@
 ;;; chn-editing.el --- manipulation and correspondance
 
 (use-package smartparens
+  :ensure t
   :diminish smartparens-mode
   :commands
   smartparens-mode
@@ -19,10 +20,12 @@
   (sp-pair "{" "}" :wrap "C-c {"))
 
 (use-package expand-region
+  :ensure t
   :commands 'er/expand-region
   :bind ("C-=" . er/expand-region))
 
 (use-package undo-tree
+  :ensure t
   :diminish undo-tree-mode
   :custom
   (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))

@@ -1,6 +1,7 @@
 ;;; chn-elm.el --- Elm Language Support
 
 (use-package elm-mode
+  :ensure t
   :bind
   (:map elm-mode-map
         ("C-c C-c" . elm-compile-main))

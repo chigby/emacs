@@ -1,6 +1,7 @@
 ;;; chn-html.el --- Quanta of the web
 
 (use-package web-mode
+  :ensure t
   :mode (("\\.html?\\'" . web-mode)
          ("\\.phtml\\'" . web-mode)
          ("\\.php\\'" . web-mode)
@@ -21,6 +22,7 @@
         ([remap web-mode-comment-or-uncomment] . project-switch-project)))
 
 (use-package emmet-mode
+  :ensure t
   :commands emmet-mode
   :bind
   (:map emmet-mode-keymap
@@ -39,6 +41,7 @@
   (when (in-project-root? "manage.py") (web-mode-set-engine "django")))
 
 (use-package sass-mode
+  :ensure t
   :mode (("\\.sass\\'" . sass-mode)))
 
 (defconst sass-line-keywords
