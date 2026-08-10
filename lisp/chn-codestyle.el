@@ -3,8 +3,6 @@
 ;; Tabs, begone!
 (setq-default indent-tabs-mode nil)
 
-(elpaca prettier)
-
 (use-package flycheck
   :ensure t
   :bind (:map flycheck-mode-map

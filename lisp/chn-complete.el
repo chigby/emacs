@@ -1,27 +1,21 @@
 ;;; chn-complete.el --- What was sundered and undone / shall be whole
 
-(use-package company
-  :defer 3
-  :commands company-mode
-  :config
-  (setq company-minimum-prefix-length 2
-        company-selection-wrap-around t
-        company-show-numbers t
-        company-tooltip-align-annotations t
-        company-require-match nil
-        company-dabbrev-downcase nil
-        company-dabbrev-ignore-case nil
-        company-global-modes '(python-mode python-ts-mode emacs-lisp-mode ruby-mode elm-mode
-                                           sh-mode lisp-interaction-mode js-mode js-ts-mode))
-  (global-company-mode))
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
+
+(use-package dabbrev
+  :ensure nil
+  :bind (("M-/" . dabbrev-completion)
+         ("C-M-/" . dabbrev-expand))
+  :custom
+  (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))
+  (dabbrev-case-fold-search nil)
+  )
 
 (use-package vertico
-  :ensure (vertico
-	     :host github
-	     :repo "minad/vertico"
-	     :branch "main"
-             :files (:defaults "extensions/vertico-directory.el")
-             :includes (vertico-directory))
+  :ensure t
   :hook (emacs-startup . vertico-mode)
 
   ;; Different scroll margin
@@ -97,8 +91,11 @@
   :bind
   (("M-." . embark-act)         ;; pick some comfortable binding
    ("C-." . embark-dwim)        ;; good alternative: M-.
-   ;;("C-h B" . embark-bindings)  ;; alternative for `describe-bindings'
-   )
+   ;; ("C-h B" . embark-bindings)  ;; alternative for `describe-bindings'
+
+   :map minibuffer-local-map
+   ("C-c C-c" . embark-collect)
+   ("C-c C-e" . embark-export))
 
   :init
   ;; Optionally replace the key help with a completing-read interface

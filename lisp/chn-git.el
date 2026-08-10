@@ -3,9 +3,6 @@
 ;; see https://github.com/magit/magit/issues/4931
 (require 'cursor-sensor)
 
-(elpaca transient
-  (require 'transient))
-
 (use-package magit
   :ensure t
   :commands magit-status

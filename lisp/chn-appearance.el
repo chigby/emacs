@@ -39,8 +39,8 @@
   (chn/disable-all-themes)
   (load-theme theme))
 
-(elpaca solarized-theme)
-(elpaca base16-theme)
+(use-package solarized-theme :ensure t)
+(use-package base16-theme :ensure t)
 
 (use-package ef-themes
   :ensure t

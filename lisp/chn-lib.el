@@ -1,9 +1,5 @@
 ;;; chn-lib --- Component compounds of a wild law
 
-;; (elpaca (dash :wait t))
-;; (elpaca (s :wait t))
-;; (elpaca (f :wait t))
-
 (defmacro with-system (type &rest body)
   "Evaluate BODY if `system-type' equals TYPE."
   (declare (indent defun))
