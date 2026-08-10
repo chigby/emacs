@@ -13,6 +13,15 @@
 (use-package docker-tramp
   :disabled)
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(python-base-mode . ("uvx" "ruff" "server"))))
+(add-hook 'python-base-mode-hook
+          (lambda ()
+            (eglot-ensure)
+            (add-hook 'after-save-hook 'eglot-format nil t)
+            (add-to-list 'eglot-stay-out-of 'xref)))
+
 (defun module-spec-from-filename (filename)
   (let* ((root-dir (expand-file-name (vc-git-root filename))))
     (s-replace-all
