@@ -137,3 +137,10 @@
 
 (use-package extra-config :ensure nil :if (f-exists-p "~/extra")
   :load-path "~/extra")
+
+
+;; Local Variables:
+;; outline-minor-mode-cycle: t
+;; outline-regexp: ";;;+ "
+;; eval: (outline-minor-mode)
+;; End:
