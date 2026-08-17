@@ -111,6 +111,13 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; Docker
+(use-package docker
+  :bind ("C-c d" . docker))
+
+(if (boundp 'dockerfile-ts-mode)
+    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-ts-mode)))
+
 (use-package chn-windows
   :ensure nil
   :if (equal system-type 'windows-nt))
