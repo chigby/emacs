@@ -137,6 +137,9 @@
 (use-package chn-gnu
   :ensure nil
   :if (equal system-type 'gnu/linux))
+;;;; macOS
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta))
 
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings

@@ -1,6 +1,3 @@
-;; Command is meta in OS X.
-(setq ns-command-modifier (quote meta))
-
 (global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
 (global-set-key (kbd "M-8") 'goto-match-paren)
 
