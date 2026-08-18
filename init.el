@@ -32,6 +32,15 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (setq package-install-upgrade-built-in t)
 
+;;;; use-package
+(defmacro use-feature (name &rest args)
+  "`use-package' for packages which do not require installation.
+  See `use-package' for NAME and ARGS."
+  (declare (indent defun))
+  `(use-package ,name
+     :ensure nil
+     ,@args))
+
 (use-package f :ensure t)
 
 ;; "Diminished modes are minor modes with no modeline display."
