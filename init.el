@@ -5,14 +5,6 @@
 ;; What long-shackled powers of the elder dark
 ;; have our conjurings loosed?
 
-(if init-file-debug
-      (setq use-package-verbose t
-            use-package-expand-minimally nil
-            use-package-compute-statistics t
-            debug-on-error t)
-    (setq use-package-verbose nil
-          use-package-expand-minimally t))
-
 (setq emacs-root (file-name-directory
                   (or (buffer-file-name) (file-chase-links load-file-name))))
 
@@ -26,6 +18,7 @@
 
 (defvar native-comp-deferred-compilation-deny-list nil)
 
+;;; Package configuration
 (require 'package)
 (package-initialize)
 
@@ -40,6 +33,14 @@
   `(use-package ,name
      :ensure nil
      ,@args))
+
+(if init-file-debug
+      (setq use-package-verbose t
+            use-package-expand-minimally nil
+            use-package-compute-statistics t
+            debug-on-error t)
+    (setq use-package-verbose nil
+          use-package-expand-minimally t))
 
 (use-package f :ensure t)
 
@@ -127,10 +128,12 @@
 (use-feature  dockerfile-ts-mode
   :mode "\\(Containerfile\\|Dockerfile\\)\\'")
 
+;;; Platform-specific code
+;;;; Windows
 (use-package chn-windows
   :ensure nil
   :if (equal system-type 'windows-nt))
-
+;;;; GNU/Linux
 (use-package chn-gnu
   :ensure nil
   :if (equal system-type 'gnu/linux))
