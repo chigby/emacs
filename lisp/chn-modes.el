@@ -11,9 +11,6 @@
   :ensure t
   :mode ("\\.yml\\'" . yaml-mode))
 
-(use-package dockerfile-mode
-  :mode (("Dockerfile" . dockerfile-mode)))
-
 
 ;;; Ansi-term
 

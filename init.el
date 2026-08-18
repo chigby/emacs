@@ -115,8 +115,8 @@
 (use-package docker
   :bind ("C-c d" . docker))
 
-(if (boundp 'dockerfile-ts-mode)
-    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-ts-mode)))
+(use-feature  dockerfile-ts-mode
+  :mode "\\(Containerfile\\|Dockerfile\\)\\'")
 
 (use-package chn-windows
   :ensure nil
