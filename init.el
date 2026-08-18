@@ -141,8 +141,6 @@
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
-(load-library "chn-scala") ;; scala settings
-(load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
