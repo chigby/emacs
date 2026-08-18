@@ -121,6 +121,12 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; expreg
+(use-package expreg
+  :ensure t
+  :bind (("C-=" . expreg-expand)
+         ("C--" . expreg-contract)))
+
 ;;; Docker
 (use-package docker
   :bind ("C-c d" . docker))

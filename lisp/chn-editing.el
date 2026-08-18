@@ -19,11 +19,6 @@
   (sp-pair "[" "]" :wrap "C-c [")
   (sp-pair "{" "}" :wrap "C-c {"))
 
-(use-package expand-region
-  :ensure t
-  :commands 'er/expand-region
-  :bind ("C-=" . er/expand-region))
-
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
