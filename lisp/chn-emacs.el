@@ -3,6 +3,8 @@
 
 (use-package emacs
   :ensure nil
+  :config
+  (setq custom-safe-themes t) ; Mark all themes as safe
   :custom
   (confirm-kill-emacs #'yes-or-no-p)
   (ring-bell-function (lambda () (message "*beep*")))
