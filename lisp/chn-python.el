@@ -6,7 +6,6 @@
   :bind
   (:map python-base-mode-map
         ([remap python-shell-switch-to-shell] . run-test-file)
-        ("C-j" . end-of-line-indent)
         ("C-c <" . unindent-region)
         ("C-c >" . indent-region)))
 
