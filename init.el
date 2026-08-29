@@ -85,6 +85,7 @@
                      "v0.20.1" "src"))
         (json . ("https://github.com/tree-sitter/tree-sitter-json"
                  "v0.20.2"))
+        (just . ("https://github.com/IndianBoy42/tree-sitter-just" "main"))
         (markdown . ("https://github.com/ikatyang/tree-sitter-markdown"
                      "v0.7.1"))
         (python . ("https://github.com/tree-sitter/tree-sitter-python"
@@ -149,6 +150,12 @@
 
 (use-feature  dockerfile-ts-mode
   :mode "\\(Containerfile\\|Dockerfile\\)\\'")
+
+;;; Just
+(use-package just-ts-mode
+  :ensure t
+  :defer t
+  )
 
 ;;; Platform-specific code
 ;;;; Windows
