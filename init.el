@@ -42,6 +42,22 @@
     (setq use-package-verbose nil
           use-package-expand-minimally t))
 
+;;; A macro to bind keys
+;; via https://www.reddit.com/r/emacs/comments/1207uds/comment/jdham2y/
+(defmacro defkeys (mapname &rest body)
+  `(let ((defs '(,@body)))
+     (while defs
+       (define-key
+        ,mapname
+        (if (vectorp (car defs))
+            (car defs)
+          (read-kbd-macro (car defs)))
+        (if (or (listp (cadr defs)) (functionp (cadr defs)))
+            (cadr defs)
+          (if `(keymapp (bound-and-true-p ,(cadr defs)))
+              (eval (cadr defs)))))
+       (setq defs (cddr defs)))))
+
 (use-package f :ensure t)
 
 ;; "Diminished modes are minor modes with no modeline display."
