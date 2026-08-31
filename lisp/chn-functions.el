@@ -41,25 +41,6 @@
             (ansi-term term-cmd))
         (ansi-term term-cmd)))))
 
-(defun changelog-entry ()
-  (interactive)
-  (goto-char (point-min))
-  (search-forward ">")
-  (kill-ring-save (point-min) (point))
-  (goto-char (point-min))
-  (open-line 1)
-  (goto-char (point-min))
-  (yank)
-  (insert " ")
-  (shell-command "gdate -R" 1)
-  (goto-char (point-min))
-  (search-forward ")")
-  (backward-char 1)
-  (increment-number-at-point)
-  (search-forward "*")
-  (kill-line)
-)
-
 ;; helpful: http://emacswiki.org/emacs/DynamicBindingVsLexicalBinding
 ;; modify C-c C-z to prompt for a command if none is defined?
 (defun keybind-shell-command (command)
