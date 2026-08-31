@@ -14,17 +14,25 @@
   (global-syntax-subword-mode)
   (setq syntax-subword-skip-spaces 'consistent))
 
-;; taken from http://xahlee.org/emacs/effective_emacs.html -- try this one out??
-(global-set-key (kbd "M-j") 'backward-char) ; was indent-new-comment-line
-(global-set-key (kbd "M-l") 'forward-char)  ; was downcase-word
-(global-set-key (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
-(global-set-key (kbd "M-k") 'next-line) ; was kill-sentence
-
-;; the below have also been forward-word, forward-same-syntax and
-;; forward-to-word (backward: mutatis mutandis).  Not sure which is
-;; best.
-
-(global-set-key (kbd "M-u") 'backward-word) ; was syntax-subword-upcase
-(global-set-key (kbd "M-o") 'forward-word)  ; was.. something about faces?
+(defkeys global-map
+         "M-j" backward-sexp
+         "M-l" forward-sexp
+         ;; "M-i" backward-list
+         ;; "M-k" forward-list
+         "M-o" down-list
+         "M-u" backward-up-list
+         )
 
 (provide 'chn-navigation)
+
+
+;; Balanced Expressions
+;;
+;; Shortcut	Command Invoked	  Description
+;; C-M-f	forward-sexp	  Forward over an sexps.
+;; C-M-b	backward-sexp	  Backward over a sexps.
+;; C-M-d	down-list	      Move down into a sexps.
+;; C-M-u	backward-up-list  Move up out of a sexps.
+;; C-M-n	forward-list	  Move forward to the sexps.
+;; C-M-p	backward-list	  Move backward to the previous sexps.
+;; C-M-k	kill-sexp	      Kill down into sexps.

@@ -138,6 +138,15 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; puni
+(use-package puni
+  :ensure t
+  :hook ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . puni-mode)
+  :bind (:map puni-mode-map
+              ("M-i" . puni-change-inner))
+  :init
+  (setq puni-read-char-for-change-inner t))
+
 ;;; expreg
 (use-package expreg
   :ensure t
