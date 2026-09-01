@@ -5,7 +5,7 @@
 # --
 ---
 layout: post
-created_at: `(insert-date)`
+created_at: `(format-time-string "%Y-%m-%dT%T%z")`
 title: ${1:Title}
 author: ${2:Author}
 filename: ${3:Filename}

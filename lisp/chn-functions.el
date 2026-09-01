@@ -29,11 +29,6 @@
         (interactive)
         (term-start-or-switch ,name ,use-existing))))
 
-(defun insert-date ()
-  "Insert the current date."
-  (interactive)
-  (insert (format-time-string "%Y-%m-%dT%T%z")))
-
 (defun set-80-columns ()
   "Set the selected window to 80 columns (ish)."
   (interactive)
