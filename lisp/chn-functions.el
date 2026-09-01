@@ -40,14 +40,6 @@
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
 
-;; (defun run-nearest-test ()
-;;   (interactive)
-;;   ;; currently, this only works for python tests (due to its
-;;   ;; interaction with the test runner.. future ruby support for this
-;;   ;; should use the line number of the individual test to be run).
-;;   (let ((spec-class-function (which-function)))
-;;     (run-test-file (concat "." spec-class-function))))
-
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
   (interactive "^")
