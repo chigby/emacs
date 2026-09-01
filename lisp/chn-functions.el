@@ -61,16 +61,3 @@
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
-(defun titleize-region ($from $to)
-  (interactive "r")
-  (let ((output
-         (s-titleized-words (buffer-substring-no-properties $from $to))))
-  (save-excursion
-    (delete-region $from $to)
-    (goto-char $from)
-    (insert output)
-    )))
-
-(defun remove-electric-indent-mode ()
-  (electric-indent-local-mode -1))
