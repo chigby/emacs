@@ -15,7 +15,6 @@
 
 (global-set-key (kbd "M-=") 'count-words) ; was count-words-region
 
-(global-set-key "\C-x~" 'set-80-columns)
 ;(global-set-key "\C-x M-q" 'unfill-paragraph)
 
 (global-set-key (kbd "C-c C-z") 'run-test-file)
