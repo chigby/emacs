@@ -29,12 +29,6 @@
         (interactive)
         (term-start-or-switch ,name ,use-existing))))
 
-(defun unfill-paragraph ()
-  "Takes a multi-line paragraph and makes it into a single line of text."
-  (interactive)
-  (let ((fill-column (point-max)))
-    (fill-paragraph nil)))
-
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line."
   (interactive "^")

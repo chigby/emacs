@@ -138,6 +138,22 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; Plain text
+;; Borrowed from https://protesilaos.com/emacs/dotemacs
+(defun simple-unfill-region-or-paragraph ()
+  "Unfill current paragraph or the active region."
+  (interactive)
+  (unless mark-ring ; needed when entering a new buffer
+    (push-mark (point) t nil))
+  (let ((fill-column most-positive-fixnum))
+    (if (region-active-p)
+        (fill-region (region-beginning) (region-end))
+      (fill-paragraph))))
+
+(defkeys global-map
+         "M-Q" simple-unfill-region-or-paragraph
+         )
+
 ;;; puni
 (use-package puni
   :ensure t
