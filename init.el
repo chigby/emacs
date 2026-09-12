@@ -152,6 +152,7 @@
 
 (defkeys global-map
          "M-Q" simple-unfill-region-or-paragraph
+         "M-=" count-words
          )
 
 ;;; puni
