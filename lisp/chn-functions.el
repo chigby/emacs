@@ -8,17 +8,10 @@
            (interactive)
            (shell-command cmd)))))
 
-
-(defun smart-beginning-of-line ()
-  "Move point to first non-whitespace character or beginning-of-line."
-  (interactive "^")
-  (let ((oldpos (point)))
-    (back-to-indentation)
-    (and (= oldpos (point))
-         (beginning-of-line))))
-
+;; use-feature files
 (defun sudo-edit (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+

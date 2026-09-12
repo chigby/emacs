@@ -170,6 +170,11 @@
   :bind (("C-=" . expreg-expand)
          ("C--" . expreg-contract)))
 
+;;; Crux
+(use-package crux
+  :ensure t
+  :bind (("C-a" . crux-move-beginning-of-line)))
+
 ;;; Docker
 (use-package docker
   :bind ("C-c d" . docker))
