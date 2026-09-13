@@ -138,6 +138,11 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; ibuffer
+(use-feature ibuffer
+  ;; how can we better take advantage of embark-export into ibuffer?
+  :bind ("C-x C-b" . ibuffer))
+
 ;;; Plain text
 ;; Borrowed from https://protesilaos.com/emacs/dotemacs
 (defun simple-unfill-region-or-paragraph ()
