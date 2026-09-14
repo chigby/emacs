@@ -138,6 +138,13 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; ediff
+(use-feature ediff
+  :defer t
+  :custom
+  (ediff-window-setup-function #'ediff-setup-windows-plain)
+  (ediff-split-window-function #'split-window-horizontally))
+
 ;;; ibuffer
 (use-feature ibuffer
   ;; how can we better take advantage of embark-export into ibuffer?
