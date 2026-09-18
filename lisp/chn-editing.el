@@ -2,7 +2,6 @@
 
 (use-package smartparens
   :ensure t
-  :diminish smartparens-mode
   :commands
   smartparens-mode
   smartparens-strict-mode
