@@ -1,5 +1,4 @@
 (global-set-key (kbd "\C-c>") 'indent-region)
-(global-set-key (kbd "\C-c<") 'unindent-region)
 
 (global-set-key [f7] 'revert-buffer)
 
