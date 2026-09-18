@@ -7,11 +7,3 @@
         (lambda ()
            (interactive)
            (shell-command cmd)))))
-
-;; use-feature files
-(defun sudo-edit (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-

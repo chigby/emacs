@@ -223,7 +223,8 @@ Version 2016-04-04"
 ;;; Crux
 (use-package crux
   :ensure t
-  :bind (("C-a" . crux-move-beginning-of-line)))
+  :bind (("C-a" . crux-move-beginning-of-line)
+         ("C-c s" . crux-sudo-edit)))
 
 ;;; Docker
 (use-package docker
