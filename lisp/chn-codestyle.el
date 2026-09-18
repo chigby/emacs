@@ -3,9 +3,8 @@
 ;; Tabs, begone!
 (setq-default indent-tabs-mode nil)
 
-(elpaca prettier)
-
 (use-package flycheck
+  :ensure t
   :bind (:map flycheck-mode-map
               ("M-n" . flycheck-next-error)
               ("M-p" . flycheck-previous-error)))
@@ -17,7 +16,6 @@
 (setq-default tab-width 4)
 
 (setq c-basic-offset 4)
-(setq css-indent-offset 2)
 (setq sh-basic-offset 2)
 (setq js-indent-level 2)
 (setq lua-indent-level 2)

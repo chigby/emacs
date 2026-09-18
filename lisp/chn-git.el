@@ -3,12 +3,11 @@
 ;; see https://github.com/magit/magit/issues/4931
 (require 'cursor-sensor)
 
-(elpaca transient
-  (require 'transient))
-
 (use-package magit
+  :ensure t
   :commands magit-status
   :custom
+  (git-commit-summary-max-length 50)
   (magit-auto-revert-mode t)
   (magit-diff-refine-hunk t)
   (magit-bury-buffer-function #'magit-restore-window-configuration)
@@ -18,6 +17,7 @@
   ("C-c g" . magit-file-dispatch))
 
 (use-package git-link
+  :ensure t
   :commands git-link)
 
 ;; (defun turn-off-ethan-wspace ()

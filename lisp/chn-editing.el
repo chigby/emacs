@@ -1,7 +1,7 @@
 ;;; chn-editing.el --- manipulation and correspondance
 
 (use-package smartparens
-  :diminish smartparens-mode
+  :ensure t
   :commands
   smartparens-mode
   smartparens-strict-mode
@@ -9,8 +9,7 @@
   :bind (("<C-right>" . sp-forward-slurp-sexp)
          ("<C-left>" . sp-forward-barf-sexp)
          ("C-," . sp-rewrap-sexp))
-  :hook  (((lisp-data-mode emacs-lisp-mode) . smartparens-strict-mode)
-          ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . smartparens-mode))
+  :hook  (((lisp-data-mode emacs-lisp-mode) . smartparens-strict-mode))
   :config
   (require 'smartparens-config)
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
@@ -18,11 +17,8 @@
   (sp-pair "[" "]" :wrap "C-c [")
   (sp-pair "{" "}" :wrap "C-c {"))
 
-(use-package expand-region
-  :commands 'er/expand-region
-  :bind ("C-=" . er/expand-region))
-
 (use-package undo-tree
+  :ensure t
   :diminish undo-tree-mode
   :custom
   (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))

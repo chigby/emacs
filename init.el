@@ -5,14 +5,6 @@
 ;; What long-shackled powers of the elder dark
 ;; have our conjurings loosed?
 
-(if init-file-debug
-      (setq use-package-verbose t
-            use-package-expand-minimally nil
-            use-package-compute-statistics t
-            debug-on-error t)
-    (setq use-package-verbose nil
-          use-package-expand-minimally t))
-
 (setq emacs-root (file-name-directory
                   (or (buffer-file-name) (file-chase-links load-file-name))))
 
@@ -25,63 +17,57 @@
 (load custom-file 'noerror)
 
 (defvar native-comp-deferred-compilation-deny-list nil)
-;;(defvar comp-deferred-compilation-deny-list nil)
-;; elpaca
-(defvar elpaca-installer-version 0.8)
-(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1
-                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-                              :build (:not elpaca--activate-package)))
-(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
-       (build (expand-file-name "elpaca/" elpaca-builds-directory))
-       (order (cdr elpaca-order))
-       (default-directory repo))
-  (add-to-list 'load-path (if (file-exists-p build) build repo))
-  (unless (file-exists-p repo)
-    (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
-    (condition-case-unless-debug err
-        (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                  ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
-                                                  ,@(when-let* ((depth (plist-get order :depth)))
-                                                      (list (format "--depth=%d" depth) "--no-single-branch"))
-                                                  ,(plist-get order :repo) ,repo))))
-                  ((zerop (call-process "git" nil buffer t "checkout"
-                                        (or (plist-get order :ref) "--"))))
-                  (emacs (concat invocation-directory invocation-name))
-                  ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                        "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                  ((require 'elpaca))
-                  ((elpaca-generate-autoloads "elpaca" repo)))
-            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
-          (error "%s" (with-current-buffer buffer (buffer-string))))
-      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
-  (unless (require 'elpaca-autoloads nil t)
-    (require 'elpaca)
-    (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
-(add-hook 'after-init-hook #'elpaca-process-queues)
-(elpaca `(,@elpaca-order))
 
-;; Install use-package support
-(elpaca elpaca-use-package
-  ;; Enable use-package :ensure support for Elpaca.
-  (elpaca-use-package-mode)
-  (setq elpaca-use-package-by-default t)
-)
+;;; Package configuration
+(require 'package)
+(package-initialize)
 
-(use-package f :ensure (:wait t) :demand t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(setq package-install-upgrade-built-in t)
+
+;;;; use-package
+(defmacro use-feature (name &rest args)
+  "`use-package' for packages which do not require installation.
+  See `use-package' for NAME and ARGS."
+  (declare (indent defun))
+  `(use-package ,name
+     :ensure nil
+     ,@args))
+
+(if init-file-debug
+      (setq use-package-verbose t
+            use-package-expand-minimally nil
+            use-package-compute-statistics t
+            debug-on-error t)
+    (setq use-package-verbose nil
+          use-package-expand-minimally t))
+
+;;; A macro to bind keys
+;; via https://www.reddit.com/r/emacs/comments/1207uds/comment/jdham2y/
+(defmacro defkeys (mapname &rest body)
+  `(let ((defs '(,@body)))
+     (while defs
+       (define-key
+        ,mapname
+        (if (vectorp (car defs))
+            (car defs)
+          (read-kbd-macro (car defs)))
+        (if (or (listp (cadr defs)) (functionp (cadr defs)))
+            (cadr defs)
+          (if `(keymapp (bound-and-true-p ,(cadr defs)))
+              (eval (cadr defs)))))
+       (setq defs (cddr defs)))))
+
+(use-package f :ensure t)
 
 ;; "Diminished modes are minor modes with no modeline display."
 ;; We want this feature of use-package.
-(use-package diminish :ensure t :demand t)
+(use-package diminish :ensure t)
 
 (require 'chn-emacs)
 (require 'chn-lib)
 
+;;; Tree-sitter
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
                  "v0.23.3"))
@@ -100,6 +86,7 @@
                      "v0.20.1" "src"))
         (json . ("https://github.com/tree-sitter/tree-sitter-json"
                  "v0.20.2"))
+        (just . ("https://github.com/IndianBoy42/tree-sitter-just" "main"))
         (markdown . ("https://github.com/ikatyang/tree-sitter-markdown"
                      "v0.7.1"))
         (python . ("https://github.com/tree-sitter/tree-sitter-python"
@@ -152,22 +139,139 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;; ediff
+(use-feature ediff
+  :defer t
+  :custom
+  (ediff-window-setup-function #'ediff-setup-windows-plain)
+  (ediff-split-window-function #'split-window-horizontally))
+
+;;; ibuffer
+(use-feature ibuffer
+  ;; how can we better take advantage of embark-export into ibuffer?
+  :bind ("C-x C-b" . ibuffer))
+
+;;; Plain text
+;; Borrowed from https://protesilaos.com/emacs/dotemacs
+(defun simple-unfill-region-or-paragraph ()
+  "Unfill current paragraph or the active region."
+  (interactive)
+  (unless mark-ring ; needed when entering a new buffer
+    (push-mark (point) t nil))
+  (let ((fill-column most-positive-fixnum))
+    (if (region-active-p)
+        (fill-region (region-beginning) (region-end))
+      (fill-paragraph))))
+
+(defkeys global-map
+         "M-Q" simple-unfill-region-or-paragraph
+         "M-=" count-words
+         )
+
+;;; Programming
+(defkeys prog-mode-map
+         "M-c" comment-or-uncomment-region)
+
+;;; electric behavior
+(electric-pair-mode 1)
+
+;;; puni and sexp manipulation
+(use-package puni
+  :ensure t
+  :hook ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . puni-mode)
+  :bind (:map puni-mode-map
+              ("M-i" . puni-change-inner))
+  :init
+  (setq puni-read-char-for-change-inner t))
+
+(defun mark-inside-sexp ()
+  "Mark inside a sexp."
+  (interactive)
+  (let ((start (progn (backward-up-list 1 t t) (1+ (point))))
+        (end (progn (forward-sexp) (1- (point)))))
+    (goto-char start)
+    (push-mark)
+    (goto-char end))
+  (activate-mark))
+
+(defun kill-inside-sexp ()
+  "Kill inside a sexp."
+  (interactive)
+  (mark-inside-sexp)
+  (kill-region (mark) (point)))
+
+(defkeys global-map
+         "C-M-k" kill-inside-sexp) ; is having this valuable? As opposied to M-i
+
+;;; Navigation
+;; See also: https://github.com/freetonik/castlemacs/blob/2b86de744d3af2f35a34293166c166d12ce8ee22/init.el#L323-L343
+(defun chn/pop-local-mark-ring ()
+  "Move cursor to last mark position of current buffer.
+Call this repeatedly will cycle all positions in `mark-ring'.
+URL `http://ergoemacs.org/emacs/emacs_jump_to_previous_position.html'
+Version 2016-04-04"
+  (interactive)
+  (set-mark-command t))
+
+(defkeys global-map
+         "<S-f5>" pop-global-mark
+         "<f5>" chn/pop-local-mark-ring  ; possible alternatives: C-@ or s-,
+         )
+
+;;; expreg
+(use-package expreg
+  :ensure t
+  :bind (("C-=" . expreg-expand)
+         ("C--" . expreg-contract)))
+
+;;; Crux
+(use-package crux
+  :ensure t
+  :bind (("C-a" . crux-move-beginning-of-line)
+         ("C-c s" . crux-sudo-edit)))
+
+;;; Docker
+(use-package docker
+  :bind ("C-c d" . docker))
+
+(use-feature  dockerfile-ts-mode
+  :mode "\\(Containerfile\\|Dockerfile\\)\\'")
+
+;;; Just
+(use-package just-ts-mode
+  :ensure t
+  :defer t
+  )
+
+;; Rebalance windows when splitting
+(setopt window-combination-resize t)
+
+;;; Platform-specific code
+;;;; Windows
 (use-package chn-windows
   :ensure nil
   :if (equal system-type 'windows-nt))
-
+;;;; GNU/Linux
 (use-package chn-gnu
   :ensure nil
   :if (equal system-type 'gnu/linux))
+;;;; macOS
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta))
 
 (load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
-(load-library "chn-scala") ;; scala settings
-(load-library "chn-misc") ;; hard-to-classify or not-yet-classified
 
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
 
 (use-package extra-config :ensure nil :if (f-exists-p "~/extra")
   :load-path "~/extra")
+
+
+;; Local Variables:
+;; outline-minor-mode-cycle: t
+;; outline-regexp: ";;;+ "
+;; eval: (outline-minor-mode)
+;; End:

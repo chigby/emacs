@@ -39,9 +39,13 @@
   (chn/disable-all-themes)
   (load-theme theme))
 
-(elpaca solarized-theme)
-(elpaca base16-theme)
-(elpaca ef-themes (chn/load-theme 'ef-light))
+(use-package solarized-theme :ensure t)
+(use-package base16-theme :ensure t)
+
+(use-package ef-themes
+  :ensure t
+  :config
+  (chn/load-theme 'ef-light))
 
 (defun white-theme ()
   "A white-background for the brightest of days"
