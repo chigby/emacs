@@ -167,11 +167,11 @@
          "M-=" count-words
          )
 
-;;; puni
 ;;; Programming
 (defkeys prog-mode-map
          "M-c" comment-or-uncomment-region)
 
+;;; puni and sexp manipulation
 (use-package puni
   :ensure t
   :hook ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . puni-mode)
@@ -180,6 +180,24 @@
   :init
   (setq puni-read-char-for-change-inner t))
 
+(defun mark-inside-sexp ()
+  "Mark inside a sexp."
+  (interactive)
+  (let ((start (progn (backward-up-list 1 t t) (1+ (point))))
+        (end (progn (forward-sexp) (1- (point)))))
+    (goto-char start)
+    (push-mark)
+    (goto-char end))
+  (activate-mark))
+
+(defun kill-inside-sexp ()
+  "Kill inside a sexp."
+  (interactive)
+  (mark-inside-sexp)
+  (kill-region (mark) (point)))
+
+(defkeys global-map
+         "C-M-k" kill-inside-sexp) ; is having this valuable? As opposied to M-i
 ;;; expreg
 (use-package expreg
   :ensure t

@@ -1,5 +1,3 @@
-(global-set-key (kbd "C-M-k") 'delete-enclosed-text) ; was kill-sexp
-
 (global-set-key (kbd "\C-c>") 'indent-region)
 (global-set-key (kbd "\C-c<") 'unindent-region)
 
