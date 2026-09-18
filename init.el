@@ -198,6 +198,22 @@
 
 (defkeys global-map
          "C-M-k" kill-inside-sexp) ; is having this valuable? As opposied to M-i
+
+;;; Navigation
+;; See also: https://github.com/freetonik/castlemacs/blob/2b86de744d3af2f35a34293166c166d12ce8ee22/init.el#L323-L343
+(defun chn/pop-local-mark-ring ()
+  "Move cursor to last mark position of current buffer.
+Call this repeatedly will cycle all positions in `mark-ring'.
+URL `http://ergoemacs.org/emacs/emacs_jump_to_previous_position.html'
+Version 2016-04-04"
+  (interactive)
+  (set-mark-command t))
+
+(defkeys global-map
+         "<S-f5>" pop-global-mark
+         "<f5>" chn/pop-local-mark-ring  ; possible alternatives: C-@ or s-,
+         )
+
 ;;; expreg
 (use-package expreg
   :ensure t
