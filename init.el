@@ -67,6 +67,7 @@
 (require 'chn-emacs)
 (require 'chn-lib)
 
+;;; Tree-sitter
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
                  "v0.23.3"))
@@ -171,6 +172,9 @@
 (defkeys prog-mode-map
          "M-c" comment-or-uncomment-region)
 
+;;; electric behavior
+(electric-pair-mode 1)
+
 ;;; puni and sexp manipulation
 (use-package puni
   :ensure t
@@ -238,6 +242,9 @@ Version 2016-04-04"
   :ensure t
   :defer t
   )
+
+;; Rebalance windows when splitting
+(setopt window-combination-resize t)
 
 ;;; Platform-specific code
 ;;;; Windows
