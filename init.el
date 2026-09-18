@@ -168,6 +168,10 @@
          )
 
 ;;; puni
+;;; Programming
+(defkeys prog-mode-map
+         "M-c" comment-or-uncomment-region)
+
 (use-package puni
   :ensure t
   :hook ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . puni-mode)

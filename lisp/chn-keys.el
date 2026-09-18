@@ -8,7 +8,5 @@
 (global-set-key [f5] 'kmacro-start-macro-or-insert-counter)  ;; use C-x e to end macro
 (global-set-key [f7] 'revert-buffer)
 
-(global-set-key (kbd "M-c") 'comment-or-uncomment-region) ; was capitalize-word
-
 (global-set-key (kbd "C-c C-z") 'run-test-file)
 (global-set-key (kbd "C-c t") 'run-nearest-test)
