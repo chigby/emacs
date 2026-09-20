@@ -29,6 +29,7 @@
 (add-to-list 'display-buffer-alist '("\\*Async Shell Command\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*nim-compile\\*" chn-temp-window))
 (add-to-list 'display-buffer-alist '("\\*Embark Export" chn-temp-window))
+(add-to-list 'display-buffer-alist '("\\*compilation" chn-temp-window))
 
 (setq help-window-select t)
 
