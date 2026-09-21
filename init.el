@@ -260,6 +260,21 @@ Version 2016-04-04"
   (setq ns-command-modifier 'meta))
 
 (load-library "chn-modes") ;; mode-specific settings
+
+;;; Prefix keys (and nested keymaps)
+(defvar-keymap chn-prefix-buffer-map
+  :doc "My prefix map for buffers."
+  "g" #'revert-buffer-quick
+  )
+
+(defvar-keymap chn-prefix-map
+  :doc "My prefix key map."
+  "b" chn-prefix-buffer-map
+  )
+
+(defkeys global-map
+         "C-z" chn-prefix-map)
+
 (load-library "chn-keys") ;; my own keybindings
 
 (add-hook 'kill-buffer-query-functions
