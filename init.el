@@ -259,7 +259,6 @@ Version 2016-04-04"
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta))
 
-(load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings
 (load-library "chn-keys") ;; my own keybindings
 
