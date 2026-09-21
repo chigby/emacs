@@ -275,8 +275,6 @@ Version 2016-04-04"
 (defkeys global-map
          "C-z" chn-prefix-map)
 
-(load-library "chn-keys") ;; my own keybindings
-
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
 
