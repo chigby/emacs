@@ -5,9 +5,33 @@
   :mode ("\\.py\\'" . python-ts-mode)
   :bind
   (:map python-base-mode-map
-        ([remap python-shell-switch-to-shell] . run-test-file)
-        ("C-c <" . unindent-region)
-        ("C-c >" . indent-region)))
+        ("<f6>" . compile)
+        ("C-c t" . run-nearest-test)
+        ("M-k" . python-nav-forward-statement)
+        ("C-c >" . indent-region))
+  :hook
+  (python-base-mode . configure-test-compilation)
+  :config
+  (defun configure-test-compilation ()
+    (let ((target-file (file-relative-name buffer-file-name))
+          (default-directory (or (vc-root-dir)
+                                 (locate-dominating-file "." ".git")
+                                 default-directory)))
+      (when (and
+             (s-starts-with? "test_" target-file)
+             (file-exists-p "docker-compose.yaml"))
+        (setq-local compile-command
+                    (concat "docker compose exec -T django /bin/bash -c \"python -W default::DeprecationWarning manage.py test --noinput --keepdb --verbosity 1 "
+                            (if buffer-file-name
+                                (shell-quote-argument
+                                 (s-replace
+                                  "/"
+                                  "."
+                                  (file-name-sans-extension (file-relative-name buffer-file-name))
+                                  )))
+                            "\" "
+                            ))
+        ))))
 
 (use-package docker-tramp
   :disabled)

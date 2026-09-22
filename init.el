@@ -259,9 +259,21 @@ Version 2016-04-04"
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta))
 
-(load-library "chn-functions") ;; my own one-off functions
 (load-library "chn-modes") ;; mode-specific settings
-(load-library "chn-keys") ;; my own keybindings
+
+;;; Prefix keys (and nested keymaps)
+(defvar-keymap chn-prefix-buffer-map
+  :doc "My prefix map for buffers."
+  "g" #'revert-buffer-quick
+  )
+
+(defvar-keymap chn-prefix-map
+  :doc "My prefix key map."
+  "b" chn-prefix-buffer-map
+  )
+
+(defkeys global-map
+         "C-z" chn-prefix-map)
 
 (add-hook 'kill-buffer-query-functions
           (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
