@@ -152,6 +152,16 @@
   :bind ("C-x C-b" . ibuffer))
 
 ;;; Plain text
+
+(use-package text-mode
+  :ensure nil
+  :bind
+  (:map text-mode-map
+        ("M-c" . capitalize-word))
+  :hook ((text-mode . visual-line-mode)
+         (text-mode . goto-address-mode))
+  )
+
 ;; Borrowed from https://protesilaos.com/emacs/dotemacs
 (defun simple-unfill-region-or-paragraph ()
   "Unfill current paragraph or the active region."
@@ -230,21 +240,75 @@ Version 2016-04-04"
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c s" . crux-sudo-edit)))
 
-;;; Docker
+;;; Buffers and Windows
+
+;; Rebalance windows when splitting
+(setopt window-combination-resize t)
+
+;;;; uniquify (creates unique buffer names)
+(use-package uniquify
+  :ensure nil
+  :custom
+  (uniquify-buffer-name-style 'reverse)
+  (uniquify-separator "/")
+  (uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
+  )
+
+;;; Programming Languages
+
+;;;; General programming modes
+
+(use-package prog-mode
+  :ensure nil
+  :custom
+  (show-trailing-whitespace t)
+  :hook ((prog-mode . goto-address-prog-mode))
+  :bind
+  (:map prog-mode-map
+        ("C-c w" . delete-trailing-whitespace))
+  :custom-face
+  ;; (trailing-whitespace ((t (:foreground nil :background nil :underline (:style wave :color "#bf5f00")))))
+  (trailing-whitespace ((t (:foreground nil :background "#fac200"))))
+  )
+
+;;;; Dhall
+(use-package dhall-mode
+  :ensure t
+  :mode "\\.dhall\\'"
+  :custom
+  (dhall-format-at-save . nil))
+
+;;;; YAML
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.ya?ml\\'")
+
+;;;; Docker
 (use-package docker
   :bind ("C-c d" . docker))
 
 (use-feature  dockerfile-ts-mode
   :mode "\\(Containerfile\\|Dockerfile\\)\\'")
 
-;;; Just
+;;;; Just
 (use-package just-ts-mode
   :ensure t
   :defer t
   )
 
-;; Rebalance windows when splitting
-(setopt window-combination-resize t)
+;;;; ispell
+(use-feature ispell
+  :custom
+  (ispell-program-name "hunspell"))
+
+;;;; Local packages for bespoke programming languages
+(use-package sugarcube-mode
+  :ensure nil ;; it's a local package, don't try to install it from a repo
+  :mode "\\.twee\\'")
+
+(use-package chn-octo-mode
+  :ensure nil
+  :mode "\\.octo\\'")
 
 ;;; Platform-specific code
 ;;;; Windows
