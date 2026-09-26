@@ -9,16 +9,17 @@
 ;; Do not allow loading from the package cache -- see above.
 (setq package-quickstart nil)
 
-;; Do not resize the frame at this early stage.
-(setq frame-inhibit-implied-resize t)
+(setq frame-inhibit-implied-resize t ; Do not resize the frame at this early stage.
+      frame-title-format '("" "%f - " invocation-name "@" system-name)
+      inhibit-splash-screen t
+      use-dialog-box t
+      use-file-dialog nil
+      inhibit-startup-echo-area-message user-login-name ; read the docstring
+      )
 
 ;; Turn off GUI elements
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq inhibit-splash-screen t)
-(setq use-dialog-box t)
-(setq use-file-dialog nil)
-(setq inhibit-startup-echo-area-message user-login-name) ; read the docstring
 
 ;;; early-init.el ends here

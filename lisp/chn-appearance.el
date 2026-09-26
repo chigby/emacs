@@ -1,7 +1,6 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
 (when window-system
-  (setq frame-title-format '("" "%f - " invocation-name "@" system-name))
   (mouse-wheel-mode t)
   (blink-cursor-mode t)
   (setq blink-cursor-blinks 100))
