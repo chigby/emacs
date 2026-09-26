@@ -323,8 +323,6 @@ Version 2016-04-04"
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta))
 
-(load-library "chn-modes") ;; mode-specific settings
-
 ;;; Prefix keys (and nested keymaps)
 (defvar-keymap chn-prefix-buffer-map
   :doc "My prefix map for buffers."
