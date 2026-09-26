@@ -66,11 +66,6 @@
   (interactive)
   (chn/load-theme 'ef-cherie))
 
-(defun ns-font-setup ()
-  (set-fontset-font "fontset-default" 'symbol "Menlo")
-  (set-face-attribute 'default nil :foundry "apple" :family "Menlo" :height 140)
-  (setq default-frame-alist '((cursor-type . box))))
-
 ;; move cursor one line when going past end of page
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
 (setq scroll-step 1)
