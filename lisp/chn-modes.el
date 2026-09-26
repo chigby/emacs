@@ -1,17 +1,5 @@
 ;;; modes.el -- configuration for various and sundry modes
 
-;; dhall
-(use-package dhall-mode
-  :ensure t
-  :mode "\\.dhall\\'"
-  :custom
-  (dhall-format-at-save . nil))
-
-(use-package yaml-mode
-  :ensure t
-  :mode ("\\.yml\\'" . yaml-mode))
-
-
 ;;; Ansi-term
 
 ;; let the shell know we want utf-8 everywhere
@@ -38,27 +26,6 @@
 
 
 ;;; Misc.
-
-(use-package prog-mode
-  :ensure nil
-  :custom
-  (show-trailing-whitespace t)
-  :bind
-  (:map prog-mode-map
-        ("C-c w" . delete-trailing-whitespace))
-  :custom-face
-  ;; (trailing-whitespace ((t (:foreground nil :background nil :underline (:style wave :color "#bf5f00")))))
-  (trailing-whitespace ((t (:foreground nil :background "#fac200"))))
-  )
-
-(use-package text-mode
-  :ensure nil
-  :bind
-  (:map text-mode-map
-        ("M-c" . capitalize-word))
-  :hook
-  (text-mode . visual-line-mode))
-
 (autoload 'awk-mode "cc-mode" nil t)
 
 (use-package uniquify
