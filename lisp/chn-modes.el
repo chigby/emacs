@@ -9,8 +9,3 @@
   :ensure nil
   :mode "\\.octo\\'"
   )
-
-(use-package find-dired
-  :ensure nil
-  :custom
-  find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
