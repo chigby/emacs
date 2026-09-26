@@ -1,24 +1,5 @@
 ;;; modes.el -- configuration for various and sundry modes
 
-;;; Ansi-term
-
-;; let the shell know we want utf-8 everywhere
-(defadvice ansi-term (after advise-ansi-term-coding-system)
-    (set-process-coding-system 'utf-8-unix 'utf-8-unix))
-(ad-activate 'ansi-term)
-
-(setenv "LC_CTYPE" "en_US.UTF-8")
-
-;; kill ended process buffers
-(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
-  (if (memq (process-status proc) '(signal exit))
-      (let ((buffer (process-buffer proc)))
-        ad-do-it
-        (kill-buffer buffer))
-    ad-do-it))
-(ad-activate 'term-sentinel)
-
-
 ;;; Misc.
 (autoload 'awk-mode "cc-mode" nil t)
 
@@ -49,13 +30,3 @@
   :ensure nil
   :custom
   find-ls-option '("-print0 | xargs -0 ls -ldh" . "-ldh"))
-
-; properly format ansi colors on shell-command
-; see http://stackoverflow.com/questions/5819719/emacs-shell-command-output-not-showing-ansi-colors-but-the-code
-
-
-
-;; (defadvice display-message-or-buffer (before ansi-color activate)
-;;   "Process ANSI color codes in shell output."
-;;   (let ((buf (ad-get-arg 0)))
-;;     ))
