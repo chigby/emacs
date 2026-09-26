@@ -240,6 +240,20 @@ Version 2016-04-04"
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c s" . crux-sudo-edit)))
 
+;;; Buffers and Windows
+
+;; Rebalance windows when splitting
+(setopt window-combination-resize t)
+
+;;;; uniquify (creates unique buffer names)
+(use-package uniquify
+  :ensure nil
+  :custom
+  (uniquify-buffer-name-style 'reverse)
+  (uniquify-separator "/")
+  (uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
+  )
+
 ;;; Programming Languages
 
 ;;;; General programming modes
@@ -282,8 +296,10 @@ Version 2016-04-04"
   :defer t
   )
 
-;;; Rebalance windows when splitting
-(setopt window-combination-resize t)
+;;;; ispell
+(use-feature ispell
+  :custom
+  (ispell-program-name "hunspell"))
 
 ;;; Platform-specific code
 ;;;; Windows
