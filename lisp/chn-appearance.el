@@ -106,8 +106,4 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
-(use-package minions :ensure t
-  :hook (elpaca-after-init . minions-mode)
-  :custom (minions-mode-line-lighter "--"))
-
 (provide 'chn-appearance)
