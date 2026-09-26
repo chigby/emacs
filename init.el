@@ -18,14 +18,14 @@
 
 (defvar native-comp-deferred-compilation-deny-list nil)
 
-;;; Package configuration
+;;;* Package configuration
 (require 'package)
 (package-initialize)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (setq package-install-upgrade-built-in t)
 
-;;;; use-package
+;;;** use-package
 (defmacro use-feature (name &rest args)
   "`use-package' for packages which do not require installation.
   See `use-package' for NAME and ARGS."
@@ -42,7 +42,7 @@
     (setq use-package-verbose nil
           use-package-expand-minimally t))
 
-;;; A macro to bind keys
+;;;* A macro to bind keys
 ;; via https://www.reddit.com/r/emacs/comments/1207uds/comment/jdham2y/
 (defmacro defkeys (mapname &rest body)
   `(let ((defs '(,@body)))
@@ -67,7 +67,7 @@
 (require 'chn-emacs)
 (require 'chn-lib)
 
-;;; Tree-sitter
+;;;* Tree-sitter
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
                  "v0.23.3"))
@@ -139,19 +139,19 @@
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
-;;; ediff
+;;;* ediff
 (use-feature ediff
   :defer t
   :custom
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
-;;; ibuffer
+;;;* ibuffer
 (use-feature ibuffer
   ;; how can we better take advantage of embark-export into ibuffer?
   :bind ("C-x C-b" . ibuffer))
 
-;;; Plain text
+;;;* Plain text
 
 (use-package text-mode
   :ensure nil
@@ -178,14 +178,14 @@
          "M-=" count-words
          )
 
-;;; Programming
+;;;* Programming
 (defkeys prog-mode-map
          "M-c" comment-or-uncomment-region)
 
-;;; electric behavior
+;;;* electric behavior
 (electric-pair-mode 1)
 
-;;; puni and sexp manipulation
+;;;* puni and sexp manipulation
 (use-package puni
   :ensure t
   :hook ((elm-mode haskell-mode js-base-mode python-base-mode rust-mode) . puni-mode)
@@ -213,7 +213,7 @@
 (defkeys global-map
          "C-M-k" kill-inside-sexp) ; is having this valuable? As opposied to M-i
 
-;;; Navigation
+;;;* Navigation
 ;; See also: https://github.com/freetonik/castlemacs/blob/2b86de744d3af2f35a34293166c166d12ce8ee22/init.el#L323-L343
 (defun chn/pop-local-mark-ring ()
   "Move cursor to last mark position of current buffer.
@@ -228,24 +228,24 @@ Version 2016-04-04"
          "<f5>" chn/pop-local-mark-ring  ; possible alternatives: C-@ or s-,
          )
 
-;;; expreg
+;;;* expreg
 (use-package expreg
   :ensure t
   :bind (("C-=" . expreg-expand)
          ("C--" . expreg-contract)))
 
-;;; Crux
+;;;* Crux
 (use-package crux
   :ensure t
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c s" . crux-sudo-edit)))
 
-;;; Buffers and Windows
+;;;* Buffers and Windows
 
 ;; Rebalance windows when splitting
 (setopt window-combination-resize t)
 
-;;;; uniquify (creates unique buffer names)
+;;;** uniquify (creates unique buffer names)
 (use-package uniquify
   :ensure nil
   :custom
@@ -254,9 +254,9 @@ Version 2016-04-04"
   (uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
   )
 
-;;; Programming Languages
+;;;* Programming Languages
 
-;;;; General programming modes
+;;;** General programming modes
 
 (use-package prog-mode
   :ensure nil
@@ -271,37 +271,40 @@ Version 2016-04-04"
   (trailing-whitespace ((t (:foreground nil :background "#fac200"))))
   )
 
-;;;; Dhall
+;;;** Dhall
 (use-package dhall-mode
   :ensure t
   :mode "\\.dhall\\'"
   :custom
   (dhall-format-at-save . nil))
 
-;;;; YAML
+;;;** YAML
 (use-package yaml-mode
   :ensure t
   :mode "\\.ya?ml\\'")
 
-;;;; Docker
+;;;** Docker
 (use-package docker
   :bind ("C-c d" . docker))
 
 (use-feature  dockerfile-ts-mode
   :mode "\\(Containerfile\\|Dockerfile\\)\\'")
 
-;;;; Just
+;;;** Just
 (use-package just-ts-mode
   :ensure t
   :defer t
   )
 
-;;;; ispell
+;;;** ispell
 (use-feature ispell
   :custom
   (ispell-program-name "hunspell"))
 
-;;;; Local packages for bespoke programming languages
+;;;** outline (outline-mode and outline-minor-mode)
+(setopt outline-minor-mode-cycle t)
+
+;;;** Local packages for bespoke programming languages
 (use-package sugarcube-mode
   :ensure nil ;; it's a local package, don't try to install it from a repo
   :mode "\\.twee\\'")
@@ -310,20 +313,23 @@ Version 2016-04-04"
   :ensure nil
   :mode "\\.octo\\'")
 
-;;; Platform-specific code
-;;;; Windows
+;;;* Platform-specific code
+
+;;;** Windows
 (use-package chn-windows
   :ensure nil
   :if (equal system-type 'windows-nt))
-;;;; GNU/Linux
+
+;;;** GNU/Linux
 (use-package chn-gnu
   :ensure nil
   :if (equal system-type 'gnu/linux))
-;;;; macOS
+
+;;;** macOS
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta))
 
-;;; Prefix keys (and nested keymaps)
+;;;* Prefix keys (and nested keymaps)
 (defvar-keymap chn-prefix-buffer-map
   :doc "My prefix map for buffers."
   "g" #'revert-buffer-quick
@@ -343,9 +349,7 @@ Version 2016-04-04"
 (use-package extra-config :ensure nil :if (f-exists-p "~/extra")
   :load-path "~/extra")
 
-
 ;; Local Variables:
-;; outline-minor-mode-cycle: t
-;; outline-regexp: ";;;+ "
+;; outline-regexp: ";;;\\*+\\|\\`"
 ;; eval: (outline-minor-mode)
 ;; End:
