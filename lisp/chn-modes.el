@@ -1,8 +1,6 @@
 ;;; modes.el -- configuration for various and sundry modes
 
 ;;; Misc.
-(autoload 'awk-mode "cc-mode" nil t)
-
 (use-package uniquify
   :ensure nil
   :custom
