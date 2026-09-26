@@ -158,8 +158,9 @@
   :bind
   (:map text-mode-map
         ("M-c" . capitalize-word))
-  :hook
-  (text-mode . visual-line-mode))
+  :hook ((text-mode . visual-line-mode)
+         (text-mode . goto-address-mode))
+  )
 
 ;; Borrowed from https://protesilaos.com/emacs/dotemacs
 (defun simple-unfill-region-or-paragraph ()
@@ -247,6 +248,7 @@ Version 2016-04-04"
   :ensure nil
   :custom
   (show-trailing-whitespace t)
+  :hook ((prog-mode . goto-address-prog-mode))
   :bind
   (:map prog-mode-map
         ("C-c w" . delete-trailing-whitespace))

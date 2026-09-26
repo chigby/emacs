@@ -18,12 +18,6 @@
     ad-do-it))
 (ad-activate 'term-sentinel)
 
-;; Make urls clickable in the terminal.
-(defun my-term-hook ()
-  (goto-address-mode))
-
-(add-hook 'term-mode-hook 'my-term-hook)
-
 
 ;;; Misc.
 (autoload 'awk-mode "cc-mode" nil t)

@@ -30,7 +30,7 @@
          :map shell-mode-map
          ([remap comint-history-isearch-backward-regexp] . consult-history)
          )
-  :hook
-  (shell-mode . chn/setup-shell))
+  :hook ((shell-mode . chn/setup-shell)
+         (shell-mode . goto-address-mode)))
 
 (provide 'chn-eshell)
