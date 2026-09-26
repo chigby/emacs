@@ -65,9 +65,3 @@
 ;;   "Process ANSI color codes in shell output."
 ;;   (let ((buf (ad-get-arg 0)))
 ;;     ))
-
-(use-package calc
-  :ensure nil
-  :commands calc
-  :custom
-  (calc-settings-file (concat emacs-root "lisp/calc-settings.el")))
