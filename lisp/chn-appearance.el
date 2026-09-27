@@ -1,9 +1,5 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
-;; move cursor one line when going past end of page
-;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
-(setq scroll-step 1)
-
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 

@@ -202,6 +202,10 @@
 
 (mouse-wheel-mode t)
 
+;; move cursor one line when going past end of page
+;; from <http://orestis.gr/blog/2008/02/28/emacs-goals/>
+(setopt scroll-step 1)
+
 (require 'chn-appearance)
 (require 'chn-lsp)
 (require 'chn-complete)
