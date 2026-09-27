@@ -115,6 +115,18 @@
 
 (customize-set-variable 'treesit-font-lock-level 4)
 
+;;;* Emacs initializations
+
+;;;** Scratch buffer
+
+(setopt initial-buffer-choice t)
+(setopt initial-scratch-message
+      (format ";; Blessed art thou, who hath come to the One True Editor.\n\n;; This is `%s'.  Type `%s' to evaluate and print results.\n\n"
+              'lisp-interaction-mode
+              (propertize
+               (substitute-command-keys "\\<lisp-interaction-mode-map>\\[eval-print-last-sexp]")
+               'face 'help-key-binding)))
+
 ;;;* Themes and aesthetics
 
 ;;;** Theme activation
@@ -415,9 +427,6 @@ Version 2016-04-04"
 
 (defkeys global-map
          "C-z" chn-prefix-map)
-
-(add-hook 'kill-buffer-query-functions
-          (lambda () (not (member (buffer-name) '("*scratch*" "scratch.el")))))
 
 (use-package extra-config :ensure nil :if (f-exists-p "~/extra")
   :load-path "~/extra")

@@ -1,27 +1,5 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
-(setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
-
-;; There is a vitality, a life force, a quickening that is translated
-;; through you into action, and there is only one of you in all time,
-;; this expression is unique, and if you block it, it will never exist
-;; through any other medium; and be lost. The world will not have it. It
-;; is not your business to determine how good it is, not how it compares
-;; with other expression. It is your business to keep it yours clearly
-;; and directly, to keep the channel open.
-
-;; The mind of the moon is oblique & manifold, running at cross-currents
-;; to the established vectors of the human psyche. Those among us who
-;; choose trust the moon do so at their own peril — they are the bravest
-;; among us, or the most foolish. perhaps, in a way, they are both.
-
-;; Roll on, thou deep and dark blue Ocean, roll!
-;; Ten thousand fleets sweep over thee in vain;
-;; Man marks the earth with ruin; his control
-;; Stops with the shore
-
-")
-
 ;; move cursor one line when going past end of page
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
 (setq scroll-step 1)
