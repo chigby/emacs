@@ -70,10 +70,6 @@
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
 (setq scroll-step 1)
 
-;; Needed for ansi-term mode.
-(setq term-default-bg-color "#3f3f3f") ;; or use nil
-(setq term-default-fg-color "#dcdccc")
-
 (require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
