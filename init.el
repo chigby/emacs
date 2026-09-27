@@ -341,6 +341,29 @@ Version 2016-04-04"
   (uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
   )
 
+;;;** Line highlighting and numbering
+
+(require 'hl-line)
+(require 'display-line-numbers)
+
+(defun chn/numbers-toggle ()
+  "Toggle line numbers."
+  (interactive)
+  (if (bound-and-true-p global-display-line-numbers-mode)
+      (global-display-line-numbers-mode -1)
+    (global-display-line-numbers-mode 1)))
+
+(defun chn/hl-line-toggle ()
+  "Toggle line highlighting."
+  (interactive)
+  (if (bound-and-true-p global-hl-line-mode) (global-hl-line-mode -1) (global-hl-line-mode 1)))
+
+(defun chn/code-visibility ()
+  "Enable or disable code visibility markers."
+  (interactive)
+  (chn/numbers-toggle)
+  (chn/hl-line-toggle))
+
 ;;;* Programming Languages
 
 ;;;** General programming modes
@@ -422,6 +445,7 @@ Version 2016-04-04"
 (defvar-keymap chn-prefix-buffer-map
   :doc "My prefix map for buffers."
   "g" #'revert-buffer-quick
+  "v" #'chn/code-visibility
   )
 
 (defvar-keymap chn-prefix-map
