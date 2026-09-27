@@ -1,8 +1,5 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
-(require 'ansi-color)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
 ;; Line numbers and other indicators
 (require 'hl-line)
 (require 'display-line-numbers)
