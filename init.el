@@ -178,10 +178,6 @@
          "M-=" count-words
          )
 
-;;;* Programming
-(defkeys prog-mode-map
-         "M-c" comment-or-uncomment-region)
-
 ;;;* electric behavior
 (electric-pair-mode 1)
 
@@ -265,7 +261,8 @@ Version 2016-04-04"
   :hook ((prog-mode . goto-address-prog-mode))
   :bind
   (:map prog-mode-map
-        ("C-c w" . delete-trailing-whitespace))
+        ("C-c w" . delete-trailing-whitespace)
+        ("M-c" . comment-or-uncomment-region))
   :custom-face
   ;; (trailing-whitespace ((t (:foreground nil :background nil :underline (:style wave :color "#bf5f00")))))
   (trailing-whitespace ((t (:foreground nil :background "#fac200"))))
