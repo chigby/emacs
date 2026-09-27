@@ -115,6 +115,16 @@
 
 (customize-set-variable 'treesit-font-lock-level 4)
 
+;;;* Basic / essential configuration
+
+;;;** Cursor styles
+(blink-cursor-mode t)
+(setopt blink-cursor-blinks 100)
+
+;;;** Mouse and mouse wheel
+
+(mouse-wheel-mode t)
+
 (require 'chn-appearance)
 (require 'chn-lsp)
 (require 'chn-complete)
@@ -258,7 +268,8 @@ Version 2016-04-04"
   :ensure nil
   :custom
   (show-trailing-whitespace t)
-  :hook ((prog-mode . goto-address-prog-mode))
+  :hook ((prog-mode . goto-address-prog-mode)
+         (prog-mode . (lambda () (setq-local column-number-mode t))))
   :bind
   (:map prog-mode-map
         ("C-c w" . delete-trailing-whitespace)

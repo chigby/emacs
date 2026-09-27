@@ -1,11 +1,5 @@
 ;;; chn-appearance.el --- Silver, copper, gold.
 
-(when window-system
-  (mouse-wheel-mode t)
-  (blink-cursor-mode t)
-  (setq blink-cursor-blinks 100))
-
-(setq column-number-mode t)
 (setq initial-scratch-message ";; Blessed art thou, who hath come to the One True Editor.
 
 ;; There is a vitality, a life force, a quickening that is translated
