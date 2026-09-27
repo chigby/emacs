@@ -22,44 +22,6 @@
 
 ")
 
-;; Themes
-(defun chn/disable-all-themes ()
-  (interactive)
-  (mapc #'disable-theme custom-enabled-themes))
-
-(defun chn/load-theme (theme)
-  "Enhance `load-theme' by first disabling enabled themes."
-  (chn/disable-all-themes)
-  (load-theme theme))
-
-(use-package solarized-theme :ensure t)
-(use-package base16-theme :ensure t)
-
-(use-package ef-themes
-  :ensure t
-  :config
-  (chn/load-theme 'ef-light))
-
-(defun white-theme ()
-  "A white-background for the brightest of days"
-  (interactive)
-  (chn/load-theme 'ef-light))
-
-(defun light-theme ()
-  "A low-contrast light theme to combat screen glare"
-  (interactive)
-  (chn/load-theme 'ef-melissa-light))
-
-(defun dark-theme ()
-  "A dark theme to combat night-blindness"
-  (interactive)
-  (chn/load-theme 'ef-dark))
-
-(defun cyber-theme ()
-  "A festive, dark theme for revels and the cybernetic midnight horizon"
-  (interactive)
-  (chn/load-theme 'ef-cherie))
-
 ;; move cursor one line when going past end of page
 ;; from http://orestis.gr/blog/2008/02/28/emacs-goals/
 (setq scroll-step 1)

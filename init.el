@@ -115,6 +115,71 @@
 
 (customize-set-variable 'treesit-font-lock-level 4)
 
+;;;* Themes and aesthetics
+
+;;;** Theme activation
+
+(setopt custom-safe-themes t) ; Disable the theme safety check.
+
+(defun chn/disable-all-themes ()
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes))
+
+(defun chn/load-theme (theme)
+  "Enhance `load-theme' by first disabling enabled themes."
+  (chn/disable-all-themes)
+  (load-theme theme))
+
+;;;** Theme packages
+
+(use-package solarized-theme
+  :ensure t)
+
+(use-package base16-theme
+  :ensure t)
+
+(use-package ef-themes
+  :ensure t
+  :init
+  ;; This makes the Modus commands listed below consider only the Ef
+  ;; themes.  For an alternative that includes Modus and all
+  ;; derivative themes (like Ef), enable the
+  ;; `modus-themes-include-derivatives-mode' instead.  The manual of
+  ;; the Ef themes has a section that explains all the possibilities:
+  ;;
+  ;; - Evaluate `(info "(ef-themes) Working with other Modus themes or taking over Modus")'
+  ;; - Visit <https://protesilaos.com/emacs/ef-themes#h:6585235a-5219-4f78-9dd5-6a64d87d1b6e>
+  (ef-themes-take-over-modus-themes-mode 1)
+  :bind
+  (("<f1>" . modus-themes-rotate)
+   ("C-<f1>" . modus-themes-select)
+   ("M-<f1>" . modus-themes-load-random))
+  :config
+  (modus-themes-load-theme 'ef-light))
+
+;;;** Theme selection
+
+(defun white-theme () ; TODO 2026-09-27: I wonder if these are needed with the modus themes load/select/etc. functions?
+  "A white-background for the brightest of days"
+  (interactive)
+  (chn/load-theme 'ef-light))
+
+(defun light-theme ()
+  "A low-contrast light theme to combat screen glare"
+  (interactive)
+  (chn/load-theme 'ef-melissa-light))
+
+(defun dark-theme ()
+  "A dark theme to combat night-blindness"
+  (interactive)
+  (chn/load-theme 'ef-dark))
+
+(defun cyber-theme ()
+  "A festive, dark theme for revels and the cybernetic midnight horizon"
+  (interactive)
+  (chn/load-theme 'ef-cherie))
+
+
 ;;;* Basic / essential configuration
 
 ;;;** Cursor styles
