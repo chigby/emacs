@@ -2,6 +2,7 @@
 
 ;; Complete as much as possible, then wait
 (setq eshell-cmpl-cycle-completions nil)
+(setopt ansi-color-for-comint-mode t)
 
 (add-hook 'eshell-mode-hook
           (lambda ()
