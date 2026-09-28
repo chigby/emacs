@@ -62,7 +62,12 @@
 
 ;; "Diminished modes are minor modes with no modeline display."
 ;; We want this feature of use-package.
-(use-package diminish :ensure t)
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'eldoc-mode)
+  (diminish 'abbrev-mode)
+  (diminish 'auto-revert-mode))
 
 (require 'chn-emacs)
 (require 'chn-lib)
