@@ -284,6 +284,10 @@
   :bind (:map puni-mode-map
               ("M-i" . puni-change-inner))
   :init
+  ;; TODO 2026-09-28: can we auto-populate something for read-char?
+  ;; like, pressing M-i brings up read-char and lets you type a
+  ;; character, but if you press RET then it uses pre-filled value of
+  ;; the nearest delimiter character?
   (setq puni-read-char-for-change-inner t))
 
 (defun mark-inside-sexp ()
