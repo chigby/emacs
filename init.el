@@ -206,7 +206,12 @@
 ;; from <http://orestis.gr/blog/2008/02/28/emacs-goals/>
 (setopt scroll-step 1)
 
-(require 'chn-appearance)
+;;;** ANSI colors
+
+(defun chn/display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
 (require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
