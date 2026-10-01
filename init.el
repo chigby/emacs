@@ -217,6 +217,40 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+;;;* Completion
+
+;;;** Completion category overrides
+
+;;;** Orderless completion style
+(defun chn-orderless-initialism-dispatcher (pattern _index _total)
+  "Leading initialism dispatcher with comma suffix."
+  (when (string-suffix-p "," pattern)
+    `(orderless-initialism . ,(substring pattern 0 -1))))
+
+(defun chn-orderless-literal-dispatcher (pattern _index _total)
+  "Literal style dispatcher with equals sign suffix."
+  (when (string-suffix-p "=" pattern)
+    `(orderless-literal . ,(substring pattern 0 -1))))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (orderless-style-dispatchers '(chn-orderless-initialism-dispatcher chn-orderless-literal-dispatcher)))
+
+(setq completion-category-overrides
+      '((file (styles . (basic partial-completion orderless)))
+        (project-file (styles . (basic substring partial-completion orderless)))
+        (imenu (styles . (basic substring orderless)))
+        (kill-ring (styles . (basic substring orderless)))
+        (consult-location (styles . (basic substring orderless)))))
+
+;;;** Saving the history (savehist-mode)
+;; Keep minibuffer history across sessions
+(use-feature savehist
+  :hook (after-init . savehist-mode))
+
 (require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
