@@ -249,7 +249,27 @@
 ;;;** Saving the history (savehist-mode)
 ;; Keep minibuffer history across sessions
 (use-feature savehist
-  :hook (after-init . savehist-mode))
+  :hook (after-init . savehist-mode)
+  :custom
+  (history-delete-duplicates t))
+
+;;;** Dynamic text expension (dabbrev)
+
+(use-feature dabbrev
+  :bind (("M-/" . dabbrev-expand)
+         ("C-M-/" . dabbrev-completion))
+  :custom
+  (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))
+  (dabbrev-case-fold-search nil)
+  (dabbrev-check-other-buffers t))
+
+;;;** In-buffer completion pop-up (corfu)
+
+;; <https://protesilaos.com/codelog/2026-07-19-emacs-completion-at-point-functions/>
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
 
 (require 'chn-lsp)
 (require 'chn-complete)

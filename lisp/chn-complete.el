@@ -1,19 +1,5 @@
 ;;; chn-complete.el --- What was sundered and undone / shall be whole
 
-(use-package corfu
-  :ensure t
-  :init
-  (global-corfu-mode))
-
-(use-package dabbrev
-  :ensure nil
-  :bind (("M-/" . dabbrev-completion)
-         ("C-M-/" . dabbrev-expand))
-  :custom
-  (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))
-  (dabbrev-case-fold-search nil)
-  )
-
 (use-package vertico
   :ensure t
   :hook (emacs-startup . vertico-mode)
