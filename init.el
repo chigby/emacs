@@ -217,6 +217,159 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+;;;* Completion
+
+;;;** Completion category overrides
+
+;;;** Orderless completion style
+(defun chn-orderless-initialism-dispatcher (pattern _index _total)
+  "Leading initialism dispatcher with comma suffix."
+  (when (string-suffix-p "," pattern)
+    `(orderless-initialism . ,(substring pattern 0 -1))))
+
+(defun chn-orderless-literal-dispatcher (pattern _index _total)
+  "Literal style dispatcher with equals sign suffix."
+  (when (string-suffix-p "=" pattern)
+    `(orderless-literal . ,(substring pattern 0 -1))))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (orderless-style-dispatchers '(chn-orderless-initialism-dispatcher chn-orderless-literal-dispatcher)))
+
+(setq completion-category-overrides
+      '((file (styles . (basic partial-completion orderless)))
+        (project-file (styles . (basic substring partial-completion orderless)))
+        (imenu (styles . (basic substring orderless)))
+        (kill-ring (styles . (basic substring orderless)))
+        (consult-location (styles . (basic substring orderless)))))
+
+;;;** Saving the history (savehist-mode)
+;; Keep minibuffer history across sessions
+(use-feature savehist
+  :hook (after-init . savehist-mode)
+  :custom
+  (history-delete-duplicates t))
+
+;;;** Dynamic text expension (dabbrev)
+
+(use-feature dabbrev
+  :bind (("M-/" . dabbrev-expand)
+         ("C-M-/" . dabbrev-completion))
+  :custom
+  (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))
+  (dabbrev-case-fold-search nil)
+  (dabbrev-check-other-buffers t))
+
+;;;** In-buffer completion pop-up (corfu)
+
+;; <https://protesilaos.com/codelog/2026-07-19-emacs-completion-at-point-functions/>
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
+
+
+;;;** Consult
+(use-package consult
+  :ensure t
+  :demand t
+  :bind (
+         ([remap goto-line] . consult-goto-line)
+         ([remap yank-pop] . consult-yank-pop)
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ([remap project-switch-to-buffer] . consult-project-buffer)
+         ("C-c m" . consult-man)
+         ("C-c h" . consult-history)
+         (:map goto-map  ; M-g
+               ("e" . consult-compile-error)
+               ("f" . consult-flymake)
+               ("o" . consult-outline)
+               ("m" . consult-mark)
+               ("k" . consult-global-mark)
+               ("i" . consult-imenu)
+               ("I" . consult-imenu-multi))
+         (:map search-map ; M-s
+               ("d" . consult-find)
+               ("D" . consult-locate)
+               ("f" . consult-fd)
+               ("g" . consult-grep)
+               ("G" . consult-git-grep)
+               ("r" . consult-ripgrep)
+               ("l" . consult-line)
+               ("L" . consult-line-multi)
+               ("k" . consult-keep-lines)
+               ("u" . consult-focus-lines)
+               ("e" . consult-isearch-history))
+         (:map isearch-mode-map
+               ("M-s l" . consult-line)              ;; needed by consult-line to detect isearch
+               ("M-s L" . consult-line-multi))       ;; needed by consult-line to detect isearch
+
+         ;; :map shell-mode-map
+         ;; ("M-r" . consult-history)
+         )
+  :config
+  ;; Consult allows narrowing/filtering if, while using a consult
+  ;; command, pressing the consult-narrow-key followed by a suffix
+  ;; corresponding to what you want to filter for.  Pressing `?' will
+  ;; show the list of possible suffixes, with this configuration.
+  (setq consult-narrow-key "<") ;; another idea: "C-+"
+  (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
+  )
+
+;;;** Embark
+
+(use-package embark
+  :ensure t
+  :bind
+  (("M-." . embark-act)         ;; pick some comfortable binding
+   ("C-." . embark-dwim)        ;; good alternative: M-.
+   ;; ("C-h B" . embark-bindings)  ;; alternative for `describe-bindings'
+
+   :map minibuffer-local-map
+   ("C-c C-c" . embark-collect)
+   ("C-c C-e" . embark-export))
+
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(use-package embark-consult
+  :ensure t
+  :defer t)
+
+;;;** Completion annotations (marginalia)
+
+(use-package marginalia
+  :ensure t
+  :hook emacs-startup)
+
+;;;** Minibuffer UI (vertico)
+
+(use-package vertico
+  :ensure t
+  :hook (emacs-startup . vertico-mode))
+
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("DEL" . vertico-directory-delete-char)
+              ("C-w" . vertico-directory-delete-word)
+              ("M-DEL" . vertico-directory-delete-word)))
+
 (require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
