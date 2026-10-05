@@ -371,7 +371,6 @@
               ("M-DEL" . vertico-directory-delete-word)))
 
 (require 'chn-lsp)
-(require 'chn-complete)
 (require 'chn-git)
 (require 'chn-general)
 (require 'chn-editing)
