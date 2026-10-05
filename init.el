@@ -271,6 +271,57 @@
   :init
   (global-corfu-mode))
 
+
+;;;** Consult
+(use-package consult
+  :ensure t
+  :demand t
+  :bind (
+         ([remap goto-line] . consult-goto-line)
+         ([remap yank-pop] . consult-yank-pop)
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ([remap project-switch-to-buffer] . consult-project-buffer)
+         ("C-c m" . consult-man)
+         ("C-c h" . consult-history)
+         (:map goto-map  ; M-g
+               ("e" . consult-compile-error)
+               ("f" . consult-flymake)
+               ("o" . consult-outline)
+               ("m" . consult-mark)
+               ("k" . consult-global-mark)
+               ("i" . consult-imenu)
+               ("I" . consult-imenu-multi))
+         (:map search-map ; M-s
+               ("d" . consult-find)
+               ("D" . consult-locate)
+               ("f" . consult-fd)
+               ("g" . consult-grep)
+               ("G" . consult-git-grep)
+               ("r" . consult-ripgrep)
+               ("l" . consult-line)
+               ("L" . consult-line-multi)
+               ("k" . consult-keep-lines)
+               ("u" . consult-focus-lines)
+               ("e" . consult-isearch-history))
+         (:map isearch-mode-map
+               ("M-s l" . consult-line)              ;; needed by consult-line to detect isearch
+               ("M-s L" . consult-line-multi))       ;; needed by consult-line to detect isearch
+
+         ;; :map shell-mode-map
+         ;; ("M-r" . consult-history)
+         )
+  :config
+  ;; Consult allows narrowing/filtering if, while using a consult
+  ;; command, pressing the consult-narrow-key followed by a suffix
+  ;; corresponding to what you want to filter for.  Pressing `?' will
+  ;; show the list of possible suffixes, with this configuration.
+  (setq consult-narrow-key "<") ;; another idea: "C-+"
+  (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
+  )
+
+
 (require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
