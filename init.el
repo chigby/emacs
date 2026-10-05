@@ -349,6 +349,27 @@
   :ensure t
   :defer t)
 
+;;;** Completion annotations (marginalia)
+
+(use-package marginalia
+  :ensure t
+  :hook emacs-startup)
+
+;;;** Minibuffer UI (vertico)
+
+(use-package vertico
+  :ensure t
+  :hook (emacs-startup . vertico-mode))
+
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("DEL" . vertico-directory-delete-char)
+              ("C-w" . vertico-directory-delete-word)
+              ("M-DEL" . vertico-directory-delete-word)))
+
 (require 'chn-lsp)
 (require 'chn-complete)
 (require 'chn-git)
