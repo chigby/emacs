@@ -122,6 +122,12 @@
 
 ;;;* Emacs initializations
 
+;;;** Backups and lockfiles
+;; Mostly, we don't need these features.  I almost never run more than
+;; one emacs instance and my files are backed up in version control or
+;; other removable media.
+(setopt create-lockfiles nil
+        make-backup-files nil)
 ;;;** Scratch buffer
 
 (setopt initial-buffer-choice t)
