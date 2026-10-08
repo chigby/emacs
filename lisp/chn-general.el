@@ -1,7 +1,5 @@
 ;;; chn-general.el --- Tools, fundaments, oddities various and sundry
 
-;; Use UTF8 whenever possible.
-(set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 ;; Consolidate autosaves
 (setq autosave-dir (expand-file-name (concat emacs-root "autosave/")))

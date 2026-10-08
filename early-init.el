@@ -16,6 +16,9 @@
       use-file-dialog nil
       inhibit-startup-echo-area-message user-login-name ; read the docstring
       )
+;; Miscellaneous
+
+(set-language-environment "UTF-8")
 
 ;; Turn off GUI elements
 (menu-bar-mode -1)
