@@ -127,7 +127,80 @@
 ;; one emacs instance and my files are backed up in version control or
 ;; other removable media.
 (setopt create-lockfiles nil
-        make-backup-files nil)
+
+        make-backup-files nil
+        backup-directory-alist `(("." . ,(expand-file-name "backup" user-emacs-directory)))
+        tramp-backup-directory-alist backup-directory-alist
+        backup-by-copying-when-linked t
+        backup-by-copying t  ; Backup by copying rather renaming
+        delete-old-versions t  ; Delete excess backup versions silently
+        version-control t  ; Use version numbers for backup files
+        kept-new-versions 5
+        kept-old-versions 5)
+
+;;;** Auto save
+
+;; Code via <https://github.com/jamescherti/minimal-emacs.d/blob/main/init.el>
+;; Enable auto-save to safeguard against crashes or data loss. The
+;; `recover-file' or `recover-session' functions can be used to restore
+;; auto-saved data.
+(setopt auto-save-no-message t)
+
+(when noninteractive
+  ;; The command line interface
+  (setopt enable-dir-local-variables nil)
+  (setq-default case-fold-search nil))
+
+(setopt
+ ;; Do not auto-disable auto-save after deleting large chunks of text.
+ auto-save-include-big-deletions t
+ auto-save-list-file-prefix (expand-file-name "autosave/" user-emacs-directory)
+ tramp-auto-save-directory (expand-file-name "tramp-autosave/" user-emacs-directory))
+
+(defun minimal-emacs-setup-auto-save-transforms ()
+  "Configure `auto-save-file-name-transforms' for local and remote files.
+This should be called after changing `auto-save-list-file-prefix'."
+  (setopt auto-save-file-name-transforms
+        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+           ;; Redirect TRAMP (remote) file auto-saves to the local machine
+           ;; (prefixed with "tramp-") to prevent Emacs from hanging due to
+           ;; network latency during auto-save operations.
+           ,(file-name-concat auto-save-list-file-prefix "tramp-\\2-") sha1)
+          ("\\`/\\([^/]+/\\)*\\([^/]+\\)\\'"
+           ;; Redirect absolute file paths auto-saves to the
+           ;; `auto-save-list-file-prefix' directory. This appends the base
+           ;; filename to the prefix, avoiding #file.txt# files across the
+           ;; system.
+           ,(file-name-concat auto-save-list-file-prefix "\\2-") sha1)))
+
+  (when (memq system-type '(windows-nt cygwin ms-dos))
+    (push `("\\`\\(/\\|[a-zA-Z]:/\\|//\\)\\([^/]+/\\)*\\([^/]+\\)\\'"
+            ,(file-name-concat auto-save-list-file-prefix "\\3-") sha1)
+          auto-save-file-name-transforms)))
+
+(minimal-emacs-setup-auto-save-transforms)
+
+;; Ensure the directory for auto-save session logs exists with restricted
+;; permissions.
+(when auto-save-default
+  (let ((auto-save-dir (file-name-directory auto-save-list-file-prefix)))
+    (unless (file-exists-p auto-save-dir)
+      (with-file-modes #o700
+        (make-directory auto-save-dir t)))))
+
+(setopt kill-buffer-delete-auto-save-files t
+
+      ;; Remove duplicates from the kill ring to reduce clutter
+      kill-do-not-save-duplicates t
+
+      ;; Preserve the system clipboard before Emacs delete/kill operations. By
+      ;; default, deleting text in Emacs overwrites your system clipboard. For
+      ;; example, if you copy a link from a browser, switch to Emacs, and delete
+      ;; some text, your copied link is lost. This setting fixes that by pushing
+      ;; the clipboard contents into your paste history right before the
+      ;; deletion, ensuring external data remains retrievable via `yank-pop'.
+      save-interprogram-paste-before-kill t)
+
 ;;;** Scratch buffer
 
 (setopt initial-buffer-choice t)
