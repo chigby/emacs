@@ -122,6 +122,89 @@
 
 ;;;* Emacs initializations
 
+;;;** Backups and lockfiles
+;; Mostly, we don't need these features.  I almost never run more than
+;; one emacs instance and my files are backed up in version control or
+;; other removable media.
+(setopt create-lockfiles nil
+
+        make-backup-files nil
+        backup-directory-alist `(("." . ,(expand-file-name "backup" user-emacs-directory)))
+        tramp-backup-directory-alist backup-directory-alist
+        backup-by-copying-when-linked t
+        backup-by-copying t  ; Backup by copying rather renaming
+        delete-old-versions t  ; Delete excess backup versions silently
+        version-control t  ; Use version numbers for backup files
+        kept-new-versions 5
+        kept-old-versions 5)
+
+;;;** Auto save
+
+;; Code via <https://github.com/jamescherti/minimal-emacs.d/blob/main/init.el>
+;; Enable auto-save to safeguard against crashes or data loss. The
+;; `recover-file' or `recover-session' functions can be used to restore
+;; auto-saved data.
+(setopt auto-save-no-message t)
+
+(when noninteractive
+  ;; The command line interface
+  (setopt enable-dir-local-variables nil)
+  (setq-default case-fold-search nil))
+
+(setopt
+ ;; Do not auto-disable auto-save after deleting large chunks of text.
+ auto-save-include-big-deletions t
+ auto-save-list-file-prefix (expand-file-name "autosave/" user-emacs-directory)
+ tramp-auto-save-directory (expand-file-name "tramp-autosave/" user-emacs-directory))
+
+(defun minimal-emacs-setup-auto-save-transforms ()
+  "Configure `auto-save-file-name-transforms' for local and remote files.
+This should be called after changing `auto-save-list-file-prefix'."
+  (setopt auto-save-file-name-transforms
+        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+           ;; Redirect TRAMP (remote) file auto-saves to the local machine
+           ;; (prefixed with "tramp-") to prevent Emacs from hanging due to
+           ;; network latency during auto-save operations.
+           ,(file-name-concat auto-save-list-file-prefix "tramp-\\2-") sha1)
+          ("\\`/\\([^/]+/\\)*\\([^/]+\\)\\'"
+           ;; Redirect absolute file paths auto-saves to the
+           ;; `auto-save-list-file-prefix' directory. This appends the base
+           ;; filename to the prefix, avoiding #file.txt# files across the
+           ;; system.
+           ,(file-name-concat auto-save-list-file-prefix "\\2-") sha1)))
+
+  (when (memq system-type '(windows-nt cygwin ms-dos))
+    (push `("\\`\\(/\\|[a-zA-Z]:/\\|//\\)\\([^/]+/\\)*\\([^/]+\\)\\'"
+            ,(file-name-concat auto-save-list-file-prefix "\\3-") sha1)
+          auto-save-file-name-transforms)))
+
+(minimal-emacs-setup-auto-save-transforms)
+
+;; Ensure the directory for auto-save session logs exists with restricted
+;; permissions.
+(when auto-save-default
+  (let ((auto-save-dir (file-name-directory auto-save-list-file-prefix)))
+    (unless (file-exists-p auto-save-dir)
+      (with-file-modes #o700
+        (make-directory auto-save-dir t)))))
+
+(setopt kill-buffer-delete-auto-save-files t
+
+      ;; Remove duplicates from the kill ring to reduce clutter
+      kill-do-not-save-duplicates t
+
+      ;; Preserve the system clipboard before Emacs delete/kill operations. By
+      ;; default, deleting text in Emacs overwrites your system clipboard. For
+      ;; example, if you copy a link from a browser, switch to Emacs, and delete
+      ;; some text, your copied link is lost. This setting fixes that by pushing
+      ;; the clipboard contents into your paste history right before the
+      ;; deletion, ensuring external data remains retrievable via `yank-pop'.
+      save-interprogram-paste-before-kill t)
+
+;;;** Silence native compilation
+;; The default error reporting is very verbose.
+(when (native-comp-available-p)
+  (setq native-comp-async-report-warnings-errors 'silent))
 ;;;** Scratch buffer
 
 (setopt initial-buffer-choice t)
@@ -202,6 +285,45 @@
 ;;;** Cursor styles
 (blink-cursor-mode t)
 (setopt blink-cursor-blinks 100)
+;;;** Custom basic commands
+
+;; A collection of commands broadly useful in a wide variety of
+;; circumstances.
+
+;; via <https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/#h:83c8afc4-2359-4ebe-8b5c-f2e5257bdda3>
+(defun chn-keyboard-quit-dwim ()
+  "Do-What-I-Mean behaviour for a general `keyboard-quit'.
+
+The generic `keyboard-quit' does not do the expected thing when
+the minibuffer is open.  Whereas we want it to close the
+minibuffer, even without explicitly focusing it.
+
+The DWIM behaviour of this command is as follows:
+
+- When the region is active, disable it.
+- When a minibuffer is open, but not focused, close the minibuffer.
+- When the Completions buffer is selected, close it.
+- In every other case use the regular `keyboard-quit'."
+  (interactive)
+  (cond
+   ((region-active-p)
+    (keyboard-quit))
+   ((derived-mode-p 'completion-list-mode)
+    (delete-completion-window))
+   ((> (minibuffer-depth) 0)
+    (abort-recursive-edit))
+   (t
+    (keyboard-quit))))
+
+(defkeys global-map
+         "C-g" chn-keyboard-quit-dwim)
+
+;;;** Recently visited files (`recentf-mode')
+(use-feature recentf
+  :custom
+  (recentf-max-saved-items 210)
+  (recentf-max-menu-items 15) ; Even though I don't use the menu
+  )
 
 ;;;** Mouse and mouse wheel
 
@@ -371,9 +493,7 @@
               ("M-DEL" . vertico-directory-delete-word)))
 
 (require 'chn-lsp)
-(require 'chn-complete)
 (require 'chn-git)
-(require 'chn-general)
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-elm)
