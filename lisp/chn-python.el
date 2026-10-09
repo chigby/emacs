@@ -51,4 +51,7 @@
      `(("/" . ".") (,root-dir . "") (".py" . ""))
      filename)))
 
+(use-feature which-func
+  :hook ((python-base-mode) . which-function-mode))
+
 (provide 'chn-python)

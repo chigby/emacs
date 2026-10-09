@@ -314,6 +314,13 @@ The DWIM behaviour of this command is as follows:
 (defkeys global-map
          "C-g" chn-keyboard-quit-dwim)
 
+;;;** Recently visited files (`recentf-mode')
+(use-feature recentf
+  :custom
+  (recentf-max-saved-items 210)
+  (recentf-max-menu-items 15) ; Even though I don't use the menu
+  )
+
 ;;;** Mouse and mouse wheel
 
 (mouse-wheel-mode t)
@@ -483,7 +490,6 @@ The DWIM behaviour of this command is as follows:
 
 (require 'chn-lsp)
 (require 'chn-git)
-(require 'chn-general)
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-elm)
