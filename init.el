@@ -201,6 +201,10 @@ This should be called after changing `auto-save-list-file-prefix'."
       ;; deletion, ensuring external data remains retrievable via `yank-pop'.
       save-interprogram-paste-before-kill t)
 
+;;;** Silence native compilation
+;; The default error reporting is very verbose.
+(when (native-comp-available-p)
+  (setq native-comp-async-report-warnings-errors 'silent))
 ;;;** Scratch buffer
 
 (setopt initial-buffer-choice t)
