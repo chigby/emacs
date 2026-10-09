@@ -38,7 +38,10 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(python-base-mode . ("uvx" "ruff" "server"))))
+               '(python-base-mode . ("uvx" "ruff" "server"))
+               ;; <https://github.com/joaotavora/rassumfrassum#bundled-presets>
+               ;;'(python-base-mode . ("uvx" "--from" "rassumfrassum" "rass" "basedruff"))
+               ))
 (add-hook 'python-base-mode-hook
           (lambda ()
             (eglot-ensure)
