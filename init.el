@@ -339,6 +339,8 @@ The DWIM behaviour of this command is as follows:
          "C-g" chn-keyboard-quit-dwim)
 
 ;;;** Recently visited files (`recentf-mode')
+
+;; TODO 2026-10-12: consider binding `recentf-open' (ideas: s-r or C-c f)
 (use-feature recentf
   :custom
   (recentf-max-saved-items 210)
@@ -644,6 +646,7 @@ Version 2016-04-04"
 (use-package crux
   :ensure t
   :bind (("C-a" . crux-move-beginning-of-line)
+         ;; TODO 2026-10-12: consider `tramp-revert-buffer-with-sudo'
          ("C-c s" . crux-sudo-edit)))
 
 ;;;* Buffers and Windows
