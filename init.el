@@ -69,7 +69,6 @@
   (diminish 'abbrev-mode)
   (diminish 'auto-revert-mode))
 
-(require 'chn-emacs)
 (require 'chn-lib)
 
 ;;;* Tree-sitter
@@ -215,6 +214,22 @@ This should be called after changing `auto-save-list-file-prefix'."
                (substitute-command-keys "\\<lisp-interaction-mode-map>\\[eval-print-last-sexp]")
                'face 'help-key-binding)))
 
+;;;** Misc. initializations
+
+(use-feature emacs
+  :custom
+  (confirm-kill-emacs #'yes-or-no-p)
+  :preface
+  (defun chn/display-ansi-codes (buf &rest _)
+      (and (bufferp buf)
+         (string= (buffer-name buf) "*Shell Command Output*")
+         (with-current-buffer buf
+           (ansi-color-apply-on-region (point-min) (point-max))))
+      )
+
+  :init
+  (advice-add #'display-message-or-buffer :before #'chn/display-ansi-codes))
+
 ;;;* Themes and aesthetics
 
 ;;;** Theme activation
@@ -254,6 +269,8 @@ This should be called after changing `auto-save-list-file-prefix'."
   (("<f1>" . modus-themes-rotate)
    ("C-<f1>" . modus-themes-select)
    ("M-<f1>" . modus-themes-load-random))
+  :custom
+  (custom-safe-themes t) ; Mark all themes as safe
   :config
   (modus-themes-load-theme 'ef-light))
 
@@ -279,8 +296,11 @@ This should be called after changing `auto-save-list-file-prefix'."
   (interactive)
   (chn/load-theme 'ef-cherie))
 
-
 ;;;* Basic / essential configuration
+
+;;;** Sounds and blinking
+
+(setopt ring-bell-function #'ignore)
 
 ;;;** Cursor styles
 (blink-cursor-mode t)
@@ -391,8 +411,20 @@ The DWIM behaviour of this command is as follows:
 (use-package corfu
   :ensure t
   :init
-  (global-corfu-mode))
-
+  (global-corfu-mode)
+  :custom
+  ;; Completion configuration (via Corfu)
+  ;; TAB cycle if there are only few candidates
+  (completion-cycle-threshold 3)
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete)
+  ;; Disable Ispell completion function.
+  (text-mode-ispell-word-completion nil)
+  ;; Hide commands in M-x which do not apply to the current mode.  Corfu
+  ;; commands are hidden, since they are not used via M-x. This setting is
+  ;; useful beyond Corfu.
+  (read-extended-command-predicate #'command-completion-default-include-p))
 
 ;;;** Consult
 (use-package consult
