@@ -754,11 +754,6 @@ Version 2016-04-04"
   :ensure nil
   :if (equal system-type 'windows-nt))
 
-;;;** GNU/Linux
-(use-package chn-gnu
-  :ensure nil
-  :if (equal system-type 'gnu/linux))
-
 ;;;** macOS
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta))
