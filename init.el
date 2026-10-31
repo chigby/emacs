@@ -566,7 +566,6 @@ The DWIM behaviour of this command is as follows:
               ("C-w" . vertico-directory-delete-word)
               ("M-DEL" . vertico-directory-delete-word)))
 
-(require 'chn-lsp)
 (require 'chn-git)
 (require 'chn-editing)
 (require 'chn-project)
