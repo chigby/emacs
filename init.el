@@ -566,7 +566,28 @@ The DWIM behaviour of this command is as follows:
               ("C-w" . vertico-directory-delete-word)
               ("M-DEL" . vertico-directory-delete-word)))
 
-(require 'chn-git)
+;;;** Git --- taming the quanta of versioning
+
+;;;*** Magit
+(use-package magit
+  :ensure t
+  :commands magit-status
+  :custom
+  (git-commit-summary-max-length 50)
+  (magit-auto-revert-mode t)
+  (magit-diff-refine-hunk t)
+  (magit-bury-buffer-function #'magit-restore-window-configuration)
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-topleft-v1)
+  :bind
+  ("C-x g" . magit-status)
+  ("C-c g" . magit-file-dispatch))
+
+;;;*** Other misc. git packages
+
+(use-package git-link
+  :ensure t
+  :commands git-link)
+
 (require 'chn-editing)
 (require 'chn-project)
 (require 'chn-elm)
