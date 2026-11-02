@@ -1,6 +1,5 @@
 ;;; chn-testing.el --- Proving ground of all reason
 
-(require 'chn-lib)
 (require 'which-func)
 
 (defun run-test-file (&optional command-suffix)
