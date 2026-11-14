@@ -1,37 +1,101 @@
 ;;; chn-python.el --- For the pseudonatural integration of parts
 
+(require 'which-func)
+(require 'transient)
+
+;; (defvar chn-active-test-spec nil
+;;   "The path to the most recently run python test file")
+
+(defvar-local chn-test-project-root nil)
+
+(defun chn-test-project-root ()
+  (or
+   chn-test-project-root
+   (let ((root (locate-dominating-file default-directory ".git")))
+     (unless root
+       (error "Couldn't locate project root folder.  Make sure the current file is inside a project"))
+     (setq chn-test-project-root (expand-file-name root))))
+  )
+
+(defun chn-test-filename ()
+  (file-relative-name (buffer-file-name) (chn-test-project-root)))
+
+(defun chn-test-module ()
+  (s-replace "/" "." (file-name-sans-extension (chn-test-filename))))
+
+(defun chn-test-module-single-function ()
+  (concat (chn-test-module) "." (get-function-spec-under-point)))
+
+(defun get-function-spec-under-point ()
+  (interactive)
+  (save-excursion
+    (treesit-beginning-of-defun)
+    (end-of-line)
+    (which-function)))
+
+(transient-define-prefix chn-run-python-tests ()
+  "Run tests for python projects."
+  :value '("--verbosity=1" "--keepdb")
+  ["Django test options"
+   ("-k" "keepdb" "--keepdb")
+   ("-f" "failfast" "--failfast")
+   ("-v" "verbosity" "--verbosity=" :choices ("0" "1" "2" "3") :always-read t)
+   ]
+
+  ["Actions"
+   ("a" "all tests in file" chn-test-all)
+   ("s" "single test under point" chn-test-single)
+   ])
+
+(transient-define-suffix chn-test-all (&optional args)
+  "Run all tests "
+  (interactive (list (transient-args transient-current-command)))
+  (let ((test-target (chn-test-module)))
+    (chn-test-do-compilation (append args (list test-target)))
+  ))
+
+(transient-define-suffix chn-test-single (&optional args)
+  (interactive (list (transient-args transient-current-command)))
+  (let ((test-target (chn-test-module-single-function)))
+    (chn-test-do-compilation (append args (list test-target)))
+    ))
+
+(defun chn-django-manage-cmd (subcmd args)
+  (let ((python-args "-W default::DeprecationWarning"))
+    (format "python %s manage.py %s %s" python-args subcmd args)
+    ))
+
+(defun chn-docker-compose-exec (container command)
+  (format "docker compose exec -T %s /bin/bash -c \"%s\"" container command))
+
+
+(defun chn-test-do-compilation (&optional args)
+  "Execute django tests with the given arguments."
+  (let ((test-args (string-join args " ")))
+    (compile
+     (chn-docker-compose-exec "django" (chn-django-manage-cmd "test" test-args)))
+    )
+  )
+
+
+
+(defun chn-run-tests ()
+  "Execute all or part of a test suite, or re-run one already executed."
+  (interactive)
+  (if (s-starts-with? "test_" (file-relative-name buffer-file-name))
+      (chn-run-python-tests)
+    ;; TODO: user-error here if this buffer not valid/available?
+    (with-current-buffer "*compilation*" (recompile)))
+  )
+
 (use-package python
   :ensure nil
   :mode ("\\.py\\'" . python-ts-mode)
   :bind
   (:map python-base-mode-map
-        ("<f6>" . compile)
-        ("C-c t" . run-nearest-test)
+        ("C-c C-z" . chn-run-tests)
         ("M-k" . python-nav-forward-statement)
-        ("C-c >" . indent-region))
-  :hook
-  (python-base-mode . configure-test-compilation)
-  :config
-  (defun configure-test-compilation ()
-    (let ((target-file (file-relative-name buffer-file-name))
-          (default-directory (or (vc-root-dir)
-                                 (locate-dominating-file "." ".git")
-                                 default-directory)))
-      (when (and
-             (s-starts-with? "test_" target-file)
-             (file-exists-p "docker-compose.yaml"))
-        (setq-local compile-command
-                    (concat "docker compose exec -T django /bin/bash -c \"python -W default::DeprecationWarning manage.py test --noinput --keepdb --verbosity 1 "
-                            (if buffer-file-name
-                                (shell-quote-argument
-                                 (s-replace
-                                  "/"
-                                  "."
-                                  (file-name-sans-extension (file-relative-name buffer-file-name))
-                                  )))
-                            "\" "
-                            ))
-        ))))
+        ("C-c >" . indent-region)))
 
 (use-package docker-tramp
   :disabled)
