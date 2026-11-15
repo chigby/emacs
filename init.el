@@ -602,7 +602,6 @@ The DWIM behaviour of this command is as follows:
 (require 'chn-snippets)
 (require 'chn-navigation)
 (require 'chn-codestyle)
-(require 'chn-testing)
 (require 'chn-dired)
 (require 'chn-eshell)
 (require 'chn-window-nav)
