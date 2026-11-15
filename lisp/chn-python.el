@@ -96,6 +96,8 @@
 (use-package python
   :ensure nil
   :mode ("\\.py\\'" . python-ts-mode)
+  :custom
+  (compilation-scroll-output 'first-error)
   :bind
   (:map python-base-mode-map
         ("C-c C-z" . chn-run-tests)
