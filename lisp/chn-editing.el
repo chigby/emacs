@@ -1,4 +1,4 @@
-;;; chn-editing.el --- manipulation and correspondance
+;;; chn-editing.el --- manipulation and correspondance  -*- lexical-binding: t; -*-
 
 (use-package smartparens
   :ensure t

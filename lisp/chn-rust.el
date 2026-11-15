@@ -1,4 +1,4 @@
-;;; chn-rust.el --- the rust programming language
+;;; chn-rust.el --- the rust programming language  -*- lexical-binding: t; -*-
 
 (use-package rust-mode
   :mode "\\.rs\\'")

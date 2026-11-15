@@ -1,4 +1,4 @@
-;;; init.el --- No small task, to awaken a universe from slumber.
+;;; init.el --- No small task, to awaken a universe from slumber.  -*- lexical-binding: t; -*-
 
 ;; The Xytaxehedron held to the stars,
 ;; The incantation uttered with eager tongues,

@@ -1,4 +1,4 @@
-;;; chn-python.el --- For the pseudonatural integration of parts
+;;; chn-python.el --- For the pseudonatural integration of parts  -*- lexical-binding: t; -*-
 
 (require 'which-func)
 (require 'transient)

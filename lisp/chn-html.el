@@ -1,4 +1,4 @@
-;;; chn-html.el --- Quanta of the web
+;;; chn-html.el --- Quanta of the web  -*- lexical-binding: t; -*-
 
 (use-package web-mode
   :ensure t

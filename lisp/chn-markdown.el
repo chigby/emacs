@@ -1,4 +1,4 @@
-;;; chn-markdown.el --- Common tongue of HTML
+;;; chn-markdown.el --- Common tongue of HTML  -*- lexical-binding: t; -*-
 
 (use-package markdown-mode
   :ensure t

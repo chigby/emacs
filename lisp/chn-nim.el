@@ -1,4 +1,4 @@
-;;; chn-nim.el --- the nim programming language
+;;; chn-nim.el --- the nim programming language  -*- lexical-binding: t; -*-
 
 (use-package nim-mode
   :defer t)

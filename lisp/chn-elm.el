@@ -1,4 +1,4 @@
-;;; chn-elm.el --- Elm Language Support
+;;; chn-elm.el --- Elm Language Support  -*- lexical-binding: t; -*-
 
 (use-package elm-mode
   :ensure t

@@ -1,4 +1,4 @@
-;;; chn-eshell.el --- The universal command line
+;;; chn-eshell.el --- The universal command line  -*- lexical-binding: t; -*-
 
 ;; Complete as much as possible, then wait
 (setq eshell-cmpl-cycle-completions nil)
