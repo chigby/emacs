@@ -2,7 +2,6 @@
 
 (use-package yasnippet
   :ensure t
-  :diminish yas-minor-mode
   :commands yas-minor-mode
   :hook ((js-base-mode python-base-mode ruby-mode) . yas-minor-mode)
   :bind (("C-<tab>" . yas-expand)

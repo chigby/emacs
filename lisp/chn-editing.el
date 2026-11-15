@@ -17,22 +17,17 @@
   (sp-pair "[" "]" :wrap "C-c [")
   (sp-pair "{" "}" :wrap "C-c {"))
 
+;; TODO: consider replacing with vundo?  https://www.reddit.com/r/emacs/comments/1ktfl8b/what_is_the_undotree_sucessor/
+;; I can't get this to work within a region.
 (use-package undo-tree
   :ensure t
-  :diminish undo-tree-mode
   :custom
   (undo-tree-history-directory-alist `(("." . ,(concat emacs-root "undo-tree"))))
   :hook (emacs-startup . global-undo-tree-mode))
 
- ;; Eliminate duplicates in the kill ring.
-(setq kill-do-not-save-duplicates t)
-
-;; Preserve text copied from the operating system before overwriting
-;; it with something else from within emacs.
-(setq save-interprogram-paste-before-kill t)
-
 ;; Duplicate start of line or region with C-<end>.
 ;; From http://www.emacswiki.org/emacs/DuplicateStartOfLineOrRegion
+;; TODO: consider duplicate-dwim or crux-duplicate-current-line-or-region
 (defun duplicate-start-of-line-or-region ()
   (interactive)
   (if mark-active
@@ -86,9 +81,11 @@ With a prefix argument, insert a newline above the current line."
       (open-line-above)
     (open-line-below)))
 
+;; TODO: consider crux-smart-open-line{-above}
 (global-set-key (kbd "C-o") 'open-line-above)
 (global-set-key (kbd "C-j") 'open-line-below)
 
+;; TODO: consider using embark: C-s <text> M-. ;
 (defun chn/isearch-comment-result ()
   "During an incremental search, comment lines spanned from
 search start to search end."
@@ -98,6 +95,7 @@ search start to search end."
   (call-interactively 'comment-line))
 (define-key isearch-mode-map (kbd "C-;") 'chn/isearch-comment-result)
 
+;; TODO: consider embark here, too: M-. o
 (defun chn/occur-dwim ()
   "Call `occur' with a default argument of symbol under cursor."
   (interactive)
