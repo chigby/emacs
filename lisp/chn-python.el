@@ -68,29 +68,36 @@
 (defun chn-docker-compose-exec (container command)
   (format "docker compose exec -T %s /bin/bash -c \"%s\"" container command))
 
+(defun chn-test-compilation-buffer-name (compilation-mode)
+  "Include the project name in the buffer name, if one exists."
+  (if (project-current)
+      (concat "*" (downcase compilation-mode) "-" (project-name (project-current)) "*")
+    (compilation--default-buffer-name compilation-mode))
+  )
 
 (defun chn-test-do-compilation (&optional args)
   "Execute django tests with the given arguments."
-  (let ((test-args (string-join args " ")))
+  (let ((test-args (string-join args " "))
+        (compilation-buffer-name-function #'chn-test-compilation-buffer-name))
     (compile
      (chn-docker-compose-exec "django" (chn-django-manage-cmd "test" test-args)))
     )
   )
-
-
 
 (defun chn-run-tests ()
   "Execute all or part of a test suite, or re-run one already executed."
   (interactive)
   (if (s-starts-with? "test_" (file-relative-name buffer-file-name))
       (chn-run-python-tests)
-    ;; TODO: user-error here if this buffer not valid/available?
-    (with-current-buffer "*compilation*" (recompile)))
-  )
+    (if-let* ((buf (get-buffer (chn-test-compilation-buffer-name "compilation"))))
+        (with-current-buffer buf (recompile))
+      (user-error "Test specification for this project not found. Try running a test."))))
 
 (use-package python
   :ensure nil
   :mode ("\\.py\\'" . python-ts-mode)
+  :custom
+  (compilation-scroll-output 'first-error)
   :bind
   (:map python-base-mode-map
         ("C-c C-z" . chn-run-tests)
