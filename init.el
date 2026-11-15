@@ -60,15 +60,6 @@
 
 (use-package f :ensure t)
 
-;; "Diminished modes are minor modes with no modeline display."
-;; We want this feature of use-package.
-(use-package diminish
-  :ensure t
-  :config
-  (diminish 'eldoc-mode)
-  (diminish 'abbrev-mode)
-  (diminish 'auto-revert-mode))
-
 ;;;* Tree-sitter
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"
@@ -854,6 +845,8 @@ Version 2016-04-04"
 
 (use-package extra-config :ensure nil :if (f-exists-p "~/extra")
   :load-path "~/extra")
+
+(setq mode-line-collapse-minor-modes '(auto-revert-mode eldoc-mode undo-tree-mode editorconfig-mode yas-minor-mode))
 
 ;; Local Variables:
 ;; outline-regexp: ";;;\\*+\\|\\`"
