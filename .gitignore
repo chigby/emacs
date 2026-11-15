@@ -17,6 +17,8 @@ custom.el
 /recentf
 /history
 undo-tree/*
+elfeed/*
+private-feeds.el
 
 # straight
 /straight/*

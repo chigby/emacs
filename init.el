@@ -606,6 +606,26 @@ The DWIM behaviour of this command is as follows:
 (require 'chn-eshell)
 (require 'chn-window-nav)
 
+;;;* elfeed
+
+(use-package elfeed
+  :ensure t
+  :defer
+  :bind (("C-c e" . elfeed)
+         :map elfeed-search-mode-map
+         ("g" . elfeed-update))
+  :custom
+  (elfeed-db-directory (expand-file-name "elfeed/" user-emacs-directory))
+  :config
+  (defun chn-elfeed-show-setup ()
+    (setq-local shr-width 60))
+  :hook ((elfeed-show-mode . chn-elfeed-show-setup))
+  )
+
+(let ((private-feeds (expand-file-name "private-feeds.el" user-emacs-directory)))
+  (when (file-exists-p private-feeds)
+    (load private-feeds)))
+
 ;;;* ediff
 (use-feature ediff
   :defer t
