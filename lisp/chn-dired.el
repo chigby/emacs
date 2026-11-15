@@ -1,4 +1,4 @@
-;;; chn-dired.el --- Keeper of files and folders
+;;; chn-dired.el --- Keeper of files and folders  -*- lexical-binding: t; -*-
 
 ;; Keep dired buffers up-to-date
 (setq global-auto-revert-non-file-buffers t)

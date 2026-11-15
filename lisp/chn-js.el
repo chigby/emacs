@@ -1,4 +1,4 @@
-;;; chn-js.el --- Molten subterranean flamespeak of geomancers
+;;; chn-js.el --- Molten subterranean flamespeak of geomancers  -*- lexical-binding: t; -*-
 
 (use-package js2-mode
   :mode (("\\.js$" . js2-mode))

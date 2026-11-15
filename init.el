@@ -1,4 +1,4 @@
-;;; init.el --- No small task, to awaken a universe from slumber.
+;;; init.el --- No small task, to awaken a universe from slumber.  -*- lexical-binding: t; -*-
 
 ;; The Xytaxehedron held to the stars,
 ;; The incantation uttered with eager tongues,
@@ -602,7 +602,6 @@ The DWIM behaviour of this command is as follows:
 (require 'chn-snippets)
 (require 'chn-navigation)
 (require 'chn-codestyle)
-(require 'chn-testing)
 (require 'chn-dired)
 (require 'chn-eshell)
 (require 'chn-window-nav)

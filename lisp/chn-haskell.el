@@ -1,4 +1,4 @@
-;;; chn-haskell.el --- "We must use this because Hask is not a category"
+;;; chn-haskell.el --- "We must use this because Hask is not a category"  -*- lexical-binding: t; -*-
 
 (defun haskell-setup ()
   "Setup variables for editing Haskell files."

@@ -1,4 +1,4 @@
-;;; chn-project.el --- taskmasters, overseers, and orchestrators
+;;; chn-project.el --- taskmasters, overseers, and orchestrators  -*- lexical-binding: t; -*-
 
 (use-package rg
   :ensure t

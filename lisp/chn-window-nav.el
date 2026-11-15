@@ -1,4 +1,4 @@
-;;; chn-window-nav.el --- Divide and conquer
+;;; chn-window-nav.el --- Divide and conquer  -*- lexical-binding: t; -*-
 
 (defun prev-window ()
   (interactive)

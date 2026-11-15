@@ -1,4 +1,4 @@
-;;; chn-codestyle.el --- Altar of Perfectionism
+;;; chn-codestyle.el --- Altar of Perfectionism  -*- lexical-binding: t; -*-
 
 ;; Tabs, begone!
 (setq-default indent-tabs-mode nil)

@@ -1,4 +1,4 @@
-;;; chn-testing.el --- Proving ground of all reason
+;;; chn-testing.el --- Proving ground of all reason  -*- lexical-binding: t; -*-
 
 (require 'which-func)
 

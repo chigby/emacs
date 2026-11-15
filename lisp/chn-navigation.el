@@ -1,4 +1,4 @@
-;;; chn-navigation.el --- correspondance, time, and movement
+;;; chn-navigation.el --- correspondance, time, and movement  -*- lexical-binding: t; -*-
 
 (use-package symbol-overlay :ensure t)
 

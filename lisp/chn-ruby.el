@@ -1,4 +1,4 @@
-;;; chn-ruby.el --- the shimmering chainsaw
+;;; chn-ruby.el --- the shimmering chainsaw  -*- lexical-binding: t; -*-
 
 (use-package ruby-mode
   :ensure nil

@@ -1,4 +1,4 @@
-;;; chn-snippets.el --- Repetition is the enemy of progress
+;;; chn-snippets.el --- Repetition is the enemy of progress  -*- lexical-binding: t; -*-
 
 (use-package yasnippet
   :ensure t
